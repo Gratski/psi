@@ -35,4 +35,34 @@ class Edit extends VoluntarioController
         $this->load->view('footer');
     }
 
+    /**
+     * Actualiza a agenda de um voluntário.
+     */
+    public function schedule(){
+
+        $horario_id = $_POST['horario'];
+        $horario = array(
+            'hora_inicio' => $_POST['hora_inicio'],
+            'hora_fim' => $_POST['hora_fim'],
+            'data_inicio' => $_POST['data_inicio'],
+            'data_fim' => $_POST['data_fim']
+        );
+
+        $this->load->model('schedule/Schedule_model', 'sm');
+
+        //se actualizado
+        if($this->sm->update($horario_id, $horario))
+        {
+            $_SESSION['flash'] = 'Horario actualizado!';
+            redirect('volunteer/myprofile');
+        }
+        else
+        {
+            $_SESSION['flash'] = 'Ups.. algo correu mal. Tente novamente.';
+            redirect('volunteer/edit/schedule');
+        }
+
+
+    }
+
 }
