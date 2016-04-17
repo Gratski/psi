@@ -65,4 +65,16 @@ class User_model extends CI_Model
 
     }
 
+    public function getUserByEmail($email){
+        $query = $this->db->select('*')
+            ->from('Utilizador')
+            ->where('email', $email)
+            ->limit(1)
+            ->get();
+        $res = $query->result();
+        if(count($res) == 0)
+            return null;
+        else
+            return $res[0];
+    }
 }

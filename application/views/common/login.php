@@ -5,3 +5,8 @@
     Password: <input type="text" name="pass" value="mypass"/>
     <input type="submit">
 </form>
+
+
+<?php
+    echo basename("yo/yo/filename.png");
+?>

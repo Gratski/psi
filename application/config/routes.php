@@ -56,3 +56,6 @@ $route['translate_uri_dashes'] = FALSE;
 //Routes de login e logout
 $route['user/login']['post'] = 'user/createSession';
 $route['user/logout']['get'] = 'user/destroySession';
+
+//Routes para signup
+$route['signup/volunteer']['post'] = 'signup/volunteerCreate';

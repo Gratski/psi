@@ -37,7 +37,7 @@ class User extends CI_Controller
 
         //redireciona com base no tipo de user
         if($this->user_model->isVolunteer($auth->id)){
-            
+
             redirect('volunteer/my');
             return;
         }
@@ -51,9 +51,9 @@ class User extends CI_Controller
             echo "<p>Actualmente simplesmente eh utilizador. Inserir em base de dados :)</p>";
         }
     }
-    function destroySession(){
+    public function destroySession(){
         $this->session->unset_userdata('user_id');
         redirect('welcome/');
     }
-
+    
 }
