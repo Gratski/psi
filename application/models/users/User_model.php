@@ -79,7 +79,7 @@ class User_model extends CI_Model
     }
        public function readUser($id) {
         $query = $this->db->select('*')
-                ->from('Voluntario')
+                ->from('Utilizador')
                 ->where('id', $id)
                 ->get();
         return $query;
