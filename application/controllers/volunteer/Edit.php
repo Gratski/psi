@@ -91,7 +91,9 @@ class Edit extends VoluntarioController {
             redirect('volunteer/edit/areas');
         }
     }
-
+/**
+ * function to get the basic info for the user\
+ */
     public function basic() {
         $this->load->model('volunteers/User_model', 'user_model');
 
@@ -105,6 +107,10 @@ class Edit extends VoluntarioController {
         $this->load->view('footer');
     }
 
+    /**
+     * method to update the basic info for the user
+     * grabs the post made in the form update it to an associative array
+     */
     public function updateBasic() {
         $this->load->model('volunteers/User_model', 'user_model');
         $user = $this->session->user_details;
@@ -121,4 +127,5 @@ class Edit extends VoluntarioController {
         $this->load->view('volunteer/myprofile', $response);
         $this->load->view('footer');
     }
+
 }
