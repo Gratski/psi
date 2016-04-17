@@ -77,4 +77,40 @@ class User_model extends CI_Model
         else
             return $res[0];
     }
+       public function readUser($id) {
+        $query = $this->db->select('*')
+                ->from('Voluntario')
+                ->where('id', $id)
+                ->get();
+        return $query;
+    }
+
+    public function createUser() {
+        
+    }
+
+    public function deleteUser() {
+        
+    }
+
+    public function updateUser($id, $infoUpdated) {
+        $this->db->where('id', $id);
+        $this->db->update('Utilizador', $info);
+
+//UI ISTO EH MTA FRUTA TEMOS DE GARANTIR QUE OS 
+//CAMPOS DO SUBMIT TEM DE SER GUAIS AOS DA BASE DE DADOS
+//  $data = array(
+//     'title' => $title,
+//    'name' => $name,
+//    'date' => $date
+// );
+//   $this->db->where('id', $id);
+//  $this->db->update('mytable', $data);
+// Produces:
+//
+        //      UPDATE mytable
+//      SET title = '{$title}', name = '{$name}', date = '{$date}'
+//      WHERE id = $id
+//http://www.codeigniter.com/user_guide/database/query_builder.html#updating-data
+    }
 }
