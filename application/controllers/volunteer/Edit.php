@@ -94,5 +94,17 @@ class Edit extends VoluntarioController
             redirect('volunteer/edit/areas');
         }
     }
+    
+    public function basic (){
+         $this->load->model('volunteers/User_model', 'user_model');
 
+        $user = $this->session->user_details;
+        $user_info = $this->user_model->readUser($this->session->user_id);
+        $response = array($user, $user_info);
+
+        //gerar views
+        $this->load->view('menu');
+        $this->load->view('volunteer/edit/basic', $response);
+        $this->load->view('footer');
+    }
 }
