@@ -19,10 +19,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>voluntarios@FCUL</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../volunteer/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../psi/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../volunteer/css/estilos.css" rel="stylesheet">
+    <link href="../psi/css/estilos.css" rel="stylesheet">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

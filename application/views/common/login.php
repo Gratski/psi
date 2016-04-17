@@ -17,11 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <title>voluntarios@FCUL</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+      <!-- Bootstrap Core CSS -->
+    <link href="../psi/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/estilos.css" rel="stylesheet">
+    <link href="../psi/css/estilos.css" rel="stylesheet">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div class="container">
 		<div class = "login">
-			<form action = "user" class="form-signin" method = "POST">
+			<form action = "user/createSession" class="form-signin" method = "POST">
 				<h2 class="form-signin-heading">Iniciar Sessão</h2>
 				<div class= "loginError">
 					<p class= "erro"> <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Utilizador ou Palavra-passe errados.</p> 
