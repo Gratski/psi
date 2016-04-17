@@ -18,9 +18,11 @@ class Edit extends VoluntarioController
         parent::__construct();
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    //                             GET                                       //
+    ///////////////////////////////////////////////////////////////////////////
     /**
      * Obtem as areas de interesse de um dado voluntario
-     * @return array com user, e as suas areas
      */
     public function areas(){
         $this->load->model('volunteers/Areas_model', 'areas_model');
@@ -35,17 +37,23 @@ class Edit extends VoluntarioController
         $this->load->view('footer');
     }
 
+
+    ///////////////////////////////////////////////////////////////////////////
+    //                             PUT                                       //
+    ///////////////////////////////////////////////////////////////////////////
     /**
      * Actualiza a agenda de um voluntário.
      */
-    public function schedule(){
+    public function put_schedule(){
 
-        $horario_id = $_POST['horario'];
+        parse_str(file_get_contents('php://input'), $put);
+
+        $horario_id = $put['horario'];
         $horario = array(
-            'hora_inicio' => $_POST['hora_inicio'],
-            'hora_fim' => $_POST['hora_fim'],
-            'data_inicio' => $_POST['data_inicio'],
-            'data_fim' => $_POST['data_fim']
+            'hora_inicio' => $put['hora_inicio'],
+            'hora_fim' => $put['hora_fim'],
+            'data_inicio' => $put['data_inicio'],
+            'data_fim' => $put['data_fim']
         );
 
         $this->load->model('schedule/Schedule_model', 'sm');
@@ -53,16 +61,38 @@ class Edit extends VoluntarioController
         //se actualizado
         if($this->sm->update($horario_id, $horario))
         {
-            $_SESSION['flash'] = 'Horario actualizado!';
+            setFlash('success', 'Horario actualizado!');
             redirect('volunteer/myprofile');
         }
+        //se nao actualizado
         else
         {
-            $_SESSION['flash'] = 'Ups.. algo correu mal. Tente novamente.';
+            setFlash('danger', 'Ups.. algo correu mal. Tente novamente.');
             redirect('volunteer/edit/schedule');
         }
+    }
 
+    /**
+     * Adiciona uma area de interesse ao um voluntario
+     */
+    public function put_areas(){
 
+        parse_str(file_get_contents('php://input'), $put);
+        $volunteer = $put['utilizador'];
+        $area = $put['area'];
+        $grupo = $put['grupo'];
+        $this->load->model('volunteers/Interests_model', 'im');
+
+        //se inserida
+        if($this->im->add($volunteer, $area, $grupo)) {
+            setFlash('success', 'Interesse adicionado');
+            redirect('volunteer/myprofile');
+        }
+        //se nao inserida
+        else{
+            setFlash('danger', 'Interesse nao adicionado');
+            redirect('volunteer/edit/areas');
+        }
     }
 
 }
