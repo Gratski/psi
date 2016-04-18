@@ -21,40 +21,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  <div class="container-fluid">
 		<ul class="nav navbar-nav navbar-right">
 		  <li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#" align="right"><img src="imagens/profile.png" width="3%" height="3%">
-            <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "psi_db";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
-                $sql = "SELECT utilizador, foto, nome, id FROM Voluntario, Utilizador WHERE id=utilizador";
-                $result = mysqli_query($conn, $sql);
-
-                if (mysqli_num_rows($result) > 0) {
-                    // output data of each row
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo  $row["nome"]. " ";
-                    }
-                } else {
-                    echo "0 results";
-                }
-
-                mysqli_close($conn);
-            ?>
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" align="right">
+                <img src="imagens/profile.png" width="3%" height="3%">
+                <?php echo $nome; ?>
 			<span class="caret"></span></a>
 			<ul class="dropdown-menu">
-			  <li><a href="views/volunteer/edit/basic.php">Editar Perfil</a></li>
-			  <li><a href="views/volunteer/edit/schedule.php">Editar Horário</a></li>
-			  <li><a href="views/volunteer/edit/areas.php">Editar Preferências</a></li>
-			  <li><a href="views/welcome/home.php">Logout (Sair)</a></li>
+              <li><a href="views/volunteer/edit/basic.php">Editar Perfil</a></li>
+              <li><a href="views/volunteer/edit/schedule.php">Editar Horário</a></li>
+              <li><a href="views/volunteer/edit/areas.php">Editar Preferências</a></li>
+              <li><a href="views/welcome/home.php">Logout (Sair)</a></li>
 			</ul>
 		  </li>
 		</ul>
