@@ -91,20 +91,30 @@ class Edit extends VoluntarioController {
             redirect('volunteer/edit/areas');
         }
     }
-/**
- * function to get the basic info for the user\
- */
+
+    /**
+     * function to get the basic info for the user
+     */
     public function basic() {
-        $this->load->model('volunteers/User_model', 'user_model');
+        $this->load->model('users/User_model', 'user_model');
 
-        $user = $this->session->user_details;
         $user_info = $this->user_model->readUser($this->session->user_id);
-        $response = array($user, $user_info);
 
-        //gerar views
-        $this->load->view('menu');
-        $this->load->view('volunteer/edit/basic', $response);
-        $this->load->view('footer');
+        //query is not empty respond to the correct view
+        if ($user_info != NULL) {
+            $response = array();
+            foreach ($user_info as $key => $value) {
+                $response[$key] = $value;
+            }
+            //gerar views
+            $this->load->view('menu');
+            $this->load->view('volunteer/edit/basic', $response);
+            $this->load->view('footer');
+        }
+        // something went wrong disply the 404 view
+        else {
+            $this->load->view('------------------404 page');
+        }
     }
 
     /**
@@ -112,7 +122,7 @@ class Edit extends VoluntarioController {
      * grabs the post made in the form update it to an associative array
      */
     public function updateBasic() {
-        $this->load->model('volunteers/User_model', 'user_model');
+        $this->load->model('users/User_model', 'user_model');
         $user = $this->session->user_details;
         $info = array();
 
