@@ -16,9 +16,9 @@ class VoluntarioController extends CI_Controller
         parent::__construct();
 
         //se nao existe sessao -> redireciona p registo
-        if(!$this->is_logged()){
-            $this->redirectToRegist();
-        }
+       // if(!$this->is_logged()){
+        //    $this->redirectToRegist();
+       // }
     }
 
     /**
