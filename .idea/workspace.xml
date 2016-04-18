@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0eecbcc7-0a67-468e-8d52-79ec1d2a89ae" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/users/User_model.php" afterPath="$PROJECT_DIR$/application/models/users/User_model.php" />
     </list>
     <ignored path="psi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,8 +81,8 @@
       <file leaf-file-name="User_model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/models/users/User_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
               <folding>
                 <element signature="n#auth#0;n#User_model#0;n#!!top" expanded="false" />
                 <element signature="n#isInstitution#0;n#User_model#0;n#!!top" expanded="false" />
@@ -229,12 +230,12 @@
       <workItem from="1460986894514" duration="35000" />
       <workItem from="1460987228624" duration="599000" />
       <workItem from="1460988689243" duration="128000" />
-      <workItem from="1460989200057" duration="568000" />
+      <workItem from="1460989200057" duration="951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6333000" />
+    <option name="totallyTimeSpent" value="6716000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1362" height="741" extended-state="6" />
@@ -607,8 +608,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/users/User_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
           <folding>
             <element signature="n#auth#0;n#User_model#0;n#!!top" expanded="false" />
             <element signature="n#isInstitution#0;n#User_model#0;n#!!top" expanded="false" />

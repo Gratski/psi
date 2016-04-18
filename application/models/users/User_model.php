@@ -66,10 +66,10 @@ class User_model extends CI_Model {
         $query = $this->db->select('*')
                 ->from('Utilizador As U')
                 ->where('email', $email)
-                ->join('Freguesia As F', 'U.freguesia = F.id', 'INNER')
-                ->join('Concelho As C', 'C.id = F.concelho', 'INNER')
-                ->join('Distrito As D', 'D.id = C.distrito', 'INNER')
-                ->join('Pais P', 'P.id = D.pais', 'INNER')
+                ->join('Freguesia As Freguesia', 'U.freguesia = Freguesia.id', 'INNER')
+                ->join('Concelho As Concelho', 'Concelho.id = Freguesia.concelho', 'INNER')
+                ->join('Distrito As Distrito', 'Distrito.id = Concelho.distrito', 'INNER')
+                ->join('Pais As Pais', 'Pais.id = Distrito.pais', 'INNER')
                 ->limit(1)
                 ->get();
         $res = $query->result();
