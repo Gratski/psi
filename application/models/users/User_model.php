@@ -81,12 +81,23 @@ class User_model extends CI_Model {
 
     public function readUser($id) {
         $query = $this->db->select('*')
-                ->from('Utilizador')
-                ->where('id', $id)
+                ->from('Utilizador As U')
+                //->from('Voluntario As V')
+                ->from('Freguesia As F')
+                //->from('Concelho As C')
+                //->from('Distrito As D')
+                ///->from('Pais P')
+                ->where('U.id', $id)
+                ->where('U.Freguesia', 'F,id')
+                //->where('F.concelho', 'C.id')
+                //->where('C.distrito', 'D.id')
+                //->where('D.pais', 'P.id')
+               // ->where('V.utilizador', 'U.id')
                 ->get();
-       
+
+        print_r($query->result()[0]);
         $info = $query->result()[0];
-        return (count($info) != 0) ? $info: NULL;
+        return (count($info) != 0) ? $info : NULL;
     }
 
     public function createUser() {
@@ -105,7 +116,8 @@ class User_model extends CI_Model {
      */
     public function updateUser($id, $infoUpdated) {
         $this->db->where('id', $id);
-        $this->db->update('Utilizador', $info);
+        $this->db->update('Utilizador', $infoUpdated);
+        print_r($infoUpdated);
 
 //UI ISTO EH MTA FRUTA TEMOS DE GARANTIR QUE OS 
 //CAMPOS DO SUBMIT TEM DE SER IGUAIS AOS DA BASE DE DADOS
