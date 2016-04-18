@@ -97,8 +97,7 @@ class Edit extends VoluntarioController {
      */
     public function basic() {
         $this->load->model('users/User_model', 'user_model');
-
-        $user_info = $this->user_model->readUser($this->session->user_id);
+        $user_info = $this->user_model->readUser(1);
 
         //query is not empty respond to the correct view
         if ($user_info != NULL) {
@@ -123,12 +122,13 @@ class Edit extends VoluntarioController {
      */
     public function updateBasic() {
         $this->load->model('users/User_model', 'user_model');
+        
         $user = $this->session->user_details;
         $info = array();
-
+        
         if (!(isset($_POST))) {
             foreach ($_POST as $key => $value) {
-                $info = ['$key' => '$value'];
+                $info [$key] = $value;
             }
         }
         $response = "Yor information has been updated";
