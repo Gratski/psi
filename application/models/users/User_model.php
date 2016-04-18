@@ -80,7 +80,9 @@ class User_model extends CI_Model {
                 ->from('Utilizador')
                 ->where('id', $id)
                 ->get();
-        return $query;
+       
+        $info = $query->result()[0];
+        return (count($info) != 0) ? $info: NULL;
     }
 
     public function createUser() {
