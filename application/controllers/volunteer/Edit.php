@@ -97,7 +97,7 @@ class Edit extends VoluntarioController {
      */
     public function basic() {
         $this->load->model('users/User_model', 'user_model');
-        $user_info = $this->user_model->readUser(1);
+        $user_info = $this->user_model->readUser($this->session->user_id);
 
         //query is not empty respond to the correct view
         if ($user_info != NULL) {
