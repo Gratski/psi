@@ -91,9 +91,29 @@ class Edit extends VoluntarioController {
             redirect('volunteer/edit/areas');
         }
     }
+    /**
+     * function to delete an area of interest of a volunteer
+     */
+    public function delete_areas(){
+        //receive an array throw post of the areas recorded
+            $areas = array();
+        
+        if (!(isset($_POST))) {
+            foreach ($_POST as $key => $value) {
+                $areas [$key] = $value;
+            }
+        }
+        print_r($areas);
+        $this->Areas_model->deleteArea($areas);
+        //send to deleteAreas($array)
+        
+        
+        $this->load->view('volunteer/myprofile');
+        //redirect throw view
+    }
 
     /**
-     * function to get the basic info for the user
+     * function to get the basic info from the user
      */
     public function basic() {
         $this->load->model('users/User_model', 'user_model');
@@ -110,9 +130,9 @@ class Edit extends VoluntarioController {
             $this->load->view('volunteer/edit/basic', $response);
             $this->load->view('footer');
         }
-        // something went wrong disply the 404 view
+        // something went wrong display the 404 view
         else {
-            $this->load->view('------------------404 page');
+            $this->load->view('views/errors/cli/404.php');
         }
     }
 
@@ -137,5 +157,4 @@ class Edit extends VoluntarioController {
         $this->load->view('volunteer/myprofile', $response);
         $this->load->view('footer');
     }
-
 }

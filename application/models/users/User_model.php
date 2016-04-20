@@ -87,8 +87,8 @@ class User_model extends CI_Model {
                 //->from('Concelho As C')
                 //->from('Distrito As D')
                 ///->from('Pais P')
-                ->where('U.id', $id)
-                ->where('U.Freguesia', 'F,id')
+                ->where('U.id=', $id)
+                ->where('U.Freguesia=', 'F,id')
                 //->where('F.concelho', 'C.id')
                 //->where('C.distrito', 'D.id')
                 //->where('D.pais', 'P.id')
@@ -98,14 +98,6 @@ class User_model extends CI_Model {
         print_r($query->result()[0]);
         $info = $query->result()[0];
         return (count($info) != 0) ? $info : NULL;
-    }
-
-    public function createUser() {
-        
-    }
-
-    public function deleteUser() {
-        
     }
 
     /**
