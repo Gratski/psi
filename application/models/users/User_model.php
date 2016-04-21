@@ -92,7 +92,7 @@ class User_model extends CI_Model {
                 //->where('F.concelho', 'C.id')
                 //->where('C.distrito', 'D.id')
                 //->where('D.pais', 'P.id')
-               // ->where('V.utilizador', 'U.id')
+                // ->where('V.utilizador', 'U.id')
                 ->get();
 
         print_r($query->result()[0]);
