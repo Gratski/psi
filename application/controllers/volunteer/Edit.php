@@ -45,7 +45,7 @@ class Edit extends VoluntarioController {
      */
     public function put_schedule() {
 
-        parse_str(file_get_contents('php://input'), $put);
+        $put = parseFromInputStream();
 
         $horario_id = $put['horario'];
         $horario = array(
@@ -61,6 +61,7 @@ class Edit extends VoluntarioController {
         if ($this->sm->update($horario_id, $horario)) {
             setFlash('success', 'Horario actualizado!');
             redirect('volunteer/myprofile');
+            
         }
         //se nao actualizado
         else {
