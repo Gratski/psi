@@ -63,13 +63,14 @@ class User_model extends CI_Model {
     }
 
     public function getUserByEmail($email) {
-        $query = $this->db->select('*')
-                ->from('Utilizador As U')
+        $select = 'u.*, f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
+        $query = $this->db->select($select)
+                ->from('Utilizador u')
                 ->where('email', $email)
-                ->join('Freguesia As Freguesia', 'U.freguesia = Freguesia.id', 'INNER')
-                ->join('Concelho As Concelho', 'Concelho.id = Freguesia.concelho', 'INNER')
-                ->join('Distrito As Distrito', 'Distrito.id = Concelho.distrito', 'INNER')
-                ->join('Pais As Pais', 'Pais.id = Distrito.pais', 'INNER')
+                ->join('Freguesia f', 'u.freguesia = f.id')
+                ->join('Concelho c', 'c.id = f.concelho')
+                ->join('Distrito As d', 'd.id = c.distrito')
+                ->join('Pais As p', 'p.id = d.pais')
                 ->limit(1)
                 ->get();
         $res = $query->result();
