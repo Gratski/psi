@@ -91,13 +91,14 @@ class Edit extends VoluntarioController {
             redirect('volunteer/edit/areas');
         }
     }
+
     /**
      * function to delete an area of interest of a volunteer
      */
-    public function delete_areas(){
+    public function delete_areas() {
         //receive an array throw post of the areas recorded
-            $areas = array();
-        
+        $areas = array();
+
         if (!(isset($_POST))) {
             foreach ($_POST as $key => $value) {
                 $areas [$key] = $value;
@@ -106,8 +107,8 @@ class Edit extends VoluntarioController {
         print_r($areas);
         $this->Areas_model->deleteArea($areas);
         //send to deleteAreas($array)
-        
-        
+
+
         $this->load->view('volunteer/myprofile');
         //redirect throw view
     }
@@ -142,10 +143,10 @@ class Edit extends VoluntarioController {
      */
     public function updateBasic() {
         $this->load->model('users/User_model', 'user_model');
-        
+
         $user = $this->session->user_details;
         $info = array();
-        
+
         if (!(isset($_POST))) {
             foreach ($_POST as $key => $value) {
                 $info [$key] = $value;
@@ -157,4 +158,25 @@ class Edit extends VoluntarioController {
         $this->load->view('volunteer/myprofile', $response);
         $this->load->view('footer');
     }
+
+    /**
+     * function to get the schedule of the user
+     */
+    public function get_schedule() {
+        $this->load->model('schedule/Schedule_model', 'sm');
+        $currenteSchedule = $this->sm->getSchedule($this->session->user_id);
+
+
+        if ($currenteSchedule != NULL) {
+            $response = array();
+            foreach ($currenteSchedule as $key => $value) {
+                $response[$key] = $value;
+            }
+            //generate views
+            $this->load->view('volunteer/edit/basic', $response);
+        } else {
+            $this->load->view('volunteer/edit/basic', "Horário não definido");
+        }
+    }
+
 }
