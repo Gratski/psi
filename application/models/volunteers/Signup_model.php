@@ -21,7 +21,8 @@ class Signup_model extends CI_Model
             'telefone' => $data['user']['telefone'],
             'criado_a' => $date,
             'actualizado_a' => $date,
-            'freguesia' => 1
+            'freguesia' => 1,
+            'data_nascimento' => '2012-12-23'
 
         );
         $this->db->insert('Utilizador', $newUser);

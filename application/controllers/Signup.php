@@ -140,20 +140,22 @@ class Signup extends CI_Controller
     }
 
     public function prepareHabilitacoes(){
-        $hab = array(
-            '0' => array(
+        $hab = array();
+        if(strlen($_POST['degree0']) > 0)
+            $hab[0] = array(
                     'area' => $_POST['degree0'],
                     'grau' => $_POST['course0']
-                ),
-            '1' => array(
+                );
+        if(strlen($_POST['degree1']) > 0)
+            $hab[1] = array(
                     'area' => $_POST['degree1'],
                     'grau' => $_POST['course1']        
-                ),
-            '2' => array(
+                );
+        if(strlen($_POST['degree2']) > 0)
+            $hab[2] = array(
                     'area' => $_POST['degree2'],
                     'grau' => $_POST['course2']
-                )
-            );
+                );
         return $hab;
     }
 

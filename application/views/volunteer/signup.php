@@ -13,6 +13,7 @@
 
 	</head>
 	<body>
+	<!-- 
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
 			<ul class="nav navbar-nav navbar-left">
@@ -20,6 +21,7 @@
 			</ul>
 		  </div>
 		</nav>
+	-->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">
