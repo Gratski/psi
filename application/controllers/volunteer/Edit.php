@@ -61,7 +61,6 @@ class Edit extends VoluntarioController {
         if ($this->sm->update($horario_id, $horario)) {
             setFlash('success', 'Horario actualizado!');
             redirect('volunteer/myprofile');
-            
         }
         //se nao actualizado
         else {
@@ -107,11 +106,8 @@ class Edit extends VoluntarioController {
         }
         print_r($areas);
         $this->Areas_model->deleteArea($areas);
-        //send to deleteAreas($array)
-
 
         $this->load->view('volunteer/myprofile');
-        //redirect throw view
     }
 
     /**
@@ -131,6 +127,8 @@ class Edit extends VoluntarioController {
             $this->load->view('menu');
             $this->load->view('volunteer/edit/basic', $response);
             $this->load->view('footer');
+
+            print_r($response);
         }
         // something went wrong display the 404 view
         else {
@@ -166,7 +164,6 @@ class Edit extends VoluntarioController {
     public function get_schedule() {
         $this->load->model('schedule/Schedule_model', 'sm');
         $currenteSchedule = $this->sm->getSchedule($this->session->user_id);
-
 
         if ($currenteSchedule != NULL) {
             $response = array();

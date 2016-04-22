@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       Género:
                       <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu pull-left" placeholder="<?php echo $genero: ?>">
+                    <ul class="dropdown-menu-left" placeholder="<?php echo $genero.":" ?>">
                       <li><a href="#">Masculino</a></li>
                       <li><a href="#">Feminino</a></li>
                     </ul>
