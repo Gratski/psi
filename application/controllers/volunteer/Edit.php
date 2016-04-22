@@ -50,7 +50,12 @@ class Edit extends VoluntarioController {
         $groups_ids = $this->getGroupsIds($user_areas);
         echo 'IDS DE GRUPOS<br>';
         echo var_dump($groups_ids);
+        echo '<br>==========================<br>';
 
+        $complement = $this->areas_model->getComplement($user->id, $areas_ids, $groups_ids);
+        echo 'COMPLEMENT<br>';
+        echo var_dump($complement);
+        echo '<br>==========================<br>';
 
         //gerar views
         $this->load->view('common/menu');
