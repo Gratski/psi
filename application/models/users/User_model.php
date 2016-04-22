@@ -34,7 +34,7 @@ class User_model extends CI_Model {
         $query = $this->db->select('*')
                 ->from('Instituicao')
                 ->group_start()
-                ->where('utilizador', 1)
+                ->where('utilizador', $id)
                 ->group_end()
                 ->get();
         $res = $query->result();
@@ -52,7 +52,7 @@ class User_model extends CI_Model {
 
         $query = $this->db->select('*')
                 ->from('Voluntario')
-                ->where('utilizador', 1)
+                ->where('utilizador', $id)
                 ->get();
         $res = $query->result();
         echo "VOLS: " . count($res);
@@ -69,8 +69,8 @@ class User_model extends CI_Model {
                 ->where('email', $email)
                 ->join('Freguesia f', 'u.freguesia = f.id')
                 ->join('Concelho c', 'c.id = f.concelho')
-                ->join('Distrito As d', 'd.id = c.distrito')
-                ->join('Pais As p', 'p.id = d.pais')
+                ->join('Distrito d', 'd.id = c.distrito')
+                ->join('Pais p', 'p.id = d.pais')
                 ->limit(1)
                 ->get();
         $res = $query->result();
@@ -84,12 +84,12 @@ class User_model extends CI_Model {
         $query = $this->db->select('*')
                 ->from('Utilizador As U')
                 //->from('Voluntario As V')
-                ->from('Freguesia As F')
+                //->from('Freguesia As F')
                 //->from('Concelho As C')
                 //->from('Distrito As D')
                 ///->from('Pais P')
-                ->where('U.id=', $id)
-                ->where('U.Freguesia=', 'F,id')
+                ->where('U.id=', 1)
+                //->where('U.Freguesia=', 'F.id')
                 //->where('F.concelho', 'C.id')
                 //->where('C.distrito', 'D.id')
                 //->where('D.pais', 'P.id')
