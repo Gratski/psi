@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<h2 class="form-signin-heading">Registar-se</h2>
 						<div class= "opcoesRegisto">
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Instituição</button>
-							<button class="btn btn-lg btn-primary btn-block" type="submit">Voluntário</button>
+							<a href="signup/volunteer" class="btn btn-lg btn-primary btn-block">Voluntário</a>
 						</div>
 					</div>
 				</div>
