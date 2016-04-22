@@ -18,10 +18,21 @@ class Areas_model extends CI_Model {
     }
 
     public function getAll($id) {
-        $this->db->select('*');
-        $this->db->from('Interesses_Voluntario');
+        //$select = 'ga.area as area_id, ga.grupo as grupo_id, g.tipo as grupo_tipo, a.nome as area_nome';
+        $select = 'g.tipo as grupo_tipo, g.id as grupo_id, a.nome as area_nome, a.id as area_id';
+        $this->db->select($select);
+
+        $this->db->from('Interesses_Voluntario iv');
         $this->db->where('voluntario', $id);
-        return $this->db->get();
+        $this->db->join('Voluntario v', 'iv.voluntario = v.utilizador');
+        $this->db->join('Utilizador u', 'v.utilizador = u.id');
+        
+        $this->db->join('Grupo_Area ga', 'ga.area = iv.area AND ga.grupo = iv.grupo');
+        $this->db->join('Grupo g', 'g.id = ga.grupo');
+        $this->db->join('Area a','a.id = ga.area');
+        
+        $query = $this->db->get();
+        return $query->result();
     }
 
     /**

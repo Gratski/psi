@@ -29,12 +29,33 @@ class Edit extends VoluntarioController {
 
         $user = $this->session->user_details;
         $user_areas = $this->areas_model->getAll($this->session->user_id);
+
+        //obter areas ainda por adicionar
+        //testar depois de estar a inserir uma area
+
         $response = array($user, $user_areas);
+        echo 'RESPOSTA TODA<br>';
+        echo var_dump($response);
+        echo '<br>==========================<br>';
+        echo 'USER AREAS<br>';
+        echo var_dump($user_areas);
+
+        echo '<br>==========================<br>';
+
+        $areas_ids = $this->getAreasIds($user_areas);
+        echo 'IDS DE AREAS<br>';
+        echo var_dump($areas_ids);
+        echo '<br>==========================<br>';
+
+        $groups_ids = $this->getGroupsIds($user_areas);
+        echo 'IDS DE GRUPOS<br>';
+        echo var_dump($groups_ids);
+
 
         //gerar views
-        $this->load->view('menu');
+        $this->load->view('common/menu');
         $this->load->view('volunteer/edit/areas', $response);
-        $this->load->view('footer');
+        $this->load->view('common/footer');
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -72,18 +93,18 @@ class Edit extends VoluntarioController {
     /**
      * Adiciona uma area de interesse ao um voluntario
      */
-    public function put_areas() {
+    public function post_areas() {
 
-        parse_str(file_get_contents('php://input'), $put);
-        $volunteer = $put['utilizador'];
-        $area = $put['area'];
-        $grupo = $put['grupo'];
+        //obtem valores de variaveis em PUT
+        $volunteer = $_POST['utilizador'];
+        $area = $_POST['area'];
+        $grupo = $_POST['grupo'];
         $this->load->model('volunteers/Interests_model', 'im');
 
         //se inserida
         if ($this->im->add($volunteer, $area, $grupo)) {
             setFlash('success', 'Interesse adicionado');
-            redirect('volunteer/myprofile');
+            redirect('volunteer/edit/areas');
         }
         //se nao inserida
         else {
@@ -175,6 +196,26 @@ class Edit extends VoluntarioController {
         } else {
             $this->load->view('volunteer/edit/basic', "Horário não definido");
         }
+    }
+
+
+
+    private function getAreasIds($list){
+        $res = array();
+        for($i = 0; $i < count($list); $i++)
+        {
+            $res[$i] = $list[$i]->area_id;
+        }
+        return $res;
+    }
+
+    private function getGroupsIds($list){
+        $res = array();
+        for($i = 0; $i < count($list); $i++)
+        {
+            $res[$i] = $list[$i]->grupo_id;
+        }
+        return $res;
     }
 
 }
