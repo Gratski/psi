@@ -150,9 +150,9 @@ class Edit extends VoluntarioController {
                 $response[$key] = $value;
             }
             //gerar views
-            $this->load->view('menu');
+            $this->load->view('common/menu');
             $this->load->view('volunteer/edit/basic', $response);
-            $this->load->view('footer');
+            $this->load->view('common/footer');
 
             print_r($response);
         }
