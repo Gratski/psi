@@ -93,6 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<br><br><br>
             <img src="imagens/profile.png" width="40%" height="30%"><br><br><br>
               <input type="image" placeholder="<?php echo $image; ?>">
+              <input type="file" value="imagem">
 			  <div class="form-group">
                 <button type="button" class=" btn btn-primary">Cancelar</button>
 			  </div>
