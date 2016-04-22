@@ -26,10 +26,11 @@
 					<div class= "SectionTitle">
 						<h1> Regista-te </h1>
 						<p> Ajuda a tua causa! </p>
+						<?php if(hasFlash()) printFlash(); ?>
 					</div>
 					<div class = "registarForm">
 					
-						<form role="form" method="post" onsubmit="return validateForm()"  action="signup/volunteer" id="registaVoluntario">
+						<form role="form" method="post" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
 						
 							<div class="form-group">
 								<input type="text" name="username" class="form-control" id="exampleInputName2" placeholder="Nome próprio" required>
@@ -42,9 +43,9 @@
 							
 							<fieldset class="form-group row">
 								<label  class ="control-label col-sm-2" for="exampleSelect1">Género:</label>
-								<select id="Genero" name="genre">
-									<option>Masculino</option>
-									<option>Feminino</option>
+								<select id="Genero" name="gender">
+									<option value="M">Masculino</option>
+									<option value="F">Feminino</option>
 								</select>
 							</fieldset>
 							
@@ -89,12 +90,12 @@
 									<div class="form-group" id ="xpto">
 										<label>Grau</label>
 										<select  name="degree0" >
-											<option>Sem grau</option>
-											<option>Ensino Básico</option>
-											<option>12ºano </option>
-											<option>Licenciatura</option>
-											<option>Mestrado</option>
-											<option>Doutoramento</option>
+											<option value="Sem grau">Sem grau</option>
+											<option value="Ensino Básico">Ensino Básico</option>
+											<option value="12ºano">12ºano </option>
+											<option value="Licenciature">Licenciatura</option>
+											<option value="Mestrado">Mestrado</option>
+											<option value="Doutoramento">Doutoramento</option>
 										</select>
 									</div>
 									<div class="form-group" >
@@ -118,12 +119,12 @@
 									<div class="form-group" id ="xpto">
 										<label>Grau</label>
 										<select  name="degree1" >
-											<option>Sem grau</option>
-											<option>Ensino Básico</option>
-											<option>12ºano </option>
-											<option>Licenciatura</option>
-											<option>Mestrado</option>
-											<option>Doutoramento</option>
+											<option value="Sem grau">Sem grau</option>
+											<option value="Ensino Básico">Ensino Básico</option>
+											<option value="12ºano">12ºano </option>
+											<option value="Licenciature">Licenciatura</option>
+											<option value="Mestrado">Mestrado</option>
+											<option value="Doutoramento">Doutoramento</option>
 										</select>
 									</div>
 									<div class="form-group" >
@@ -137,12 +138,12 @@
 									<div class="form-group">
 										<label>Grau</label>
 										<select  name="degree2" >
-											<option>Sem grau</option>
-											<option>Ensino Básico</option>
-											<option>12ºano </option>
-											<option>Licenciatura</option>
-											<option>Mestrado</option>
-											<option>Doutoramento</option>
+											<option value="Sem grau">Sem grau</option>
+											<option value="Ensino Básico">Ensino Básico</option>
+											<option value="12ºano">12ºano </option>
+											<option value="Licenciature">Licenciatura</option>
+											<option value="Mestrado">Mestrado</option>
+											<option value="Doutoramento">Doutoramento</option>
 										</select>
 									</div>
 									<div class="form-group" >

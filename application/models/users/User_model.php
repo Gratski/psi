@@ -34,7 +34,7 @@ class User_model extends CI_Model {
         $query = $this->db->select('*')
                 ->from('Instituicao')
                 ->group_start()
-                ->where('utilizador', 1)
+                ->where('utilizador', $id)
                 ->group_end()
                 ->get();
         $res = $query->result();
@@ -52,7 +52,7 @@ class User_model extends CI_Model {
 
         $query = $this->db->select('*')
                 ->from('Voluntario')
-                ->where('utilizador', 1)
+                ->where('utilizador', $id)
                 ->get();
         $res = $query->result();
         echo "VOLS: " . count($res);
