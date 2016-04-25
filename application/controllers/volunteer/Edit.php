@@ -127,7 +127,7 @@ class Edit extends VoluntarioController {
         }
         print_r($areas);
         $this->Areas_model->deleteArea($areas);
-
+        
         $this->load->view('volunteer/myprofile');
     }
 
@@ -141,19 +141,18 @@ class Edit extends VoluntarioController {
         //query is not empty respond to the correct view
         if ($user_info != NULL) {
             $response = array();
-            foreach ($user_info as $key => $value) {
+            foreach ($user_info as $key => $value) {    
                 $response[$key] = $value;
             }
             //gerar views
-            $this->load->view('menu');
+            
+        $this->load->view('common/menu');
             $this->load->view('volunteer/edit/basic', $response);
-            $this->load->view('footer');
-
-            print_r($response);
+             $this->load->view('common/footer');
         }
         // something went wrong display the 404 view
         else {
-            $this->load->view('views/errors/cli/404.php');
+            $this->load->view('errors/cli/404.php');
         }
     }
 
@@ -174,9 +173,10 @@ class Edit extends VoluntarioController {
         }
         $response = "Yor information has been updated";
         $this->user_model->updateUser($this->session->user_id, $info);
-        $this->load->view('menu');
+       
+        $this->load->view('common/menu');
         $this->load->view('volunteer/myprofile', $response);
-        $this->load->view('footer');
+          $this->load->view('common/footer');
     }
 
     /**
