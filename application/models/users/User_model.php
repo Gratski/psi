@@ -81,24 +81,31 @@ class User_model extends CI_Model {
     }
 
     public function readUser($id) {
-        $query = $this->db->select('*')
-                ->from('Utilizador As U')
-                //->from('Voluntario As V')
-                //->from('Freguesia As F')
-                //->from('Concelho As C')
-                //->from('Distrito As D')
-                ///->from('Pais P')
-                ->where('U.id=', 1)
-                //->where('U.Freguesia=', 'F.id')
-                //->where('F.concelho', 'C.id')
-                //->where('C.distrito', 'D.id')
-                //->where('D.pais', 'P.id')
-                // ->where('V.utilizador', 'U.id')
-                ->get();
+        // get the email of the user
+        $user =  $this->getAllInfo('id', 1);
+        $id4=1;
+            $sel = "SELECT * FROM TABLE Voluntario WHERE utilizador = 1";
+           
+       $query = $this->db->query($sel);
+        
+        print_r($query);
 
-        print_r($query->result()[0]);
-        $info = $query->result()[0];
-        return (count($info) != 0) ? $info : NULL;
+        return $user != NULL ? $user : NULL;
+    }
+
+    private function getAllInfo($type, $value) {
+        $select = 'u.*, f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
+        $query = $this->db->select($select)
+                ->from('Utilizador u')
+                ->where('u.'.$type, $value)
+                ->join('Freguesia f', 'u.freguesia = f.id')
+                ->join('Concelho c', 'c.id = f.concelho')
+                ->join('Distrito d', 'd.id = c.distrito')
+                ->join('Pais p', 'p.id = d.pais')
+                ->limit(1)
+                ->get();
+        $res = $query->result();
+        return count($res) == 0 ? NULL : $res[0];
     }
 
     /**
