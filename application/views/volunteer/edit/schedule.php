@@ -17,15 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php
                 echo $nome;
                 ?>
-              </h1> 
-              <?php echo $telefone; ?><br>
-              <?php echo $freguesia_nome; ?>,
-              <?php echo $nome_conselho; ?>, 
-              <?php echo $nome_distrito; ?>, 
-              <?php echo $pais_nome; ?>. </div>
+              </h1>  </div>
           <div class='col-sm-2'>
               <br><br><p>
-              <?php echo $data_nascimento; ?>
               </p></div>
 		</div>
         <div class="row">

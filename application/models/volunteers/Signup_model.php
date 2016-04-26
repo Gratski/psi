@@ -45,9 +45,7 @@ class Signup_model extends CI_Model
 
             // se registou voluntário guarda a sua picture
             else{
-                echo "criou voluntário";
-                $uploaded_foto = 0;
-                $foto = $data['user']['foto'];
+
 
                 $basePath = '../..'.base_url().'assets';
                 if(file_exists($basePath))
@@ -55,27 +53,36 @@ class Signup_model extends CI_Model
                 else
                     echo "ASSETS NOT EXISTS";
 
-                $folder = $basePath.'/img/users/'.$user->id.'/';
 
-                echo "BASE URL IS: " .$folder;
-                //create directory
-                mkdir($folder, 0777, true);
-                if(!file_exists($folder))
-                    return -1;
+                // se fez upload de foto
+                if(isset($data['user']['foto']))
+                {
+                    echo "criou voluntário";
+                    $uploaded_foto = 0;
+                    $foto = $data['user']['foto'];
 
-                echo "CRIOU PASTA";
+                    $basePath = '../../'.base_url().'/assets';
+                    if(file_exists($basePath))
+                        echo "ASSETS EXISTS";
+                    else
+                        echo "ASSETS NOT EXISTS";
 
-                $pictureDir = $folder . basename($foto['name']);
-                if(move_uploaded_file($foto['tmp_name'], $pictureDir))
-                    $uploaded_foto = 1;
+                    $folder = $basePath.'/img/users/'.$user->id.'/';
 
-                // actualiza campo foto de voluntario
-                setHasFoto($user->id);
+                    echo "BASE URL IS: " .$folder;
+                    //create directory
+                    mkdir($folder, 0777, true);
+                    if(!file_exists($folder))
+                        return -1;
 
+                    echo "CRIOU PASTA";
 
+                    $pictureDir = $folder . basename($foto['name']);
+                    if(move_uploaded_file($foto['tmp_name'], $pictureDir))
+                        $this->setHasFoto($user->id);
+                }
             }
         }
-        
         return $id;
 
     }

@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container">
 		<div class="row">
             <div class="col-sm-2">
-                <img src="../img/profile.png" height="150" width="150" align="right">
+                <img src="<?php echo getPictureURL($userid); ?>" height="150" width="150" align="right">
             </div>
 		  <div class="col-sm-3">
 			<h1>

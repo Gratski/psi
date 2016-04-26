@@ -26,6 +26,7 @@ class User extends CI_Controller
 
         //se nao auth redireciona para form de login
         if($auth == null) {
+            setFlash('danger', 'Dados inválidos');
             redirect("login/");
             return;
         }
