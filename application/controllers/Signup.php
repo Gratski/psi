@@ -37,6 +37,7 @@ class Signup extends CI_Controller
         $this->load->model('users/User_model', 'user_model');
         $this->load->helper('flash');
         
+        echo 'EMAIL: '.$_POST['email'].'<br>';
         //se o utilizador existe
         if($this->user_model->getUserByEmail($_POST['email']) != null)
         {

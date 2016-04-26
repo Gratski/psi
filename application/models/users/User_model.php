@@ -62,6 +62,7 @@ class User_model extends CI_Model {
         return $is;
     }
 
+    
     public function getUserByEmail($email) {
         $select = 'u.*, f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
         $query = $this->db->select($select)
@@ -79,6 +80,7 @@ class User_model extends CI_Model {
         else
             return $res[0];
     }
+    
 
     public function readUser($id) {
         $query = $this->db->select('*')
