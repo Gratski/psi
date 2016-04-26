@@ -50,7 +50,12 @@ class Edit extends VoluntarioController {
         $groups_ids = $this->getGroupsIds($user_areas);
         echo 'IDS DE GRUPOS<br>';
         echo var_dump($groups_ids);
+        echo '<br>==========================<br>';
 
+        $complement = $this->areas_model->getComplement($user->id, $areas_ids, $groups_ids);
+        echo 'COMPLEMENT<br>';
+        echo var_dump($complement);
+        echo '<br>==========================<br>';
 
         //gerar views
         $this->load->view('common/menu');
@@ -127,7 +132,7 @@ class Edit extends VoluntarioController {
         }
         print_r($areas);
         $this->Areas_model->deleteArea($areas);
-        
+
         $this->load->view('volunteer/myprofile');
     }
 
@@ -141,14 +146,13 @@ class Edit extends VoluntarioController {
         //query is not empty respond to the correct view
         if ($user_info != NULL) {
             $response = array();
-            foreach ($user_info as $key => $value) {    
+            foreach ($user_info as $key => $value) {
                 $response[$key] = $value;
             }
             //gerar views
-            
-        $this->load->view('common/menu');
+            $this->load->view('common/menu');
             $this->load->view('volunteer/edit/basic', $response);
-             $this->load->view('common/footer');
+            $this->load->view('common/footer');
         }
         // something went wrong display the 404 view
         else {
@@ -173,10 +177,10 @@ class Edit extends VoluntarioController {
         }
         $response = "Yor information has been updated";
         $this->user_model->updateUser($this->session->user_id, $info);
-       
+
         $this->load->view('common/menu');
         $this->load->view('volunteer/myprofile', $response);
-          $this->load->view('common/footer');
+        $this->load->view('common/footer');
     }
 
     /**
@@ -198,21 +202,17 @@ class Edit extends VoluntarioController {
         }
     }
 
-
-
-    private function getAreasIds($list){
+    private function getAreasIds($list) {
         $res = array();
-        for($i = 0; $i < count($list); $i++)
-        {
+        for ($i = 0; $i < count($list); $i++) {
             $res[$i] = $list[$i]->area_id;
         }
         return $res;
     }
 
-    private function getGroupsIds($list){
+    private function getGroupsIds($list) {
         $res = array();
-        for($i = 0; $i < count($list); $i++)
-        {
+        for ($i = 0; $i < count($list); $i++) {
             $res[$i] = $list[$i]->grupo_id;
         }
         return $res;
