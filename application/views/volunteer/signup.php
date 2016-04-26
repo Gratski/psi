@@ -32,7 +32,7 @@
 					</div>
 					<div class = "registarForm">
 					
-						<form role="form" method="post" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
+						<form role="form" method="post" enctype="multipart/form-data" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
 						
 							<div class="form-group">
 								<input type="text" name="username" class="form-control" id="exampleInputName2" placeholder="Nome próprio" required>

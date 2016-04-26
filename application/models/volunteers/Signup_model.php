@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: JoaoR
@@ -36,17 +35,41 @@ class Signup_model extends CI_Model
         //se eh voluntario
         if($userType == 'Volunteer')
         {
-            //$uploaded_foto = 0;
-            //$foto = $data['foto']['name'];
-            /*$folder = 'pictures/';
-            $pictureDir = $folder . basename($foto);
-            if(move_uploaded_file($foto['tmp_name'], $pictureDir))
-                $uploaded_foto = 1;
-                */
+
             $data['volunteer']['utilizador'] = $user->id;
             $inserted = $this->db->insert('Voluntario', $data['volunteer']);
+            
+            // se ocorreu um erro ao registar
             if(!$inserted){
                 $id = -1;
+            }
+
+            // se registou voluntário guarda a sua picture
+            else{
+                echo "criou voluntário";
+                $uploaded_foto = 0;
+                $foto = $data['user']['foto'];
+
+                $basePath = '../../'.base_url().'/assets';
+                if(file_exists($basePath))
+                    echo "ASSETS EXISTS";
+                else
+                    echo "ASSETS NOT EXISTS";
+
+                $folder = $basePath.'/img/users/'.$user->id.'/';
+
+                echo "BASE URL IS: " .$folder;
+                //create directory
+                mkdir($folder, 0777, true);
+                if(!file_exists($folder))
+                    return -1;
+
+                echo "CRIOU PASTA";
+
+                $pictureDir = $folder . basename($foto['name']);
+                if(move_uploaded_file($foto['tmp_name'], $pictureDir))
+                    $uploaded_foto = 1;
+
             }
         }
         
