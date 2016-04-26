@@ -19,18 +19,18 @@
   <body>
     <nav class="navbar navbar-default">
   	  <div class="container-fluid">
-        <a class="navbar-brand page-scroll" href="">Volunteer@FCUL</a>
+        <a class="navbar-brand page-scroll" href="<?php echo base_url('volunteer/profile/'); ?>">Volunteer@FCUL</a>
     		<ul class="nav navbar-nav navbar-right">
-    		  <li class="dropdown pull-right">
-      			<a class="dropdown-toggle" data-toggle="dropdown" href="#" align="right">
-                      <img src="<?php echo base_url('/img/profile.png'); ?>" width="3%" height="3%">
+    		  <li class="dropdown pull-right" align="right">
+      			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      <img src="<?php echo getPictureURL($userid); ?>" width="3%" height="3%">
                       <?php echo $username; ?>
       			<span class="caret"></span></a>
       			<ul class="dropdown-menu">
-                    <li><a href="<?php echo base_url('volunteer/edit/basic.php'); ?>">Editar Perfil</a></li>
-                    <li><a href="<?php echo base_url('volunteer/edit/schedule.php'); ?>">Editar Horário</a></li>
-                    <li><a href="<?php echo base_url('volunteer/edit/areas.php'); ?>">Editar Preferências</a></li>
-                    <li><a href="<?php echo base_url('welcome/home.php'); ?>">Logout (Sair)</a></li>
+                    <li><a href="<?php echo base_url('volunteer/edit/basic'); ?>">Editar Perfil</a></li>
+                    <li><a href="<?php echo base_url('volunteer/edit/schedule'); ?>">Editar Horário</a></li>
+                    <li><a href="<?php echo base_url('volunteer/edit/areas'); ?>">Editar Preferências</a></li>
+                    <li><a href="<?php echo base_url('user/logout'); ?>">Logout (Sair)</a></li>
       			</ul>
     		  </li>
     		</ul>
