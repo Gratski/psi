@@ -8,7 +8,7 @@ body::after{
     position: absolute;
     top: 0;
     left: 0;
-    background: url(bottom.jpg) bottom;
+    /*background: url(bottom.jpg) bottom;*/
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
@@ -38,8 +38,19 @@ h4{
 }
 
 .navbar {
-  background-color: #E0EEE0;
-  border-color: #E0EEE0;
+  background-color: #D91E18;
+  color:#FFF;
   background-image: none;
   background-repeat: no-repeat;
+  border:none;
+  border-radius:0px;
  }
+.navbar a:link {
+  color:#FFF;
+}
+.navbar a:active{
+    color:#FFF;
+}
+.navbar a:visited{
+    color:#FFF;
+}

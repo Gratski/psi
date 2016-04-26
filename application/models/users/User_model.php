@@ -62,19 +62,18 @@ class User_model extends CI_Model {
         return $is;
     }
 
-    
     public function getUserByEmail($email) {
         echo "email:::: ".$email;
-        $select = '*';
+        $select = 'u.*,  f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
         $query = $this->db->select($select)
-                ->from('Utilizador')
-                ->where('email', $email)
-                // ->join('Voluntario v', 'v.utilizador=u.id')
-                // ->join('Freguesia f', 'u.freguesia = f.id')
-                // ->join('Concelho c', 'c.id = f.concelho')
-                // ->join('Distrito d', 'd.id = c.distrito')
-                // ->join('Pais p', 'p.id = d.pais')
-                // ->limit(1)
+                ->from('Utilizador u')
+                ->where('u.email', $email)
+                //->join('Voluntario v', 'v.utilizador=u.id')
+                ->join('Freguesia f', 'u.freguesia = f.id')
+                ->join('Concelho c', 'c.id = f.concelho')
+                ->join('Distrito d', 'd.id = c.distrito')
+                ->join('Pais p', 'p.id = d.pais')
+                ->limit(1)
                 ->get();
         $res = $query->result();
         if (count($res) == 0){
@@ -85,7 +84,6 @@ class User_model extends CI_Model {
             return $res[0];
     }
     
-
     public function readUser($id) {
         $query = $this->db->select('*')
                 ->from('Utilizador As U')

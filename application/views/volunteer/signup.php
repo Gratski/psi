@@ -9,19 +9,11 @@
 		<script src="http://code.jquery.com/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script src="<? echo base_url('css/bs/js/bootstrap.min.js');?>"></script>
-		 <script type="text/javascript" src="../PSI/js/function.js"></script>
+		 <script type="text/javascript" src="<? echo base_url('js/function.js');?>"></script>
 
 	</head>
 	<body>
-	<!-- 
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<ul class="nav navbar-nav navbar-left">
-				 <a class="navbar-brand page-scroll" href="home.php">Volunteer@FCUL</a>
-			</ul>
-		  </div>
-		</nav>
-	-->
+	
 		<div class="container">
 
 			<div class="row" style="padding-top:10px;">

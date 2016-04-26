@@ -17,13 +17,13 @@
   <script src="<?php echo base_url('/css/bs/js/bootstrap.min.js'); ?>"></script>
   </head>
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
   	  <div class="container-fluid">
         <a class="navbar-brand page-scroll" href="<?php echo base_url('volunteer/profile/'); ?>">Volunteer@FCUL</a>
     		<ul class="nav navbar-nav navbar-right">
     		  <li class="dropdown pull-right" align="right">
       			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      <img src="<?php echo getPictureURL($userid); ?>" width="3%" height="3%">
+                      <?php echo getSmallPicture($id, $foto); ?>&nbsp;
                       <?php echo $username; ?>
       			<span class="caret"></span></a>
       			<ul class="dropdown-menu">

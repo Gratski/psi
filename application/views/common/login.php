@@ -23,6 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Custom CSS -->
     <link href="../psi/css/estilos.css" rel="stylesheet">
 	
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('/css/style.css');?>">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -41,32 +43,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-			    <a class="navbar-brand" href="#">Project name</a>
+			    <a class="navbar-brand" href="#">Voluntários@FCUL</a>
 			</div>
         <div class="navbar-collapse collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider" role="separator"></li>
-						<li class="dropdown-header">Nav header</li>
-						<li><a href="#">Separated link</a></li>
-						<li><a href="#">One more separated link</a></li>
-					</ul>
-				</li>
+				<li><a href="<? echo base_url(); ?>">Página inicial</a></li>
 			</ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
 	<div class="container">
-		<div class = "login">
+		<div class = "login" id="login">
 			<form action = "user/createSession" class="form-signin" method = "POST">
 				<h2 class="form-signin-heading">Iniciar Sessão</h2>
 				<div class= "erro">
@@ -82,9 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</label>
 				</div>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-			</form>		
+			</form>	
+			<a onclick="change()">Registar-me</a>	
 		</div>
-		<div class = "registo">
+		<div class = "registo" id="regist" style="display:none; border:none;">
 			<h2 class="form-signin-heading">Registar-se</h2>
 			<div class= "loginError">
 					<p> Registe-se agora para aceder à plataforma.</p> 
@@ -93,11 +82,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Instituição</button>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Voluntário</button>
 			</div>
+			<span><a onclick="change()">já tenho conta</a></span>
 		</div>
 		
 	</div>
    
 	
+<script type="text/javascript">
 	
+	var isReg = false;
+	var isLog = true;
+
+	function change(){
+		if(!isReg)
+		{
+			$('#regist').slideUp(function(){
+				$('#login').slideDown();
+			})
+			isReg = true;
+			isLog = false;
+		}else{
+			$('#login').slideUp(function(){
+				$('#regist').slideDown();
+			})
+			isReg = false;
+			isLog = true;
+		}
+	}
+
+</script>
 
 </body>

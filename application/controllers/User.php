@@ -38,7 +38,6 @@ class User extends CI_Controller
 
         //redireciona com base no tipo de user
         if($this->user_model->isVolunteer($auth->id)){
-
             redirect('volunteer/my');
             return;
         }
