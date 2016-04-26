@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       Género:
                       <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu pull-left" placeholder="<?php echo $genero: ?>">
+                    <ul class="dropdown-menu-left" placeholder="<?php echo $genero.":" ?>">
                       <li><a href="#">Masculino</a></li>
                       <li><a href="#">Feminino</a></li>
                     </ul>
@@ -93,6 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<br><br><br>
             <img src="imagens/profile.png" width="40%" height="30%"><br><br><br>
               <input type="image" placeholder="<?php echo $image; ?>">
+              <input type="file" value="imagem">
 			  <div class="form-group">
                 <button type="button" class=" btn btn-primary">Cancelar</button>
 			  </div>

@@ -5,19 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // ===========================================================================
 ?>
 
-  <head>
-  <title><?php
-    echo $nome;
-    $freguesia_nome = 'Lisboa';
-    $nome_conselho = 'Lisboa';
-    $nome_distrito = 'Lisboa';
-    $pais_nome = 'Portugal';
-    ?></title>
-    </head>
 	<div class="container">
 		<div class="row">
             <div class="col-sm-2">
-                <img src="imagens/profile.png" height="150" width="150" align="right">
+                <img src="../img/profile.png" height="150" width="150" align="right">
             </div>
 		  <div class="col-sm-3">
 			<h1>
@@ -26,15 +17,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
               </h1> 
               <?php echo $telefone; ?><br>
-              <?php echo $freguesia_nome; ?>,
-              <?php echo $nome_conselho; ?>, 
-              <?php echo $nome_distrito; ?>, 
-              <?php echo $pais_nome; ?>. </div>
+              <?php echo $freguesia; ?>,
+              <?php echo $concelho; ?>, 
+              <?php echo $distrito; ?>, 
+              <?php echo $pais; ?>. </div>
           <div class='col-sm-2'>
               <br><br><p>
-              <?php echo $data_nascimento; ?>
+              Nascimento: <?php echo $data_nascimento; ?>
               </p></div>
 		</div>
+    <div>
+      <h1>
+        
+      </h1>
+    </div>
+    <!--
         <div class="row">
             <div class="col-sm-10">
                 <h2>Oportunidades</h2>
@@ -57,3 +54,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             </div>
 	</div>
+  -->

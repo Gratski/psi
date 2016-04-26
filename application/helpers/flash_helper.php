@@ -9,6 +9,16 @@ if( !function_exists('hasFlash'))
     }
 }
 
+if( !function_exists('printFlash'))
+{
+    function printFlash(){
+        echo '<div class="'.$_SESSION['flash_type'].'">';
+        echo '<p>'.$_SESSION['flash'].'</p>';
+        echo '</div>';
+        resetFlash();
+    }
+}
+
 if( ! function_exists('setFlash'))
 {
     function setFlash($type, $msg){
@@ -31,9 +41,9 @@ if( ! function_exists('getMessage'))
     }
 }
 
-if( ! function_exists('reset'))
+if( ! function_exists('resetFlash'))
 {
-    function reset(){
+    function resetFlash(){
         unset($_SESSION['flash']);
         unset($_SESSION['flash_type']);
     }

@@ -19,9 +19,9 @@
   <body>
     <nav class="navbar navbar-default">
   	  <div class="container-fluid">
-              <a class="navbar-brand page-scroll" href="">Volunteer@FCUL</a>
+        <a class="navbar-brand page-scroll" href="">Volunteer@FCUL</a>
     		<ul class="nav navbar-nav navbar-right">
-    		  <li class="dropdown">
+    		  <li class="dropdown pull-right">
       			<a class="dropdown-toggle" data-toggle="dropdown" href="#" align="right">
                       <img src="../img/profile.png" width="3%" height="3%">
                       <?php echo $username; ?>
