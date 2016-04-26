@@ -11,22 +11,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container">
 		<div class="row">
             <div class="col-sm-2">
-                <img src="<?php echo $image; ?>" height="150" width="150" align="right">
+                <img src="<?php echo getPictureURL($user->id); ?>" height="150" width="150" align="right">
             </div>
 		  <div class="col-sm-3">
 			<h1>
-                <?php
-                echo $nome;
-                ?>
-              </h1> 
-              <?php echo $telefone; ?><br>
-              <?php echo $freguesia_nome; ?>,
-              <?php echo $nome_conselho; ?>, 
-              <?php echo $nome_distrito; ?>, 
-              <?php echo $pais_nome; ?>. </div>
+                <?php echo $user->nome; ?>
+              </h1>  </div>
           <div class='col-sm-2'>
               <br><br><p>
-              <?php echo $data_nascimento; ?>
               </p></div>
 		</div>
         <div class="row">
@@ -45,16 +37,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class='row'>
             Actuais:
         </div>
-        <form action="">
+        <form action="#">
             <div class='row'>
                 <div class='col-sm-4' align='left'>
-                    <?php foreach($query as $post): ?>
-                        <?php echo $post->grupos_uti; ?><input type="submit" value="Remover">
-                    <?php endforeach; ?>
+                    <?php foreach($user_areas as $post): ?>
+                        <?php echo $post->grupo_tipo; ?>
                 </div>
                 <div class='col-sm-4' align='left'>
-                    <?php foreach($query as $post): ?>
-                        <?php echo $post->areas_uti; ?><input type="submit" value="Remover">
+                        <?php echo $post->area_nome; ?><button class="btn btn-info" type="button">Remover</button>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -62,16 +52,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class='row'>
             Inserir nova(s) àrea(s):
         </div>
-        <form action="">
+        <form action="#">
             <div class='row'>
                 <div class='col-sm-4' align='left'>
-                    <?php foreach($query as $post): ?>
-                        <?php echo $post->grupos; ?><input type="submit" value="Adicionar">
-                    <?php endforeach; ?>
+                    <?php foreach($user_areas_complement as $post2): ?>
+                        <?php echo $post2->area_nome; ?>
                 </div>
                 <div class='col-sm-4' align='left'>
-                    <?php foreach($query as $post): ?>
-                        <?php echo $post->areas; ?><input type="submit" value="Adicionar">
+                        <?php echo $post2->grupo_tipo; ?><button class="btn btn-info" type="button">Adicionar</button>
                     <?php endforeach; ?>
                 </div>
             </div>

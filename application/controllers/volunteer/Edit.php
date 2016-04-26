@@ -56,7 +56,12 @@ class Edit extends VoluntarioController {
         echo 'COMPLEMENT<br>';
         echo var_dump($complement);
         echo '<br>==========================<br>';
-
+         $response = array(
+             'user' => $user, 
+             'user_areas' => $user_areas, 
+             'user_areas_complement' => $complement);
+        echo "TOTAL <br>";
+        echo var_dump($response);
         //gerar views
         $this->load->view('common/menu');
         $this->load->view('volunteer/edit/areas', $response);
