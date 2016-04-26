@@ -25,16 +25,21 @@ class Signup_model extends CI_Model
         );
         $this->db->insert('Utilizador', $newUser);
         $id = $this->db->insert_id();
+        
+        echo "NEW ID: " . $id . '<br>';
+
         //verifica se inseriu
         $this->load->model('users/User_model', 'user_model');
         $user = $this->user_model->getUserByEmail($newUser['email']);
-        if($user == null)
+        if($user == null){
+            echo "<br>ERRO AO OBTER USER<br>";
             return -1;
+        }
     
         //se eh voluntario
         if($userType == 'Volunteer')
         {
-
+            echo "USER ID: " . $user->id.'<br>';
             $data['volunteer']['utilizador'] = $user->id;
             $inserted = $this->db->insert('Voluntario', $data['volunteer']);
             

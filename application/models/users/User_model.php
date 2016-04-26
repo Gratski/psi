@@ -64,20 +64,23 @@ class User_model extends CI_Model {
 
     
     public function getUserByEmail($email) {
-        $select = 'u.*, v.data_nascimento as data_nascimento,  f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
+        echo "email:::: ".$email;
+        $select = '*';
         $query = $this->db->select($select)
-                ->from('Utilizador u')
+                ->from('Utilizador')
                 ->where('email', $email)
-                ->join('Voluntario v', 'v.utilizador=u.id')
-                ->join('Freguesia f', 'u.freguesia = f.id')
-                ->join('Concelho c', 'c.id = f.concelho')
-                ->join('Distrito d', 'd.id = c.distrito')
-                ->join('Pais p', 'p.id = d.pais')
-                ->limit(1)
+                // ->join('Voluntario v', 'v.utilizador=u.id')
+                // ->join('Freguesia f', 'u.freguesia = f.id')
+                // ->join('Concelho c', 'c.id = f.concelho')
+                // ->join('Distrito d', 'd.id = c.distrito')
+                // ->join('Pais p', 'p.id = d.pais')
+                // ->limit(1)
                 ->get();
         $res = $query->result();
-        if (count($res) == 0)
+        if (count($res) == 0){
+            echo "NOT FOUND";
             return null;
+        }
         else
             return $res[0];
     }

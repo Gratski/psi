@@ -23,6 +23,11 @@
 		</nav>
 	-->
 		<div class="container">
+
+			<div class="row" style="padding-top:10px;">
+				<a href="<?php echo base_url(); ?>"><button class="btn btn-default">< Voltar a página inicial</button></a>
+			</div>
+
 			<div class="row">
 				<div class="col-sm-8">
 					<div class= "SectionTitle">
@@ -170,37 +175,33 @@
 								<!--
 								<button type="submit" class="btn btn-default">Submit</button>
 								-->
+
+							<div class="form-group">
+								<div class= "escolheFoto pull-left">
+									
+										<label class="file">
+											Fotografia de perfil<br>
+											<input type="file" id="file" name= "photo" onchange = "setFoto()">
+											<span class="file-custom"></span>
+										</label>
+								
+								</div>
+							</div>
+
+							<div class="form-group" style="width:100%;">
+								<div class="submitButton" style="width:100%;">
+									<button type="submit" class="btn btn-success pull-right" form ="registaVoluntario" >Finalizar registo</button>
+								</div>	
+							</div>
+
+							</form>
 							
 					
 					</div>
 					
 				</div>
 				<div class="col-sm-4">
-					<div class ="foto">
-						<img class="img-responsive img-circle" id = "myFoto" alt="" src="../img/camera.jpg">
-					</div>
-					<div class= "escolheFoto">
-						
-							<label class="file">
-								<input type="file" id="file" name= "photo" onchange = "setFoto()">
-								<span class="file-custom"></span>
-							</label>
 					
-					</div>
 					
-					</form>
-					<div class="submitButton">
-						<button type="submit" class="btn btn-default" form ="registaVoluntario" >Submit</button>
-					</div>	
 				</div>
 							
-			
-		 <footer>
-			<div class="container">
-				<div class="row" id="footerRow" >
-					<span class="copyright">Copyright &copy; Grupo18- PSI</span>
-				</div>
-			</div>
-		</footer>
-	</body>
-</html>
