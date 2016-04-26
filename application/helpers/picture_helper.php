@@ -22,9 +22,9 @@ if( ! function_exists('getSmallPicture')){
             $file = scandir($dir, 1);
             if(count($file) > 0)
             {
-                echo "HAS FILE ---- ";
-                echo "FILE " . var_dump($file);
-                return '<img src="'.$dir.''.$file[0].'" width="50" height="50"/>';
+                //echo "HAS FILE ---- ";
+                //echo "FILE " . var_dump($file);
+                return '<img src="../assets/img/users/'.$user.'/'.$file[0].'" width="50" height="50"/>';
             }else{
                 echo "DOESNT HAVE FILE";
                 return '<i class="glyphicon glyphicon-user"></i>';
@@ -47,9 +47,9 @@ if( ! function_exists('getMediumPicture')){
             $file = scandir($dir, 1);
             if(count($file) > 0)
             {
-                echo "HAS FILE ---- ";
-                echo "FILE " . var_dump($file);
-                return '<img src="'.$dir.''.$file[0].'" width="50" height="50"/>';
+                //echo "HAS FILE ---- ";
+                //echo "FILE " . var_dump($file);
+                return '<img src="../assets/img/users/'.$user.'/'.$file[0].'" width="150" height="150"/>';
             }else{
                 echo "DOESNT HAVE FILE";
                 return '<i class="glyphicon glyphicon-user"></i>';

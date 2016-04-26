@@ -11,11 +11,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container">
 		<div class="row">
             <div class="col-sm-2">
-                <img src="<?php echo getPictureURL($user->id); ?>" height="150" width="150" align="right">
+                <?php echo getPictureURL($user->id, $user->foto); ?>
             </div>
 		  <div class="col-sm-3">
 			<h1>
-                <?php echo $user->nome; ?>
+                <?php echo $user->username; ?>
               </h1>  </div>
           <div class='col-sm-2'>
               <br><br><p>
