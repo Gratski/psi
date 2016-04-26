@@ -24,7 +24,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown pull-right">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" align="right">
-                            <img src="<?php echo base_url('/img/profile.png'); ?>" width="3%" height="3%">
+                            <? echo getSmallPicture($id, $foto); ?>
                             <?php echo $nome; ?>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">

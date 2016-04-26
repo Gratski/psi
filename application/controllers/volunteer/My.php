@@ -23,7 +23,7 @@ class My extends VoluntarioController
         //echo var_dump($dadosProfile);
     	$dadosMenu = array(
     			'titulo' => 'Meu perfil',
-    			'username' => $dadosProfile->nome,
+    			'nome' => $dadosProfile->nome,
                 'id' => $dadosProfile->id,
                 'foto' => $dadosProfile->foto
     		);

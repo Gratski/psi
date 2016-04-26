@@ -24,7 +24,7 @@ if( ! function_exists('getSmallPicture')){
             {
                 //echo "HAS FILE ---- ";
                 //echo "FILE " . var_dump($file);
-                return '<img src="../assets/img/users/'.$user.'/'.$file[0].'" width="50" height="50"/>';
+                return '<img src="../assets/img/users/'.$user.'/'.$file[0].'" width="30" height="30" class="img-circle"/>';
             }else{
                 echo "DOESNT HAVE FILE";
                 return '<i class="glyphicon glyphicon-user"></i>';
