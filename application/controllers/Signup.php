@@ -122,7 +122,7 @@ class Signup extends CI_Controller
             'password' => $_POST['pass'],
             'telefone' => $_POST['phone'],
             'freguesia' => 1,
-            'data_nascimento' => '12/12/2016',
+            'data_nascimento' => $_POST['data_nascimento'],
             'foto' => $_FILES['photo']
 
         );
@@ -136,7 +136,8 @@ class Signup extends CI_Controller
      */
     public function prepareVolunteerData(){
         $volunteer = array(
-            'genero' => $_POST['gender']
+            'genero' => $_POST['gender'],
+            'data_nascimento' => $_POST['data_nascimento']
         );
         return $volunteer;
     }

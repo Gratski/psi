@@ -20,8 +20,7 @@ class Signup_model extends CI_Model
             'telefone' => $data['user']['telefone'],
             'criado_a' => $date,
             'actualizado_a' => $date,
-            'freguesia' => 1,
-            'data_nascimento' => '2012-12-23'
+            'freguesia' => 1
 
         );
         $this->db->insert('Utilizador', $newUser);
@@ -70,10 +69,21 @@ class Signup_model extends CI_Model
                 if(move_uploaded_file($foto['tmp_name'], $pictureDir))
                     $uploaded_foto = 1;
 
+                // actualiza campo foto de voluntario
+                setHasFoto($user->id);
+
+
             }
         }
         
         return $id;
+
+    }
+
+    public function setHasFoto($volunteer){
+        $query = $this->db->set('foto', 1)
+                    ->where('utilizador', $volunteer)
+                    ->update('Voluntario');
 
     }
 
