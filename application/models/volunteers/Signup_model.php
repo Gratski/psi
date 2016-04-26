@@ -49,7 +49,7 @@ class Signup_model extends CI_Model
                 $uploaded_foto = 0;
                 $foto = $data['user']['foto'];
 
-                $basePath = '../../'.base_url().'/assets';
+                $basePath = '../..'.base_url().'assets';
                 if(file_exists($basePath))
                     echo "ASSETS EXISTS";
                 else

@@ -142,19 +142,13 @@ class Edit extends VoluntarioController {
     public function basic() {
         $this->load->model('users/User_model', 'user_model');
         $user_info = $this->user_model->readUser($this->session->user_id);
-
+        //print_r($user_info);
         //query is not empty respond to the correct view
         if ($user_info != NULL) {
-            $response = array();
-            foreach ($user_info as $key => $value) {
-                $response[$key] = $value;
-            }
             //gerar views
-            $this->load->view('common/menu');
-            $this->load->view('volunteer/edit/basic', $response);
+            $this->load->view('common/menu', $user_info);
+            $this->load->view('volunteer/edit/basic', $user_info);
             $this->load->view('common/footer');
-
-            print_r($response);
         }
         // something went wrong display the 404 view
         else {
@@ -167,21 +161,22 @@ class Edit extends VoluntarioController {
      * grabs the post made in the form update it to an associative array
      */
     public function updateBasic() {
-        $this->load->model('users/User_model', 'user_model');
+
+        $this->load->model('users/User_model', 'um');
 
         $user = $this->session->user_details;
+ 
         $info = array();
 
-        if (!(isset($_POST))) {
-            foreach ($_POST as $key => $value) {
-                $info [$key] = $value;
-            }
+        foreach ($_POST as $key => $value) {
+            $info [$key] = $value;
+            
         }
-        $response = "Yor information has been updated";
-        $this->user_model->updateUser($this->session->user_id, $info);
-        $this->load->view('menu');
-        $this->load->view('volunteer/myprofile', $response);
-        $this->load->view('footer');
+        
+        $userInfo = $this->um->updateUser($this->session->user_id, $info);
+        $this->load->view('common/menu' , $userInfo);
+        $this->load->view('volunteer/myprofile', $userInfo);
+        $this->load->view('common/footer');
     }
 
     /**
@@ -197,27 +192,26 @@ class Edit extends VoluntarioController {
                 $response[$key] = $value;
             }
             //generate views
+
             $this->load->view('volunteer/edit/basic', $response);
         } else {
-            $this->load->view('volunteer/edit/basic', "Horário não definido");
+            $response = "Does not have schedule";
+
+            $this->load->view('volunteer/edit/basic', $response);
         }
     }
 
-
-
-    private function getAreasIds($list){
+    private function getAreasIds($list) {
         $res = array();
-        for($i = 0; $i < count($list); $i++)
-        {
+        for ($i = 0; $i < count($list); $i++) {
             $res[$i] = $list[$i]->area_id;
         }
         return $res;
     }
 
-    private function getGroupsIds($list){
+    private function getGroupsIds($list) {
         $res = array();
-        for($i = 0; $i < count($list); $i++)
-        {
+        for ($i = 0; $i < count($list); $i++) {
             $res[$i] = $list[$i]->grupo_id;
         }
         return $res;

@@ -29,18 +29,21 @@ class Schedule_model extends CI_Model {
      * @return type the query or NULL (the user has no schedule defined)
      */
     public function getSchedule($idUser) {
-
+       
         //grab the id of the volunteer
-        $id_voluntario = $this->db->select('utilizador')
+        $query = $this->db->select('utilizador')
                         ->from('Voluntario As V')
-                        ->where($idUser, 'V.utilizador')->get();
-
+                        ->where('V.utilizador', $idUser )->get();
+        
+        $id_vol= $query->result()[0];
+       
         //select the horario from the user 
-        $query = $this->db->select('horario')
+        $query2 = $this->db->select('horario')
                 ->from('Voluntario as V')
-                ->where($id_voluntario, 'V.horario');
-
-        return (count($query->result()[0]) != 0) ? $query->result()[0] : NULL;
+                ->where('V.horario', $id_vol->utilizador)->get();
+                    
+        print_r($query2->result()[0]!=0);
+        return (count($query2->result()[0]) != 0) ? $query->result()[0] : NULL;
     }
 
 }
