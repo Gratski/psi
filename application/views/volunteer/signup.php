@@ -28,7 +28,9 @@
 					<div class= "SectionTitle">
 						<h1> Regista-te </h1>
 						<p> Ajuda a tua causa! </p>
-						<?php if(hasFlash()) printFlash(); ?>
+						<div class="erro">
+							<p><?php if(hasFlash()) printFlash(); ?><p>
+						</div>
 					</div>
 					<div class = "registarForm">
 					
