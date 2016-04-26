@@ -187,7 +187,7 @@ class Edit extends VoluntarioController {
     /**
      * function to get the schedule of the user
      */
-    public function get_schedule() {
+    public function schedule() {
         $this->load->model('schedule/Schedule_model', 'sm');
         $currenteSchedule = $this->sm->getSchedule($this->session->user_id);
 
