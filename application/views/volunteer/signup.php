@@ -3,13 +3,13 @@
 	<head>
 		<title>Registar Voluntário</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../css/registoEstilos.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css');?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/registoEstilos.css');?>">
 		<meta charset="UTF-8">
 		<script src="http://code.jquery.com/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="css/bs/js/bootstrap.min.js"></script>
-		 <script type="text/javascript" src="../js/function.js"></script>
+		<script src="<? echo base_url('css/bs/js/bootstrap.min.js');?>"></script>
+		 <script type="text/javascript" src="../PSI/js/function.js"></script>
 
 	</head>
 	<body>
@@ -28,7 +28,9 @@
 					<div class= "SectionTitle">
 						<h1> Regista-te </h1>
 						<p> Ajuda a tua causa! </p>
-						<?php if(hasFlash()) printFlash(); ?>
+						<div class="erro">
+							<p><?php if(hasFlash()) printFlash(); ?><p>
+						</div>
 					</div>
 					<div class = "registarForm">
 					
