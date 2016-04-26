@@ -52,6 +52,13 @@ class Signup_model extends CI_Model
             else{
 
 
+                $basePath = '../..'.base_url().'assets';
+                if(file_exists($basePath))
+                    echo "ASSETS EXISTS";
+                else
+                    echo "ASSETS NOT EXISTS";
+
+
                 // se fez upload de foto
                 if(isset($data['user']['foto']))
                 {
