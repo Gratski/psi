@@ -36,15 +36,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="intro-text">
+
+        	<div class="col-md-4">
+        		<div class="intro-text">
                 <div class="intro-lead-in">Bem-vindo</div>
                 <div class="intro-heading">Voluntários@FCUL</div>
 				<div class="btn-group" role="group" aria-label="...">
 					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">ENTRAR</button>
 				</div>          
             </div>
+        	</div>
+        	<div class="col-md-8">
+        		
+        	</div>
         </div>
     </header>
+
+
 	
 	<!-- Login Modal -->
 	<div class="modal fade" id="loginModal" role="dialog">
