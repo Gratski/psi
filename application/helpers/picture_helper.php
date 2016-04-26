@@ -10,12 +10,12 @@ if( ! function_exists('hasPicture')){
 
 if( ! function_exists('getPictureURL')){
     function getPictureURL($user){
-        $dir = 'imgs/'.$user.'/';
-        if($dh = opendir($dir)){
-            $file = readdir($dh);
-            return $dir.''.$file;
-        }else{
-            return '';
-        }
+
+
+        $basePath = '../../'.base_url().'/assets';
+        $dir = $basePath.'/img/users/'.$user.'/';
+        $file = scandir($dir)[0];
+        return $dir.''.$file;
+        
     }
 }

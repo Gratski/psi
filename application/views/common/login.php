@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class = "login">
 			<form action = "user/createSession" class="form-signin" method = "POST">
 				<h2 class="form-signin-heading">Iniciar Sessão</h2>
-				<div class= "loginError">
+				<div class= "erro">
 					<p><?php if(hasFlash()) printFlash(); ?></p> 
 				</div>
 				<label for="inputEmail" class="sr-only">Email</label>
