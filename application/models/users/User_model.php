@@ -63,7 +63,6 @@ class User_model extends CI_Model {
     }
 
     public function getUserByEmail($email) {
-        echo "email:::: ".$email;
         $select = 'u.*,  f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
         $query = $this->db->select($select)
                 ->from('Utilizador u')

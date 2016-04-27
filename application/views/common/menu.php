@@ -23,15 +23,16 @@
                 <a class="navbar-brand page-scroll" href="">Volunteer@FCUL</a>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown pull-right">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" align="right">
+                        <a style="color:#FFF;" class="dropdown-toggle" data-toggle="dropdown" href="#" align="right">
                             <? echo getSmallPicture($id, $foto); ?>
                             <?php echo $nome; ?>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url('index.php/volunteer/edit/basic'); ?>">Editar Perfil</a></li>
-                            <li><a href="<?php echo base_url('index.php/volunteer/edit/schedule'); ?>">Editar Horário</a></li>
-                            <li><a href="<?php echo base_url('index.php/volunteer/edit/areas'); ?>">Editar Preferências</a></li>
-                            <li><a href="<?php echo base_url('index.php/user/logout'); ?>">Logout (Sair)</a></li>
+                            <li><a style="color:#333;" href="<?php echo base_url('index.php/volunteer/my'); ?>">Meu perfil</a></li>
+                            <li><a style="color:#333;" href="<?php echo base_url('index.php/volunteer/edit/basic'); ?>">Editar Perfil</a></li>
+                            <li><a style="color:#333;" href="<?php echo base_url('index.php/volunteer/edit/schedule'); ?>">Editar Horário</a></li>
+                            <li><a style="color:#333;" href="<?php echo base_url('index.php/volunteer/edit/areas'); ?>">Editar Preferências</a></li>
+                            <li><a style="color:#333;" href="<?php echo base_url('index.php/user/logout'); ?>">Logout</a></li>
 
                         </ul>
                     </li>

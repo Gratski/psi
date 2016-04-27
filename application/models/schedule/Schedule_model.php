@@ -11,8 +11,6 @@ class Schedule_model extends CI_Model {
     
     public function create($horario){
             
-        print_r($this->session->user_details->email);
-        print_r($horario);
         // get volunteers model
         $this->load->model('volunteers/Main_model', 'vm');
         
@@ -43,10 +41,10 @@ class Schedule_model extends CI_Model {
      * @return true se alterou, false caso contrario
      */
     public function update() {
-        print_r("uodate ".$this->session->user_details->email);
+        
         $user = $this->vm->getVolunteerByEmail($this->session->user_details->email);
         
-        print_r("update".$user);
+        
         $currentSchedule = $this->getSchedule();
         if ($currentSchedule != NULL) {
 
@@ -67,7 +65,7 @@ class Schedule_model extends CI_Model {
      */
     public function getSchedule() {
 
-        print_r($this->session->user_details->email);
+        
         $this->load->model('volunteers/Main_model', 'vm');
         $user = $this->vm->getVolunteerByEmail($this->session->user_details->email);
         

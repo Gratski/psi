@@ -15,7 +15,7 @@
             <div class="col-sm-10">
                 <? if(count($user_areas) == 0){ ?><h4>Ainda não tem áreas de interesse associadas</h4><? }else{ ?>
 
-                <h3>Áreas actuais</h3>
+                <h3>Meus interesses</h3>
                 <table class="table">
                     
                     <? foreach ($user_areas as $user_area) { ?>
@@ -40,9 +40,9 @@
 
         <div class="row">
             <div class="col-sm-10">
-                <? if(count($user_areas) == 0){ ?><h4>Ainda não tem áreas de interesse associadas</h4><? }else{ ?>
+                <? if(count($user_areas_complement) != 0){ ?>
 
-                <h3>Mais Áreas</h3>
+                <h3>Adicionar interesses</h3>
                 <table class="table">
                     
                     <? foreach ($user_areas_complement as $user_area) { ?>

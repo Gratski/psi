@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+
     <head>
         <meta charset='utf-8' />
         <link href='<?php echo base_url('css/fullcalendar.css'); ?>' rel='stylesheet' />
@@ -67,9 +66,6 @@
         </style>
     </head>
 
-
-
-    <body>
 
         <div class="container">
             <div class="row">

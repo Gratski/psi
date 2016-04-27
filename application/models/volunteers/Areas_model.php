@@ -53,21 +53,26 @@ class Areas_model extends CI_Model {
         //se lista de groups ou areas eh vazia, cria por omissao
         if(count($groups) == 0 || count($areas) == 0)
         {
-            $areas = array('0');
-            $groups = array('0');
-        }
-        
-        $query = $this->db->select($select)
+            $query = $this->db->select($select)
                  ->from('Grupo_Area ga')
                     ->join('Grupo g', 'ga.grupo = g.id')
                     ->join('Area a', 'ga.area = a.id')
-                    ->group_start()
-                        ->where_not_in('a.id', $areas)
-                        ->where_not_in('g.id', $groups)     
-                    ->group_end()
                     ->get();
-        $res = $query->result();
-        return $res;
+            $res = $query->result();
+            return $res;
+        }
+        else{
+            $query = $this->db->select($select)
+                     ->from('Grupo_Area ga')
+                        ->join('Grupo g', 'ga.grupo = g.id')
+                        ->join('Area a', 'ga.area = a.id')
+                        ->group_start()
+                            ->where_not_in('a.id', $areas)
+                            ->where_not_in('g.id', $groups)     
+                        ->group_end()
+                        ->get();
+            return $query->result();    
+        }
     }
 
     /**

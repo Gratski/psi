@@ -41,7 +41,6 @@ class Edit extends VoluntarioController {
         $groups_ids = $this->getGroupsIds($user_areas);
         
         $complement = $this->areas_model->getComplement($user->id, $areas_ids, $groups_ids);
-
         
         $response = array(
              'user' => $user, 
@@ -194,16 +193,19 @@ class Edit extends VoluntarioController {
      */
     public function schedule() {
         $this->load->model('schedule/Schedule_model', 'sm');
+        $this->load->model('volunteers/Main_model', 'vm');
         $currenteSchedule = $this->sm->getSchedule();
-
+        $user_info = $this->vm->getVolunteerByEmail($this->session->user_details->email);
+        
+        $this->load->view('common/menu', $user_info);
+        $this->load->view('volunteer/edit/basic', $user_info);
         if ($currenteSchedule != NULL) {
 
             $this->load->view('volunteer/edit/schedule', $currenteSchedule);
-            $this->load->view('common/footer');
         } else {
             $this->load->view('volunteer/edit/schedule');
-            $this->load->view('common/footer');
         }
+        $this->load->view('common/footer');
     }
 
     private function getAreasIds($list) {
