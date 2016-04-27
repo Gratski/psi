@@ -1,67 +1,67 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-// ===========================================================================
-//            - Guardar em views/
-// ===========================================================================
-?>
 
-  <head>
-  <title>Editar Àreas</title>
-</head>
 	<div class="container">
-		<div class="row">
-            <div class="col-sm-2">
-                <?php echo getPictureURL($user->id, $user->foto); ?>
-            </div>
-		  <div class="col-sm-3">
-			<h1>
-                <?php echo $user->username; ?>
-              </h1>  </div>
-          <div class='col-sm-2'>
-              <br><br><p>
-              </p></div>
-		</div>
+        
         <div class="row">
             <div class="col-sm-10">
-                <h2>Editar Áreas</h2>
+                <? if(hasFlash()){ ?>
+                    <div class="alert alert-success" role="alert">
+                        <? echo  printFlash(); ?>    
+                    </div>
+                <? } ?>
             </div>
         </div>
-        <div class='row'>
-            <div class='col-sm-3' align='left'>
-                Grupos de Interesse
-            </div>
-            <div class='col-sm-4' align='left'>
-                Áreas de Intervenção
+
+        <div class="row">
+            <div class="col-sm-10">
+                <? if(count($user_areas) == 0){ ?><h4>Ainda não tem áreas de interesse associadas</h4><? }else{ ?>
+
+                <h3>Áreas actuais</h3>
+                <table class="table">
+                    
+                    <? foreach ($user_areas as $user_area) { ?>
+                        <tr>
+                            <td><? echo $user_area->area_nome; ?></td>
+                            <td><? echo $user_area->grupo_tipo; ?></td>
+                            <td>
+                                <form action="deleteArea" method="post">
+                                    <input type="text" name="area_id" hidden="hidden" value="<? echo $user_area->area_id; ?>">
+                                    <input type="text" name="grupo_id" hidden="hidden" value="<? echo $user_area->grupo_id; ?>">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="remover">
+                                </form>
+                            </td>
+                        </tr>
+                    <? } ?>
+
+                </table>
+                <? } ?>
             </div>
         </div>
-        <div class='row'>
-            Actuais:
-        </div>
-        <form action="#">
-            <div class='row'>
-                <div class='col-sm-4' align='left'>
-                    <?php foreach($user_areas as $post): ?>
-                        <?php echo $post->grupo_tipo; ?>
-                </div>
-                <div class='col-sm-4' align='left'>
-                        <?php echo $post->area_nome; ?><button class="btn btn-info" type="button">Remover</button>
-                    <?php endforeach; ?>
-                </div>
+    
+
+        <div class="row">
+            <div class="col-sm-10">
+                <? if(count($user_areas) == 0){ ?><h4>Ainda não tem áreas de interesse associadas</h4><? }else{ ?>
+
+                <h3>Mais Áreas</h3>
+                <table class="table">
+                    
+                    <? foreach ($user_areas_complement as $user_area) { ?>
+                        <tr>
+                            <td><? echo $user_area->area_nome; ?></td>
+                            <td><? echo $user_area->grupo_tipo; ?></td>
+                            <td>
+                                <form action="addArea" method="post">
+                                    <input type="text" name="area_id" hidden="hidden" value="<? echo $user_area->area_id; ?>">
+                                    <input type="text" name="grupo_id" hidden="hidden" value="<? echo $user_area->grupo_id; ?>">
+                                    <input type="submit" class="btn btn-sm btn-success" value="adicionar">
+                                </form>
+                            </td>
+                        </tr>
+                    <? } ?>
+
+                </table>
+                <? } ?>
             </div>
-        </form>
-        <div class='row'>
-            Inserir nova(s) àrea(s):
         </div>
-        <form action="#">
-            <div class='row'>
-                <div class='col-sm-4' align='left'>
-                    <?php foreach($user_areas_complement as $post2): ?>
-                        <?php echo $post2->area_nome; ?>
-                </div>
-                <div class='col-sm-4' align='left'>
-                        <?php echo $post2->grupo_tipo; ?><button class="btn btn-info" type="button">Adicionar</button>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </form>
+        
 	</div>
