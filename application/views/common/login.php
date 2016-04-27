@@ -27,7 +27,7 @@
 				</div>
 			<div class= "opcoesRegisto">
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sou Instituição</button>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Sou Voluntário</button>
+				<a href="signup/volunteer" class="btn btn-lg btn-primary btn-block">Voluntário</a>
 			</div>
 			<span><a onclick="change()">já tenho conta</a></span>
 		</div>

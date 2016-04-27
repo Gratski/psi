@@ -63,8 +63,6 @@ class Edit extends VoluntarioController {
      */
     public function put_schedule() {
 
-       
-       // $horario_id = $_POST['horario'];
         $horario = array(
             'hora_inicio' => $_POST['hora_inicio'],
             'hora_fim' => $_POST['hora_fim'],
@@ -75,14 +73,19 @@ class Edit extends VoluntarioController {
         $this->load->model('schedule/Schedule_model', 'sm');
 
         //se actualizado
-        if ($this->sm->update($horario)) {
+        if ($this->sm->update()) {
             setFlash('success', 'Horario actualizado!');
-//            redirect('volunteer/myprofile');
+            print_r("----------UPDATE-----------");
+//           redirect('volunteer/my');
+        }else if($this->sm->create($horario)){
+            setFlash('success', 'Horario criado!');
+            print_r("----------CREATE-----------");
+            //redirect('volunteer/my');
         }
         //se nao actualizado
         else {
             setFlash('danger', 'Ups.. algo correu mal. Tente novamente.');
-  //          redirect('volunteer/edit/schedule');
+          redirect('volunteer/edit/schedule');
         }
     }
 
@@ -191,7 +194,7 @@ class Edit extends VoluntarioController {
      */
     public function schedule() {
         $this->load->model('schedule/Schedule_model', 'sm');
-        $currenteSchedule = $this->sm->getSchedule($this->session->user_id);
+        $currenteSchedule = $this->sm->getSchedule();
 
         if ($currenteSchedule != NULL) {
 

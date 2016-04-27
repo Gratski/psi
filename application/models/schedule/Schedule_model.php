@@ -8,18 +8,49 @@
  */
 class Schedule_model extends CI_Model {
 
+    
+    public function create($horario){
+            
+        print_r($this->session->user_details->email);
+        print_r($horario);
+        // get volunteers model
+        $this->load->model('volunteers/Main_model', 'vm');
+        
+        // get volunteer by email
+        $user = $this->vm->getVolunteerByEmail($this->session->user_details->email);
+        
+        // check if already exists
+        if($user->horario != NULL)
+            return false;
+        
+        // cria um novo horario
+        $this->db->insert('Horario', $horario);
+        $horario_id = $this->db->insert_id();
+        
+        // update volunteer table
+        $this->db->set('horario', $horario_id)
+                    ->where('utilizador', $user->id)
+                    ->update('Voluntario');
+        
+        return true;
+        
+    }
+    
     /**
      * Actualiza o horario em base de dados
      * @param $id, id de horario a actualizar
      * @param $horario, dados de novo horario
      * @return true se alterou, false caso contrario
      */
-    public function update($id) {
-
-        $currentSchedule = $this->getSchedule($id);
+    public function update() {
+        print_r("uodate ".$this->session->user_details->email);
+        $user = $this->vm->getVolunteerByEmail($this->session->user_details->email);
+        
+        print_r("update".$user);
+        $currentSchedule = $this->getSchedule();
         if ($currentSchedule != NULL) {
 
-            $this->db->where('id', $id);
+            $this->db->where('id', $user->id);
             $this->db->update('Horario', $currentSchedule);
         }
 
@@ -34,30 +65,25 @@ class Schedule_model extends CI_Model {
      * @param type $idUser 
      * @return type the query or NULL (the user has no schedule defined)
      */
-    public function getSchedule($idUser) {
+    public function getSchedule() {
 
-        //grab the id of the volunteer
-        $query = $this->db->select('utilizador')
-                        ->from('Voluntario As V')
-                        ->where('V.utilizador', $idUser)->get();
-
-        $id_vol = $query->result()[0];
-        //select the horario from the user 
-        $query2 = $this->db->select('horario')
-                        ->from('Voluntario As v')
-                        ->where('v.utilizador', $id_vol->utilizador)->get();
-        $horarioVoluntario = $query2->result()[0];
-
-
-        if (count($query2->result()[0]) == 0) {
+        print_r($this->session->user_details->email);
+        $this->load->model('volunteers/Main_model', 'vm');
+        $user = $this->vm->getVolunteerByEmail($this->session->user_details->email);
+        
+        // se nao tem horario
+        if($user->horario == NULL || $user->horario == 0)
             return NULL;
-        }
-        $query3 = $this->db->select('*')
-                ->from('Horario As h')
-                ->where('h.id', $horarioVoluntario->horario)
-                ->get();
+        
+        //select the horario from the user 
+        $query = $this->db->select('*')
+                            ->from('Horario h')
+                            ->where('h.id', $user->horario)
+                            ->get();
+        
+        $horarioVoluntario = $query->result()[0];
 
-        return $query3->result()[0];
+        return $horarioVoluntario;
     }
 
 }
