@@ -35,7 +35,7 @@ $config['base_url'] = '/Apps/PSI';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

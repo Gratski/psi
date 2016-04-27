@@ -51,7 +51,7 @@ class Signup_model extends CI_Model
             // se registou voluntário guarda a sua picture
             else{
 
-
+/*
                 $basePath = '../..'.base_url().'assets';
                 if(file_exists($basePath))
                     echo "ASSETS EXISTS";
@@ -66,7 +66,7 @@ class Signup_model extends CI_Model
                     $uploaded_foto = 0;
                     $foto = $data['user']['foto'];
 
-                    $basePath = '../../'.base_url().'/assets';
+                    $basePath = '../..'.base_url().'assets';
                     if(file_exists($basePath))
                         echo "ASSETS EXISTS";
                     else
@@ -86,6 +86,8 @@ class Signup_model extends CI_Model
                     if(move_uploaded_file($foto['tmp_name'], $pictureDir))
                         $this->setHasFoto($user->id);
                 }
+
+ */
             }
         }
         return $id;

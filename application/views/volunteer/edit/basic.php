@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div class = "registarForm">
 					
-						<form role="form" method="get" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
+						<form role="form" method="post" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
 						
 							<div class="form-inline" style="display:none" >
 								<input type="text" name="id" class="form-control" value= " <?php echo $id; ?> " required>

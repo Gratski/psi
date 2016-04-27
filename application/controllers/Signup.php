@@ -134,10 +134,15 @@ class Signup extends CI_Controller
      * @return voluntario pronto a inserir
      */
     public function prepareVolunteerData(){
-        $data = explode($_POST['birthDay'], '/');
-        $year = $data[2];
-        $month = $data[1];
-        $day = $data[0];
+         echo "DATA::: ".var_dump($_POST['birthDay']);
+        //$data = explode($_POST['birthDay'], '-');
+        
+        $year = "1989";
+        echo "ANO: " . $year;
+        $month = "03";
+        echo "MES: " . $month;
+        $day = "23";
+        echo "DIA: " . $day;
         $volunteer = array(
             'genero' => $_POST['gender'],
             'data_nascimento' => $year . '-' . $month .'-'. $day
