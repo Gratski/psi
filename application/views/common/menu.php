@@ -32,6 +32,7 @@
                             <li><a href="<?php echo base_url('index.php/volunteer/edit/schedule'); ?>">Editar Horário</a></li>
                             <li><a href="<?php echo base_url('index.php/volunteer/edit/areas'); ?>">Editar Preferências</a></li>
                             <li><a href="<?php echo base_url('index.php/user/logout'); ?>">Logout (Sair)</a></li>
+
                         </ul>
                     </li>
                 </ul>

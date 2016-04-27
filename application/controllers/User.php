@@ -42,7 +42,7 @@ class User extends CI_Controller
             return;
         }
         else if($this->user_model->isInstitution($auth->id)){
-            redirect('/institution/my');
+            redirect('institution/my');
             return;
         }
         else{
