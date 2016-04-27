@@ -13,7 +13,7 @@
 
         <div class="row">
             <div class="col-sm-10">
-                <? if(count($user_areas) == 0){ ?><h4>Ainda não tem áreas de interesse associadas</h4><? }else{ ?>
+                <? if(count($user_areas) != 0){ ?>
 
                 <h3>Meus interesses</h3>
                 <table class="table">

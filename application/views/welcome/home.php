@@ -37,12 +37,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <header>
         <div class="container">
 
-        	<div class="col-md-4">
+        	<div class="col-md-4 text-left">
         		<div class="intro-text">
-                <div class="intro-lead-in">Bem-vindo</div>
-                <div class="intro-heading">Voluntários@FCUL</div>
+                <div><h1 style="color:#333;">Bem-vindo</h1></div>
+                <div><h2 style="color:#333;">Voluntários@FCUL</h2></div>
 				<div class="btn-group" role="group" aria-label="...">
-					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">ENTRAR</button>
+					<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#loginModal">ENTRAR</button>
 				</div>          
             </div>
         	</div>
