@@ -28,10 +28,10 @@
                             <?php echo $nome; ?>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url('volunteer/edit/basic.php'); ?>">Editar Perfil</a></li>
-                            <li><a href="<?php echo base_url('volunteer/edit/schedule.php'); ?>">Editar Horário</a></li>
-                            <li><a href="<?php echo base_url('volunteer/edit/areas.php'); ?>">Editar Preferências</a></li>
-                            <li><a href="<?php echo base_url('welcome/home.php'); ?>">Logout (Sair)</a></li>
+                            <li><a href="<?php echo base_url('index.php/volunteer/edit/basic'); ?>">Editar Perfil</a></li>
+                            <li><a href="<?php echo base_url('index.php/volunteer/edit/schedule'); ?>">Editar Horário</a></li>
+                            <li><a href="<?php echo base_url('index.php/volunteer/edit/areas'); ?>">Editar Preferências</a></li>
+                            <li><a href="<?php echo base_url('index.php'); ?>">Logout (Sair)</a></li>
                         </ul>
                     </li>
                 </ul>
