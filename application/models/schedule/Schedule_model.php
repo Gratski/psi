@@ -14,9 +14,15 @@ class Schedule_model extends CI_Model {
      * @param $horario, dados de novo horario
      * @return true se alterou, false caso contrario
      */
-    public function update($id, $horario) {
-        $this->db->where('id', $id);
-        $this->db->update('Horario', $horario);
+    public function update($id) {
+
+        $currentSchedule = $this->getSchedule($id);
+        if ($currentSchedule != NULL) {
+
+            $this->db->where('id', $id);
+            $this->db->update('Horario', $currentSchedule);
+        }
+
         if ($this->db->affected_rows() > 0)
             return true;
         else
@@ -29,21 +35,29 @@ class Schedule_model extends CI_Model {
      * @return type the query or NULL (the user has no schedule defined)
      */
     public function getSchedule($idUser) {
-       
+
         //grab the id of the volunteer
         $query = $this->db->select('utilizador')
                         ->from('Voluntario As V')
-                        ->where('V.utilizador', $idUser )->get();
-        
-        $id_vol= $query->result()[0];
-       
+                        ->where('V.utilizador', $idUser)->get();
+
+        $id_vol = $query->result()[0];
         //select the horario from the user 
         $query2 = $this->db->select('horario')
-                ->from('Voluntario as V')
-                ->where('V.horario', $id_vol->utilizador)->get();
-                    
-        print_r($query2->result()[0]!=0);
-        return (count($query2->result()[0]) != 0) ? $query->result()[0] : NULL;
+                        ->from('Voluntario As v')
+                        ->where('v.utilizador', $id_vol->utilizador)->get();
+        $horarioVoluntario = $query2->result()[0];
+
+
+        if (count($query2->result()[0]) == 0) {
+            return NULL;
+        }
+        $query3 = $this->db->select('*')
+                ->from('Horario As h')
+                ->where('h.id', $horarioVoluntario->horario)
+                ->get();
+
+        return $query3->result()[0];
     }
 
 }

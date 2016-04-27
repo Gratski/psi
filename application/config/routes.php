@@ -63,6 +63,6 @@ $route['volunteer/edit/basic']['post'] = 'volunteer/edit/updateBasic';
 
 //Routes para edit de voluntario
 //actualizar horario
-$route['volunteer/edit/schedule']['put'] = 'volunteer/edit/put_Schedule';
+$route['volunteer/edit/schedule']['post'] = 'volunteer/edit/put_Schedule';
 //adicionar um interesse
 $route['volunteer/edit/areas']['post'] = 'volunteer/edit/post_areas';

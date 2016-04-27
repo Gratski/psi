@@ -56,10 +56,10 @@ class Edit extends VoluntarioController {
         echo 'COMPLEMENT<br>';
         echo var_dump($complement);
         echo '<br>==========================<br>';
-         $response = array(
-             'user' => $user, 
-             'user_areas' => $user_areas, 
-             'user_areas_complement' => $complement);
+        $response = array(
+            'user' => $user,
+            'user_areas' => $user_areas,
+            'user_areas_complement' => $complement);
         echo "TOTAL <br>";
         echo var_dump($response);
         //gerar views
@@ -76,27 +76,26 @@ class Edit extends VoluntarioController {
      */
     public function put_schedule() {
 
-        $put = parseFromInputStream();
-
-        $horario_id = $put['horario'];
+       
+       // $horario_id = $_POST['horario'];
         $horario = array(
-            'hora_inicio' => $put['hora_inicio'],
-            'hora_fim' => $put['hora_fim'],
-            'data_inicio' => $put['data_inicio'],
-            'data_fim' => $put['data_fim']
+            'hora_inicio' => $_POST['hora_inicio'],
+            'hora_fim' => $_POST['hora_fim'],
+            'data_inicio' => $_POST['data_inicio'],
+            'data_fim' => $_POST['data_fim']
         );
-
+        
         $this->load->model('schedule/Schedule_model', 'sm');
 
         //se actualizado
-        if ($this->sm->update($horario_id, $horario)) {
+        if ($this->sm->update($horario)) {
             setFlash('success', 'Horario actualizado!');
-            redirect('volunteer/myprofile');
+//            redirect('volunteer/myprofile');
         }
         //se nao actualizado
         else {
             setFlash('danger', 'Ups.. algo correu mal. Tente novamente.');
-            redirect('volunteer/edit/schedule');
+  //          redirect('volunteer/edit/schedule');
         }
     }
 
@@ -170,16 +169,15 @@ class Edit extends VoluntarioController {
         $this->load->model('users/User_model', 'um');
 
         $user = $this->session->user_details;
- 
+
         $info = array();
 
         foreach ($_POST as $key => $value) {
             $info [$key] = $value;
-            
         }
-        
+
         $userInfo = $this->um->updateUser($this->session->user_id, $info);
-        $this->load->view('common/menu' , $userInfo);
+        $this->load->view('common/menu', $userInfo);
         $this->load->view('volunteer/myprofile', $userInfo);
         $this->load->view('common/footer');
     }
@@ -192,17 +190,12 @@ class Edit extends VoluntarioController {
         $currenteSchedule = $this->sm->getSchedule($this->session->user_id);
 
         if ($currenteSchedule != NULL) {
-            $response = array();
-            foreach ($currenteSchedule as $key => $value) {
-                $response[$key] = $value;
-            }
-            //generate views
 
-            $this->load->view('volunteer/edit/basic', $response);
+            $this->load->view('volunteer/edit/schedule', $currenteSchedule);
+            $this->load->view('common/footer');
         } else {
-            $response = "Does not have schedule";
-
-            $this->load->view('volunteer/edit/basic', $response);
+            $this->load->view('volunteer/edit/schedule');
+            $this->load->view('common/footer');
         }
     }
 
