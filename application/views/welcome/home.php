@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 				<div class="modal-body">
 					<div class="col-md-6">
-						<form action = "User/createSession" class="form-signin" method = "POST">
+						<form action = "index.php/user/login" class="form-signin" method = "POST">
 							<h2 class="form-signin-heading">Iniciar Sessão</h2>
 							<label for="inputEmail" class="sr-only">Email</label>
 							<input name= "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>

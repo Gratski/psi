@@ -51,7 +51,6 @@ class Signup_model extends CI_Model
             // se registou voluntário guarda a sua picture
             else{
 
-/*
                 $basePath = '../..'.base_url().'assets';
                 if(file_exists($basePath))
                     echo "ASSETS EXISTS";
@@ -87,7 +86,6 @@ class Signup_model extends CI_Model
                         $this->setHasFoto($user->id);
                 }
 
- */
             }
         }
         return $id;

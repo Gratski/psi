@@ -53,7 +53,7 @@ class User extends CI_Controller
     }
     public function destroySession(){
         $this->session->unset_userdata('user_id');
-        redirect('welcome/');
+        redirect('');
     }
     
 }

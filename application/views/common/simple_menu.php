@@ -21,19 +21,5 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <a class="navbar-brand page-scroll" href="">Volunteer@FCUL</a>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown pull-right">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" align="right">
-                            <? echo getSmallPicture($id, $foto); ?>
-                            <?php echo $nome; ?>
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url('index.php/volunteer/edit/basic'); ?>">Editar Perfil</a></li>
-                            <li><a href="<?php echo base_url('index.php/volunteer/edit/schedule'); ?>">Editar Horário</a></li>
-                            <li><a href="<?php echo base_url('index.php/volunteer/edit/areas'); ?>">Editar Preferências</a></li>
-                            <li><a href="<?php echo base_url('index.php/user/logout'); ?>">Logout (Sair)</a></li>
-                        </ul>
-                    </li>
-                </ul>
             </div>
         </nav>

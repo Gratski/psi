@@ -22,6 +22,7 @@ class Signup extends CI_Controller
      * GET
      */
     public function volunteer(){
+        $this->load->view('common/simple_menu');
         $this->load->view('volunteer/signup');
     }
 

@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Registar Voluntário</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css');?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/registoEstilos.css');?>">
-		<meta charset="UTF-8">
-		<script src="http://code.jquery.com/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="<? echo base_url('css/bs/js/bootstrap.min.js');?>"></script>
-		 <script type="text/javascript" src="<? echo base_url('js/function.js');?>"></script>
 
-	</head>
-	<body>
 	
 		<div class="container">
 
