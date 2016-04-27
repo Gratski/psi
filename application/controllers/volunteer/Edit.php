@@ -26,44 +26,31 @@ class Edit extends VoluntarioController {
      */
     public function areas() {
         $this->load->model('volunteers/Areas_model', 'areas_model');
-
-        $user = $this->session->user_details;
+        $this->load->model('volunteers/Main_model', 'mm');
+        $user = $this->mm->getVolunteerByEmail($this->session->user_details->email);
+        
         $user_areas = $this->areas_model->getAll($this->session->user_id);
 
         //obter areas ainda por adicionar
         //testar depois de estar a inserir uma area
 
         $response = array($user, $user_areas);
-        echo 'RESPOSTA TODA<br>';
-        echo var_dump($response);
-        echo '<br>==========================<br>';
-        echo 'USER AREAS<br>';
-        echo var_dump($user_areas);
-
-        echo '<br>==========================<br>';
 
         $areas_ids = $this->getAreasIds($user_areas);
-        echo 'IDS DE AREAS<br>';
-        echo var_dump($areas_ids);
-        echo '<br>==========================<br>';
-
+        
         $groups_ids = $this->getGroupsIds($user_areas);
-        echo 'IDS DE GRUPOS<br>';
-        echo var_dump($groups_ids);
-        echo '<br>==========================<br>';
-
+        
         $complement = $this->areas_model->getComplement($user->id, $areas_ids, $groups_ids);
-        echo 'COMPLEMENT<br>';
-        echo var_dump($complement);
-        echo '<br>==========================<br>';
+
+        
         $response = array(
-            'user' => $user,
-            'user_areas' => $user_areas,
-            'user_areas_complement' => $complement);
-        echo "TOTAL <br>";
-        echo var_dump($response);
+             'user' => $user, 
+             'user_areas' => $user_areas, 
+             'user_areas_complement' => $complement);
+        
         //gerar views
-        $this->load->view('common/menu');
+        $this->load->view('common/menu', $user);
+        $this->load->view('volunteer/profile/header', $response);
         $this->load->view('volunteer/edit/areas', $response);
         $this->load->view('common/footer');
     }
@@ -126,18 +113,35 @@ class Edit extends VoluntarioController {
      * function to delete an area of interest of a volunteer
      */
     public function delete_areas() {
-        //receive an array throw post of the areas recorded
-        $areas = array();
 
-        if (!(isset($_POST))) {
-            foreach ($_POST as $key => $value) {
-                $areas [$key] = $value;
-            }
-        }
-        print_r($areas);
-        $this->Areas_model->deleteArea($areas);
+        // load model de areas de voluntario
+        $this->load->model('volunteers/Areas_model', 'am');
 
-        $this->load->view('volunteer/myprofile');
+        // remove area pretendida
+        $affected_rows = $this->am->deleteArea($_POST['area_id'], $_POST['grupo_id']);
+
+        // prepara flash resposta
+        setFlash('success', 'Área de interesse eliminada com sucesso!');
+
+        // redireciona novamente para edit areas
+        redirect('volunteer/edit/areas');
+
+    }
+
+    public function add_area(){
+
+       // load model de areas de voluntario
+        $this->load->model('volunteers/Areas_model', 'am');
+
+        // remove area pretendida
+        $affected_rows = $this->am->addArea($_POST['area_id'], $_POST['grupo_id']);
+
+        // prepara flash resposta
+        setFlash('success', 'Área de interesse eliminada com sucesso!');
+
+        // redireciona novamente para edit areas
+        redirect('volunteer/edit/areas');  
+
     }
 
     /**

@@ -29,6 +29,7 @@ class My extends VoluntarioController
     		);
 
     	$this->load->view('common/menu', $dadosMenu);
+        $this->load->view('volunteer/profile/header', $dadosProfile);
         $this->load->view('volunteer/myprofile', $dadosProfile);
         $this->load->view('common/footer');
     }
