@@ -17,79 +17,103 @@
 					</div>
 					<div class = "registarForm">
 					
-						<form role="form" method="post" enctype="multipart/form-data" onsubmit="return validateForm()"  action="institution" id="institutionRegist">
+						<form role="form" method="post" enctype="multipart/form-data" onsubmit="return formValidator()"  action="institution" id="institutionRegist">
 
 							<!-- NAME -->
-							<label  class ="control-label col-sm-2" for="instituitionName">Nome</label>
+							<label  class ="control-label col-sm-4" for="instituitionName">Nome</label>
 							<div class="form-group">
 								<input type="text" name="username" class="form-control" id="instituitionName" placeholder="Nome de instituição..." required>
 							</div>
 
 							<!-- REPRESENTANT NAME -->
-							<label  class ="control-label col-sm-2" for="instituitionName">Nome de representante</label>
+							<label  class ="control-label col-sm-4" for="instituitionName">Nome de representante</label>
 							<div class="form-group">
 								<input type="text" name="representantName" class="form-control" id="representanteName" placeholder="Nome de representante..." required>
 							</div>
 							
 							<!-- LOCAL -->
-							<div class="form-inline" >
-								<div class="form-group">
-									<label>Pais</label>
-									<select id="country" name="country">
-										<option value="1"> </option>
-										<option value="2">Portugal</option>
-									</select>
-								</div>
+							<div class="form-group">
 
-								<div class="form-group" id="districtContainer" style="display:none;">
-									<label>Distrito</label>
-									<select id="district" name="district">
+								<label  class ="control-label col-sm-12" for="Location">Localização</label>
+								<div id="Location" class="form-group col-sm-12">
+									<div class="form-inline" >
+										<div class="form-group">
+											<label>Pais</label>
+											<select id="country" name="country">
+												<option value="1"> </option>
+												<option value="2">Portugal</option>
+											</select>
+										</div>
+
+										<div class="form-group" id="districtContainer" style="display:none;">
+											<label>Distrito</label>
+											<select id="district" name="district">
+												
+												<option value="0"></option>
+												<option value="1">Estremadura</option>
+												
+											</select>
+										</div>
 										
-										<option value="0"></option>
-										<option value="1">Estremadura</option>
+										<div class="form-group" id="cityContainer" style="display:none;">
+											<label>Concelho</label>
+											<select id="city" name="city">
+												<option value="0"></option>
+												<option value="1">Lisboa</option>
+											</select>
+										</div>
 										
-									</select>
+										<div class="form-group" id="townContainer" style="display:none;">
+											<label>Freguesia</label>
+											<select id="town" name="town">
+												<option value="0"></option>
+												<option value="1">Odivelas</option>
+											</select>
+										</div>
+								    </div>
 								</div>
-								
-								<div class="form-group" id="cityContainer" style="display:none;">
-									<label>Concelho</label>
-									<select id="city" name="city">
-										<option value="0"></option>
-										<option value="1">Lisboa</option>
-									</select>
-								</div>
-								
-								<div class="form-group" id="townContainer" style="display:none;">
-									<label>Freguesia</label>
-									<select id="town" name="town">
-										<option value="0"></option>
-										<option value="1">Odivelas</option>
-									</select>
-								</div>
-						    </div>
+							</div>
 
 							<!-- ADDRESS -->
-							<label  class ="control-label col-sm-2" for="institutionAddress">Morada</label>
+							<label  class ="control-label col-sm-4" for="institutionAddress">Morada</label>
 							<div class="form-group">
 								<input type="text" name="institutionAddress" class="form-control" id="institutionAddress" placeholder="Morada  de Instituição..." required>
 							</div>
 
 							<!-- REPRESENTANT EMAIL -->
-							<label  class ="control-label col-sm-2" for="institutionEmail">Email de contacto</label>
+							<label  class ="control-label col-sm-4" for="institutionEmail">Email de contacto</label>
 							<div class="form-group">
-								<input type="text" name="institutionEmail" class="form-control" id="institutionEmail" placeholder="Email de contacto" required>
+								<input type="email" name="institutionEmail" class="form-control" id="institutionEmail" placeholder="Email de contacto" required>
+							</div>
+
+							<!-- INSTITUTIO PHONE -->
+							<label  class ="control-label col-sm-4" for="institutionPhone">Contacto telefónico</label>
+							<div class="form-group">
+								<input type="tel" name="institutionPhone" class="form-control" id="institutionPhone" placeholder="Contacto telefonico" required>
 							</div>
 							
 							<!-- DESCRIPTION -->
-							<label  class ="control-label col-sm-2" for="institutionDescription">Descrição <small>(breve)</small> </label>
+							<label  class ="control-label col-sm-4" for="institutionDescription">Descrição <small>(breve)</small> </label>
 							<div class="form-group">
 								<textarea name="institutionDescription" class="form-control" id="institutionDescription" placeholder="Decrição breve da Instituição e do seu papel na sociedade" required></textarea>
 							</div>
 							
 							<!-- WEBSITE -->
-							<label  class ="control-label col-sm-2" for="institutionWebsite">Website</label>
+							<label  class ="control-label col-sm-4" for="institutionWebsite">Website</label>
 							<div class="form-group">
-								<input type="text" name="institutionWebsite" class="form-control" id="institutionWebsite" placeholder="Exemplo: www.instituição.pt" required>
+								<input type="url" name="institutionWebsite" class="form-control" id="institutionWebsite" placeholder="Exemplo: www.instituição.pt" required>
+							</div>
+
+							<!-- PASSWORD AND PASSWORD CONFIRMATION -->
+							<label  class ="control-label col-sm-4" for="institutionPassword">Password</label>
+							<div class="form-group">
+								<input type="password" name="institutionPassword" class="form-control" id="institutionPassword" required>
+							</div>
+
+							
+							<label  class ="control-label col-sm-4" for="institutionPasswordConfirmation">Confirmação de password</label>
+							<div class="form-group">
+								<input type="password" name="institutionPasswordConfirmation" class="form-control" id="institutionPasswordConfirmation" required>
 							</div>
 							
 							<!-- SEND BUTTTON -->
@@ -114,6 +138,18 @@
 
 				<script type="text/javascript">
 					
+					/////////////////////////////////////////////////////////
+					// VALIDATOR
+					var website = $('#institutionWebsite');
+					function formValidator(){
+
+						alert(website.value);
+
+					}
+
+
+					/////////////////////////////////////////////////////////
+					// LOCATION SERVICE
 					// set all location variables
 					var countryField = '#country';
 
