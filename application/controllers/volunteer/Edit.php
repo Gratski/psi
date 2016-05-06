@@ -26,39 +26,30 @@ class Edit extends VoluntarioController {
      */
     public function areas() {
         $this->load->model('volunteers/Areas_model', 'areas_model');
-
-        $user = $this->session->user_details;
+        $this->load->model('volunteers/Main_model', 'mm');
+        $user = $this->mm->getVolunteerByEmail($this->session->user_details->email);
+        
         $user_areas = $this->areas_model->getAll($this->session->user_id);
 
         //obter areas ainda por adicionar
         //testar depois de estar a inserir uma area
 
         $response = array($user, $user_areas);
-        echo 'RESPOSTA TODA<br>';
-        echo var_dump($response);
-        echo '<br>==========================<br>';
-        echo 'USER AREAS<br>';
-        echo var_dump($user_areas);
-
-        echo '<br>==========================<br>';
 
         $areas_ids = $this->getAreasIds($user_areas);
-        echo 'IDS DE AREAS<br>';
-        echo var_dump($areas_ids);
-        echo '<br>==========================<br>';
-
+        
         $groups_ids = $this->getGroupsIds($user_areas);
-        echo 'IDS DE GRUPOS<br>';
-        echo var_dump($groups_ids);
-        echo '<br>==========================<br>';
-
+        
         $complement = $this->areas_model->getComplement($user->id, $areas_ids, $groups_ids);
-        echo 'COMPLEMENT<br>';
-        echo var_dump($complement);
-        echo '<br>==========================<br>';
-
+        
+        $response = array(
+             'user' => $user, 
+             'user_areas' => $user_areas, 
+             'user_areas_complement' => $complement);
+        
         //gerar views
-        $this->load->view('common/menu');
+        $this->load->view('common/menu', $user);
+        $this->load->view('volunteer/profile/header', $response);
         $this->load->view('volunteer/edit/areas', $response);
         $this->load->view('common/footer');
     }
@@ -71,27 +62,29 @@ class Edit extends VoluntarioController {
      */
     public function put_schedule() {
 
-        $put = parseFromInputStream();
-
-        $horario_id = $put['horario'];
         $horario = array(
-            'hora_inicio' => $put['hora_inicio'],
-            'hora_fim' => $put['hora_fim'],
-            'data_inicio' => $put['data_inicio'],
-            'data_fim' => $put['data_fim']
+            'hora_inicio' => $_POST['hora_inicio'],
+            'hora_fim' => $_POST['hora_fim'],
+            'data_inicio' => $_POST['data_inicio'],
+            'data_fim' => $_POST['data_fim']
         );
-
+        
         $this->load->model('schedule/Schedule_model', 'sm');
 
         //se actualizado
-        if ($this->sm->update($horario_id, $horario)) {
+        if ($this->sm->update()) {
             setFlash('success', 'Horario actualizado!');
-            redirect('volunteer/myprofile');
+            print_r("----------UPDATE-----------");
+//           redirect('volunteer/my');
+        }else if($this->sm->create($horario)){
+            setFlash('success', 'Horario criado!');
+            print_r("----------CREATE-----------");
+            //redirect('volunteer/my');
         }
         //se nao actualizado
         else {
             setFlash('danger', 'Ups.. algo correu mal. Tente novamente.');
-            redirect('volunteer/edit/schedule');
+          redirect('volunteer/edit/schedule');
         }
     }
 
@@ -122,18 +115,35 @@ class Edit extends VoluntarioController {
      * function to delete an area of interest of a volunteer
      */
     public function delete_areas() {
-        //receive an array throw post of the areas recorded
-        $areas = array();
 
-        if (!(isset($_POST))) {
-            foreach ($_POST as $key => $value) {
-                $areas [$key] = $value;
-            }
-        }
-        print_r($areas);
-        $this->Areas_model->deleteArea($areas);
+        // load model de areas de voluntario
+        $this->load->model('volunteers/Areas_model', 'am');
 
-        $this->load->view('volunteer/myprofile');
+        // remove area pretendida
+        $affected_rows = $this->am->deleteArea($_POST['area_id'], $_POST['grupo_id']);
+
+        // prepara flash resposta
+        setFlash('success', 'Área de interesse eliminada com sucesso!');
+
+        // redireciona novamente para edit areas
+        redirect('volunteer/edit/areas');
+
+    }
+
+    public function add_area(){
+
+       // load model de areas de voluntario
+        $this->load->model('volunteers/Areas_model', 'am');
+
+        // remove area pretendida
+        $affected_rows = $this->am->addArea($_POST['area_id'], $_POST['grupo_id']);
+
+        // prepara flash resposta
+        setFlash('success', 'Área de interesse eliminada com sucesso!');
+
+        // redireciona novamente para edit areas
+        redirect('volunteer/edit/areas');  
+
     }
 
     /**
@@ -142,21 +152,17 @@ class Edit extends VoluntarioController {
     public function basic() {
         $this->load->model('users/User_model', 'user_model');
         $user_info = $this->user_model->readUser($this->session->user_id);
-
+        //print_r($user_info);
         //query is not empty respond to the correct view
         if ($user_info != NULL) {
-            $response = array();
-            foreach ($user_info as $key => $value) {
-                $response[$key] = $value;
-            }
             //gerar views
-            $this->load->view('common/menu');
-            $this->load->view('volunteer/edit/basic', $response);
+            $this->load->view('common/menu', $user_info);
+            $this->load->view('volunteer/edit/basic', $user_info);
             $this->load->view('common/footer');
         }
         // something went wrong display the 404 view
         else {
-            $this->load->view('errors/cli/404.php');
+            $this->load->view('views/errors/cli/404.php');
         }
     }
 
@@ -165,41 +171,41 @@ class Edit extends VoluntarioController {
      * grabs the post made in the form update it to an associative array
      */
     public function updateBasic() {
-        $this->load->model('users/User_model', 'user_model');
+
+        $this->load->model('users/User_model', 'um');
 
         $user = $this->session->user_details;
+
         $info = array();
 
-        if (!(isset($_POST))) {
-            foreach ($_POST as $key => $value) {
-                $info [$key] = $value;
-            }
+        foreach ($_POST as $key => $value) {
+            $info [$key] = $value;
         }
-        $response = "Yor information has been updated";
-        $this->user_model->updateUser($this->session->user_id, $info);
 
-        $this->load->view('common/menu');
-        $this->load->view('volunteer/myprofile', $response);
+        $userInfo = $this->um->updateUser($this->session->user_id, $info);
+        $this->load->view('common/menu', $userInfo);
+        $this->load->view('volunteer/myprofile', $userInfo);
         $this->load->view('common/footer');
     }
 
     /**
      * function to get the schedule of the user
      */
-    public function get_schedule() {
+    public function schedule() {
         $this->load->model('schedule/Schedule_model', 'sm');
-        $currenteSchedule = $this->sm->getSchedule($this->session->user_id);
-
+        $this->load->model('volunteers/Main_model', 'vm');
+        $currenteSchedule = $this->sm->getSchedule();
+        $user_info = $this->vm->getVolunteerByEmail($this->session->user_details->email);
+        
+        $this->load->view('common/menu', $user_info);
+        $this->load->view('volunteer/edit/basic', $user_info);
         if ($currenteSchedule != NULL) {
-            $response = array();
-            foreach ($currenteSchedule as $key => $value) {
-                $response[$key] = $value;
-            }
-            //generate views
-            $this->load->view('volunteer/edit/basic', $response);
+
+            $this->load->view('volunteer/edit/schedule', $currenteSchedule);
         } else {
-            $this->load->view('volunteer/edit/basic', "Horário não definido");
+            $this->load->view('volunteer/edit/schedule');
         }
+        $this->load->view('common/footer');
     }
 
     private function getAreasIds($list) {

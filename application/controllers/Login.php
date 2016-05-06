@@ -10,6 +10,7 @@ class Login extends CI_Controller
 {
 
     public function index(){
+    	$this->load->view('common/simple_menu');
         $this->load->view('common/login');
     }
 

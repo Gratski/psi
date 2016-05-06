@@ -63,10 +63,11 @@ class User_model extends CI_Model {
     }
 
     public function getUserByEmail($email) {
-        $select = 'u.*, f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
+        $select = 'u.*,  f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
         $query = $this->db->select($select)
                 ->from('Utilizador u')
-                ->where('email', $email)
+                ->where('u.email', $email)
+                //->join('Voluntario v', 'v.utilizador=u.id')
                 ->join('Freguesia f', 'u.freguesia = f.id')
                 ->join('Concelho c', 'c.id = f.concelho')
                 ->join('Distrito d', 'd.id = c.distrito')
@@ -74,38 +75,34 @@ class User_model extends CI_Model {
                 ->limit(1)
                 ->get();
         $res = $query->result();
-        if (count($res) == 0)
+        if (count($res) == 0){
+            echo "NOT FOUND";
             return null;
+        }
         else
             return $res[0];
     }
 
     public function readUser($id) {
-        // get the email of the user
-        $user =  $this->getAllInfo('id', 1);
-        $id4=1;
-            $sel = "SELECT * FROM TABLE Voluntario WHERE utilizador = 1";
-           
-       $query = $this->db->query($sel);
-        
-        print_r($query);
+        $email = $this->db->select('email')->from('Utilizador u ')->where('u.id', $id)->get();
 
-        return $user != NULL ? $user : NULL;
-    }
+        $e = $email->result()[0];
 
-    private function getAllInfo($type, $value) {
-        $select = 'u.*, f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
-        $query = $this->db->select($select)
-                ->from('Utilizador u')
-                ->where('u.'.$type, $value)
-                ->join('Freguesia f', 'u.freguesia = f.id')
-                ->join('Concelho c', 'c.id = f.concelho')
-                ->join('Distrito d', 'd.id = c.distrito')
-                ->join('Pais p', 'p.id = d.pais')
-                ->limit(1)
-                ->get();
-        $res = $query->result();
-        return count($res) == 0 ? NULL : $res[0];
+        $user = $this->getUserByEmail($e->email);
+
+        $voluntario = $this->db->select('*')->from('Voluntario')->where('utilizador', $id)->get();
+
+        $array = array();
+        $info = $voluntario->result()[0];
+
+        foreach ($user as $key => $value) {
+            $array[$key] = $value;
+        }
+        foreach ($info as $key => $value) {
+            $array[$key] = $value;
+        }
+
+        return (count($array) != 0) ? $array : NULL;
     }
 
     /**
@@ -115,25 +112,33 @@ class User_model extends CI_Model {
      * from the form with all the information to be updated
      */
     public function updateUser($id, $infoUpdated) {
-        $this->db->where('id', $id);
-        $this->db->update('Utilizador', $infoUpdated);
-        print_r($infoUpdated);
+        $userInfo = array();
+        $volunteerInfo = array();
 
-//UI ISTO EH MTA FRUTA TEMOS DE GARANTIR QUE OS 
-//CAMPOS DO SUBMIT TEM DE SER IGUAIS AOS DA BASE DE DADOS
-//  $data = array(
-//     'title' => $title,
-//    'name' => $name,
-//    'date' => $date
-// );
-//   $this->db->where('id', $id);
-//  $this->db->update('mytable', $data);
-// Produces:
-//
-        //      UPDATE mytable
-//      SET title = '{$title}', name = '{$name}', date = '{$date}'
-//      WHERE id = $id
-//http://www.codeigniter.com/user_guide/database/query_builder.html#updating-data
+
+        foreach ($infoUpdated as $key => $value) {
+            if ($key == 'nome' 
+                    || $key == 'email' 
+                    || $key == 'passord' 
+                    || $key == 'telefone' 
+                    ) {
+                $userInfo[$key] = $value;
+            }if($key == 'genero' 
+                    || $key == 'foto'
+                    || $key == 'data_nascimento') {
+                $volunteerInfo[$key] = $value;
+            }
+        }
+
+        $this->db->where('id', $id);
+        $this->db->update('Utilizador', $userInfo);
+        
+        $this->db->where('utilizador', $id);
+        $this->db->update('Voluntario', $volunteerInfo);
+        
+       $fullaraay= array_merge($userInfo, $volunteerInfo);
+       
+        return $fullaraay;
     }
 
 }

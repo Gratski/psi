@@ -1,79 +1,67 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-// ===========================================================================
-//            - Guardar em views/
-// ===========================================================================
-?>
 
-  <head>
-  <title>Editar Àreas</title>
-</head>
 	<div class="container">
-		<div class="row">
-            <div class="col-sm-2">
-                <img src="<?php echo $image; ?>" height="150" width="150" align="right">
-            </div>
-		  <div class="col-sm-3">
-			<h1>
-                <?php
-                echo $nome;
-                ?>
-              </h1> 
-              <?php echo $telefone; ?><br>
-              <?php echo $freguesia_nome; ?>,
-              <?php echo $nome_conselho; ?>, 
-              <?php echo $nome_distrito; ?>, 
-              <?php echo $pais_nome; ?>. </div>
-          <div class='col-sm-2'>
-              <br><br><p>
-              <?php echo $data_nascimento; ?>
-              </p></div>
-		</div>
+        
         <div class="row">
             <div class="col-sm-10">
-                <h2>Editar Áreas</h2>
+                <? if(hasFlash()){ ?>
+                    <div class="alert alert-success" role="alert">
+                        <? echo  printFlash(); ?>    
+                    </div>
+                <? } ?>
             </div>
         </div>
-        <div class='row'>
-            <div class='col-sm-3' align='left'>
-                Grupos de Interesse
-            </div>
-            <div class='col-sm-4' align='left'>
-                Áreas de Intervenção
+
+        <div class="row">
+            <div class="col-sm-10">
+                <? if(count($user_areas) != 0){ ?>
+
+                <h3>Meus interesses</h3>
+                <table class="table">
+                    
+                    <? foreach ($user_areas as $user_area) { ?>
+                        <tr>
+                            <td><? echo $user_area->area_nome; ?></td>
+                            <td><? echo $user_area->grupo_tipo; ?></td>
+                            <td>
+                                <form action="deleteArea" method="post">
+                                    <input type="text" name="area_id" hidden="hidden" value="<? echo $user_area->area_id; ?>">
+                                    <input type="text" name="grupo_id" hidden="hidden" value="<? echo $user_area->grupo_id; ?>">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="remover">
+                                </form>
+                            </td>
+                        </tr>
+                    <? } ?>
+
+                </table>
+                <? } ?>
             </div>
         </div>
-        <div class='row'>
-            Actuais:
-        </div>
-        <form action="">
-            <div class='row'>
-                <div class='col-sm-4' align='left'>
-                    <?php foreach($query as $post): ?>
-                        <?php echo $post->grupos_uti; ?><input type="submit" value="Remover">
-                    <?php endforeach; ?>
-                </div>
-                <div class='col-sm-4' align='left'>
-                    <?php foreach($query as $post): ?>
-                        <?php echo $post->areas_uti; ?><input type="submit" value="Remover">
-                    <?php endforeach; ?>
-                </div>
+    
+
+        <div class="row">
+            <div class="col-sm-10">
+                <? if(count($user_areas_complement) != 0){ ?>
+
+                <h3>Adicionar interesses</h3>
+                <table class="table">
+                    
+                    <? foreach ($user_areas_complement as $user_area) { ?>
+                        <tr>
+                            <td><? echo $user_area->area_nome; ?></td>
+                            <td><? echo $user_area->grupo_tipo; ?></td>
+                            <td>
+                                <form action="addArea" method="post">
+                                    <input type="text" name="area_id" hidden="hidden" value="<? echo $user_area->area_id; ?>">
+                                    <input type="text" name="grupo_id" hidden="hidden" value="<? echo $user_area->grupo_id; ?>">
+                                    <input type="submit" class="btn btn-sm btn-success" value="adicionar">
+                                </form>
+                            </td>
+                        </tr>
+                    <? } ?>
+
+                </table>
+                <? } ?>
             </div>
-        </form>
-        <div class='row'>
-            Inserir nova(s) àrea(s):
         </div>
-        <form action="">
-            <div class='row'>
-                <div class='col-sm-4' align='left'>
-                    <?php foreach($query as $post): ?>
-                        <?php echo $post->grupos; ?><input type="submit" value="Adicionar">
-                    <?php endforeach; ?>
-                </div>
-                <div class='col-sm-4' align='left'>
-                    <?php foreach($query as $post): ?>
-                        <?php echo $post->areas; ?><input type="submit" value="Adicionar">
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </form>
+        
 	</div>

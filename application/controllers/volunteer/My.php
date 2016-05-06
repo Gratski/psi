@@ -15,16 +15,21 @@ class My extends VoluntarioController
     }
 
     public function index(){
-    	$this->load->model('users/User_model', 'um');
+    	$this->load->model('volunteers/Main_model', 'vm');
     	$email = $this->session->user_details->email;
     	
-    	$dadosProfile = $this->um->getUserByEmail($email);
+    	$dadosProfile = $this->vm->getVolunteerByEmail($email);
+        //echo "========================<br>";
+        //echo var_dump($dadosProfile);
     	$dadosMenu = array(
     			'titulo' => 'Meu perfil',
-    			'username' => $dadosProfile->nome
+    			'nome' => $dadosProfile->nome,
+                'id' => $dadosProfile->id,
+                'foto' => $dadosProfile->foto
     		);
 
     	$this->load->view('common/menu', $dadosMenu);
+        $this->load->view('volunteer/profile/header', $dadosProfile);
         $this->load->view('volunteer/myprofile', $dadosProfile);
         $this->load->view('common/footer');
     }

@@ -53,21 +53,26 @@ class Areas_model extends CI_Model {
         //se lista de groups ou areas eh vazia, cria por omissao
         if(count($groups) == 0 || count($areas) == 0)
         {
-            $areas = array('0');
-            $groups = array('0');
-        }
-        
-        $query = $this->db->select($select)
+            $query = $this->db->select($select)
                  ->from('Grupo_Area ga')
                     ->join('Grupo g', 'ga.grupo = g.id')
                     ->join('Area a', 'ga.area = a.id')
-                    ->group_start()
-                        ->where_not_in('a.id', $areas)
-                        ->where_not_in('g.id', $groups)     
-                    ->group_end()
                     ->get();
-        $res = $query->result();
-        return $res;
+            $res = $query->result();
+            return $res;
+        }
+        else{
+            $query = $this->db->select($select)
+                     ->from('Grupo_Area ga')
+                        ->join('Grupo g', 'ga.grupo = g.id')
+                        ->join('Area a', 'ga.area = a.id')
+                        ->group_start()
+                            ->where_not_in('a.id', $areas)
+                            ->where_not_in('g.id', $groups)     
+                        ->group_end()
+                        ->get();
+            return $query->result();    
+        }
     }
 
     /**
@@ -75,29 +80,34 @@ class Areas_model extends CI_Model {
      * @param type $updatedAreas arrary like this [[area][grupo]] 
      * @param type $idUser 
      */
-    public function deleteArea($updatedAreas, $idUser) {
-        //iterate over them and every area that has no
-        $this->load->database();
+    public function deleteArea($area_id, $group_id) {
 
-        //grab the id of the volunteer
-        $id_voluntario = $this->db->select('utilizador')
-                ->from('Voluntario As V')
-                ->where($idUser, 'V.utilizador')->get();
+        // obtem user de session
+        $userId = $this->session->user_details->id;
 
+        // faz query de delete
+        $query = $this->db->where('area', $area_id)
+                            ->where('grupo', $group_id)
+                            ->where('voluntario', $userId)
+                            ->delete('Interesses_Voluntario');
 
-        /* DELETE FROM Interesses_Voluntario As iv
-         * WHERE $key = iv.area
-         * AND $value = iv.grupo
-         * AND $id_Volun = iv.voluntario
-         * 
-         */
+    }
 
-        foreach ($updatedAreas as $key => $value) {
-            $this->db->where($key, 'area')
-            ->where($value, 'grupo')
-            ->where($id_voluntario, 'voluntario')
-            ->delete('Interesses_Voluntario');
-        }
+    public function addArea($area_id, $group_id) {
+
+        // obtem user de session
+        $userId = $this->session->user_details->id;
+
+        // prepare data to be stored
+        $data = array(
+            'area' => $area_id,
+            'grupo' => $group_id,
+            'voluntario' => $userId
+            );
+
+        // faz query de delete
+        $query = $this->db->insert('Interesses_Voluntario', $data);
+
     }
 
 }

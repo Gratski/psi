@@ -36,15 +36,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Bem-vindo</div>
-                <div class="intro-heading">Voluntários@FCUL</div>
+
+        	<div class="col-md-4 text-left">
+        		<div class="intro-text">
+                <div><h1 style="color:#333;">Bem-vindo</h1></div>
+                <div><h2 style="color:#333;">Voluntários@FCUL</h2></div>
 				<div class="btn-group" role="group" aria-label="...">
-					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">ENTRAR</button>
+					<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#loginModal">ENTRAR</button>
 				</div>          
             </div>
+        	</div>
+        	<div class="col-md-8">
+        		
+        	</div>
         </div>
     </header>
+
+
 	
 	<!-- Login Modal -->
 	<div class="modal fade" id="loginModal" role="dialog">
@@ -57,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 				<div class="modal-body">
 					<div class="col-md-6">
-						<form action = "User/createSession" class="form-signin" method = "POST">
+						<form action = "index.php/user/login" class="form-signin" method = "POST">
 							<h2 class="form-signin-heading">Iniciar Sessão</h2>
 							<label for="inputEmail" class="sr-only">Email</label>
 							<input name= "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
@@ -75,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<h2 class="form-signin-heading">Registar-se</h2>
 						<div class= "opcoesRegisto">
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Instituição</button>
-							<a href="signup/volunteer" class="btn btn-lg btn-primary btn-block">Voluntário</a>
+							<a href="index.php/signup/volunteer" class="btn btn-lg btn-primary btn-block">Voluntário</a>
 						</div>
 					</div>
 				</div>

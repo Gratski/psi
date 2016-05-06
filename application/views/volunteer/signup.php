@@ -1,38 +1,23 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Registar Voluntário</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../css/registoEstilos.css">
-		<meta charset="UTF-8">
-		<script src="http://code.jquery.com/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="css/bs/js/bootstrap.min.js"></script>
-		 <script type="text/javascript" src="../js/function.js"></script>
 
-	</head>
-	<body>
-	<!-- 
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<ul class="nav navbar-nav navbar-left">
-				 <a class="navbar-brand page-scroll" href="home.php">Volunteer@FCUL</a>
-			</ul>
-		  </div>
-		</nav>
-	-->
+	
 		<div class="container">
+
+			<div class="row" style="padding-top:10px;">
+				<a href="<?php echo base_url(); ?>"><button class="btn btn-default">< Voltar a página inicial</button></a>
+			</div>
+
 			<div class="row">
 				<div class="col-sm-8">
 					<div class= "SectionTitle">
 						<h1> Regista-te </h1>
 						<p> Ajuda a tua causa! </p>
-						<?php if(hasFlash()) printFlash(); ?>
+						<div class="erro">
+							<p><?php if(hasFlash()) printFlash(); ?><p>
+						</div>
 					</div>
 					<div class = "registarForm">
 					
-						<form role="form" method="post" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
+						<form role="form" method="post" enctype="multipart/form-data" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
 						
 							<div class="form-group">
 								<input type="text" name="username" class="form-control" id="exampleInputName2" placeholder="Nome próprio" required>
@@ -168,37 +153,33 @@
 								<!--
 								<button type="submit" class="btn btn-default">Submit</button>
 								-->
+
+							<div class="form-group">
+								<div class= "escolheFoto pull-left">
+									
+										<label class="file">
+											Fotografia de perfil<br>
+											<input type="file" id="file" name= "photo" onchange = "setFoto()">
+											<span class="file-custom"></span>
+										</label>
+								
+								</div>
+							</div>
+
+							<div class="form-group" style="width:100%;">
+								<div class="submitButton" style="width:100%;">
+									<button type="submit" class="btn btn-success pull-right" form ="registaVoluntario" >Finalizar registo</button>
+								</div>	
+							</div>
+
+							</form>
 							
 					
 					</div>
 					
 				</div>
 				<div class="col-sm-4">
-					<div class ="foto">
-						<img class="img-responsive img-circle" id = "myFoto" alt="" src="../img/camera.jpg">
-					</div>
-					<div class= "escolheFoto">
-						
-							<label class="file">
-								<input type="file" id="file" name= "photo" onchange = "setFoto()">
-								<span class="file-custom"></span>
-							</label>
 					
-					</div>
 					
-					</form>
-					<div class="submitButton">
-						<button type="submit" class="btn btn-default" form ="registaVoluntario" >Submit</button>
-					</div>	
 				</div>
 							
-			
-		 <footer>
-			<div class="container">
-				<div class="row" id="footerRow" >
-					<span class="copyright">Copyright &copy; Grupo18- PSI</span>
-				</div>
-			</div>
-		</footer>
-	</body>
-</html>

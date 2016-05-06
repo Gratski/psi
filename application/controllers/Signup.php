@@ -22,6 +22,7 @@ class Signup extends CI_Controller
      * GET
      */
     public function volunteer(){
+        $this->load->view('common/simple_menu');
         $this->load->view('volunteer/signup');
     }
 
@@ -37,6 +38,7 @@ class Signup extends CI_Controller
         $this->load->model('users/User_model', 'user_model');
         $this->load->helper('flash');
         
+        echo 'EMAIL: '.$_POST['email'].'<br>';
         //se o utilizador existe
         if($this->user_model->getUserByEmail($_POST['email']) != null)
         {
@@ -121,7 +123,7 @@ class Signup extends CI_Controller
             'password' => $_POST['pass'],
             'telefone' => $_POST['phone'],
             'freguesia' => 1,
-            'data_nascimento' => '12/12/2016'
+            'foto' => $_FILES['photo']
 
         );
         return $user;
@@ -133,8 +135,18 @@ class Signup extends CI_Controller
      * @return voluntario pronto a inserir
      */
     public function prepareVolunteerData(){
+         echo "DATA::: ".var_dump($_POST['birthDay']);
+        //$data = explode($_POST['birthDay'], '-');
+        
+        $year = "1989";
+        echo "ANO: " . $year;
+        $month = "03";
+        echo "MES: " . $month;
+        $day = "23";
+        echo "DIA: " . $day;
         $volunteer = array(
-            'genero' => $_POST['gender']
+            'genero' => $_POST['gender'],
+            'data_nascimento' => $year . '-' . $month .'-'. $day
         );
         return $volunteer;
     }

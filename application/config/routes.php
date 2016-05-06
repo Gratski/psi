@@ -59,9 +59,13 @@ $route['user/logout']['get'] = 'user/destroySession';
 
 //Routes para signup
 $route['signup/volunteer']['post'] = 'signup/volunteerCreate';
+$route['volunteer/edit/basic']['post'] = 'volunteer/edit/updateBasic';
 
 //Routes para edit de voluntario
 //actualizar horario
-$route['volunteer/edit/schedule']['put'] = 'volunteer/edit/put_Schedule';
+$route['volunteer/edit/schedule']['post'] = 'volunteer/edit/put_Schedule';
 //adicionar um interesse
-$route['volunteer/edit/areas']['post'] = 'volunteer/edit/post_areas';
+$route['volunteer/edit/addArea']['post'] = 'volunteer/edit/add_area';
+//remover uma area de interesse
+$route['volunteer/edit/deleteArea']['post'] = 'volunteer/edit/delete_areas';
+

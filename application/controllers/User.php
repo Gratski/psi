@@ -26,6 +26,7 @@ class User extends CI_Controller
 
         //se nao auth redireciona para form de login
         if($auth == null) {
+            setFlash('danger', 'Dados inválidos');
             redirect("login/");
             return;
         }
@@ -37,12 +38,11 @@ class User extends CI_Controller
 
         //redireciona com base no tipo de user
         if($this->user_model->isVolunteer($auth->id)){
-
             redirect('volunteer/my');
             return;
         }
         else if($this->user_model->isInstitution($auth->id)){
-            redirect('/institution/my');
+            redirect('institution/my');
             return;
         }
         else{
@@ -53,7 +53,7 @@ class User extends CI_Controller
     }
     public function destroySession(){
         $this->session->unset_userdata('user_id');
-        redirect('welcome/');
+        redirect('');
     }
     
 }
