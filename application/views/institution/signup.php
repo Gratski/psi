@@ -83,13 +83,13 @@
 							<!-- REPRESENTANT EMAIL -->
 							<label  class ="control-label col-sm-4" for="institutionEmail">Email de contacto</label>
 							<div class="form-group">
-								<input type="email" name="institutionEmail" class="form-control" id="institutionEmail" placeholder="Email de contacto" required>
+								<input type="email" name="email" class="form-control" id="institutionEmail" placeholder="Email de contacto" required>
 							</div>
 
 							<!-- INSTITUTIO PHONE -->
 							<label  class ="control-label col-sm-4" for="institutionPhone">Contacto telefónico</label>
 							<div class="form-group">
-								<input type="tel" name="institutionPhone" class="form-control" id="institutionPhone" placeholder="Contacto telefonico" required>
+								<input type="tel" name="phone" class="form-control" id="institutionPhone" placeholder="Contacto telefonico" required>
 							</div>
 							
 							<!-- DESCRIPTION -->
@@ -107,7 +107,7 @@
 							<!-- PASSWORD AND PASSWORD CONFIRMATION -->
 							<label  class ="control-label col-sm-4" for="institutionPassword">Password</label>
 							<div class="form-group">
-								<input type="password" name="institutionPassword" class="form-control" id="institutionPassword" required>
+								<input type="password" name="pass" class="form-control" id="institutionPassword" required>
 							</div>
 
 							

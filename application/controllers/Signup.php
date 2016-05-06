@@ -98,15 +98,48 @@ class Signup extends CI_Controller
      * GET
      */
     public function institution(){
-        //fazer render da view aqui
-    }
+        $this->load->view('common/simple_menu');
+        $this->load->view('institution/signup');
+	}
 
     /**
      * Insere uma nova instituicao na base de dados
      * POST
      */
     public function institutionCreate(){
-
+		//verificar se já existe um email igual-> redirecionar para a mesma página com flash de erro
+		
+		//verifica se o utilizador com o dado email existe
+        $this->load->model('users/User_model', 'user_model');
+        $this->load->helper('flash');
+        
+		echo "TESTE 1";
+        echo 'EMAIL: '.$_POST['email'].'<br>';
+        //se o utilizador existe
+        if($this->user_model->getUserByEmail($_POST['email']) != null)
+        {
+            setFlash("danger","Email ja existente");
+            redirect('signup/institution');
+        }
+		//preparar os campos do form
+		$newUser = $this->prepareUserData();
+		
+		$this->load->model('institution/signup_model', 'signup_model');
+		$newID = $this->signup_model->insert_user($newUser);
+		if($newID == -1) {
+			 setFlash("danger","Internal Error, tente de novo");
+			 redirect('signup/institution');
+		}
+		$newInstitution = $this->prepareInstitutionData($newID);
+		
+		$inserted= $this->signup_model->insert_institution($newInstitution);
+		if(!$inserted) {
+			 setFlash("danger","Internal Error, tente de novo");
+			 redirect('signup/institution');
+		}
+		
+		redirect('login');
+					
     }
 
 
@@ -122,8 +155,8 @@ class Signup extends CI_Controller
             'email' => $_POST['email'],
             'password' => $_POST['pass'],
             'telefone' => $_POST['phone'],
-            'freguesia' => 1,
-            'foto' => $_FILES['photo']
+            'freguesia' => $_POST['town']
+            //'foto' => $_FILES['photo']
 
         );
         return $user;
@@ -150,6 +183,20 @@ class Signup extends CI_Controller
         );
         return $volunteer;
     }
+	
+	public function prepareInstitutionData($id) {
+		  $institution = array(
+            'utilizador' => $id,
+			'representante' => $_POST['representantName'],
+            'representante_email' => $_POST['email'],
+            'descricao' => $_POST['institutionDescription'],
+            'website' => $_POST['institutionWebsite'],
+            'morada' => $_POST['institutionAddress']
+       
+        );
+		
+        return $institution;
+	}
 
     public function prepareHabilitacoes(){
         $hab = array();
