@@ -8,6 +8,7 @@
  */
 class User_model extends CI_Model {
 
+	
     public function auth($email, $pwd) {
 
         $this->load->database();

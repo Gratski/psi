@@ -26,6 +26,7 @@ class Main_model extends CI_Model
                 ->limit(1)
                 ->get();
         $res = $query->result();
+		
         if (count($res) == 0){
             return null;
         }
