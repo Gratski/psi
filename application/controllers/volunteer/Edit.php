@@ -198,7 +198,7 @@ class Edit extends VoluntarioController {
         $user_info = $this->vm->getVolunteerByEmail($this->session->user_details->email);
         
         $this->load->view('common/menu', $user_info);
-        $this->load->view('volunteer/edit/basic', $user_info);
+
         if ($currenteSchedule != NULL) {
 
             $this->load->view('volunteer/edit/schedule', $currenteSchedule);
