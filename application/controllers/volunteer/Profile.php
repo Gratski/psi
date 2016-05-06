@@ -31,4 +31,11 @@ class Profile extends CI_Controller {
         }
     }
 
+
+    public function yo(){
+        $this->load->view('common/simple_menu');
+        $this->load->view('institution/signup');
+        $this->load->view('common/footer');
+    }
+
 }
