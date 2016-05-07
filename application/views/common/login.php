@@ -26,7 +26,7 @@
 					<p> Registe-se agora para aceder à plataforma.</p> 
 				</div>
 			<div class= "opcoesRegisto">
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Sou Instituição</button>
+				<a href="signup/institution" class="btn btn-lg btn-primary btn-block">Instituição</a>
 				<a href="signup/volunteer" class="btn btn-lg btn-primary btn-block">Voluntário</a>
 			</div>
 			<span><a onclick="change()">já tenho conta</a></span>

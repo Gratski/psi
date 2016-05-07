@@ -70,3 +70,7 @@ $route['volunteer/edit/addArea']['post'] = 'volunteer/edit/add_area';
 //remover uma area de interesse
 $route['volunteer/edit/deleteArea']['post'] = 'volunteer/edit/delete_areas';
 
+//Routes para editar instituição
+//adicionar Oportunidade
+$route['institution/?????']['post'] = 'institution/offer/add_offer';
+

@@ -86,7 +86,7 @@ class Edit extends VoluntarioController {
 		//se não tem horario: cria um novo
 		else {
 			
-			if($this->sm->create($horario)){
+			if($this->sm->create_and_update($horario)){
 				setFlash('success', 'Horario criado!');
 				redirect('volunteer/my');
 			}

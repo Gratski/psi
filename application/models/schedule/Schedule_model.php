@@ -29,13 +29,13 @@ class Schedule_model extends CI_Model {
 	}
 
     
-    public function create($horario){
+    public function create_and_update($horario){
 		// get volunteer by email
         $user = $this->vm->getVolunteerByEmail($this->session->user_details->email);
    
         // cria um novo horario
-        $this->db->insert('Horario', $horario);
-        $horario_id = $this->db->insert_id();
+       
+        $horario_id = $this->create($horario);
         
         // update volunteer table
         $this->db->set('horario', $horario_id)
@@ -45,6 +45,18 @@ class Schedule_model extends CI_Model {
         return true;
         
     }
+	
+	 public function create($horario){
+		// get volunteer by email
+        $user = $this->vm->getVolunteerByEmail($this->session->user_details->email);
+   
+        // cria um novo horario
+        $this->db->insert('Horario', $horario);
+        $horario_id = $this->db->insert_id();
+        
+        return $horario_id ;
+	 }
+	
     
     /**
      * Actualiza o horario em base de dados
@@ -62,15 +74,6 @@ class Schedule_model extends CI_Model {
 		else
 			return false;
 	 
-	/*
-       if($currentSchedule = $this->getSchedule()) {
-		 
-		$this->db->where('id', $user->id);
-		$this->db->update('Horario', $currentSchedule);
-		
-	   
-	   return false;
-	*/
 	
     }
 
@@ -99,4 +102,18 @@ class Schedule_model extends CI_Model {
 		}
 		return false;
     }
+	
+	 public function getScheduleByID($id) {
+      
+			//select the horario by id
+			$query = $this->db->select('*')
+								->from('Horario h')
+								->where('h.id', $id)
+								->get();
+			
+			$horario = $query->result();
+
+			return $horario;
+	}
+  
 }
