@@ -11,10 +11,10 @@ class My extends InstitutionController
     }
 
     public function index(){
-    	$this->load->model('instituition/Main_model', 'vm');
+    	$this->load->model('institution/Main_model', 'vm');
     	$email = $this->session->user_details->email;
     	
-    	$dadosProfile = $this->vm->getInstituitonByEmail($email);
+    	$dadosProfile = $this->vm->getInstitutionByEmail($email);
         //echo "========================<br>";
         //echo var_dump($dadosProfile);
     	$dadosMenu = array(
@@ -24,8 +24,8 @@ class My extends InstitutionController
     		);
 
     	$this->load->view('common/menu', $dadosMenu);
-        $this->load->view('instituiton/profile/header', $dadosProfile);
-        $this->load->view('instituiton/myprofile', $dadosProfile);
+        $this->load->view('instituton/profile/header', $dadosProfile);
+        $this->load->view('instituton/myprofile', $dadosProfile);
         $this->load->view('common/footer');
     }
 
