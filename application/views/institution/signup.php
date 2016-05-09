@@ -22,7 +22,7 @@
 							<!-- NAME -->
 							<label  class ="control-label col-sm-4" for="instituitionName">Nome</label>
 							<div class="form-group">
-								<input type="text" name="username" class="form-control" id="instituitionName" placeholder="Nome de instituição..." required>
+								<input type="text" name="username" class="form-control" id="instituitionName" placeholder="Nome de instituição..." required autofocus>
 							</div>
 
 							<!-- REPRESENTANT NAME -->
