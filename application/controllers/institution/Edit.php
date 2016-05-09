@@ -59,5 +59,4 @@ class Edit extends InstitutionController {
         $this->load->view('instituition/myprofile', $userInfo);
         $this->load->view('common/footer');
     }
-
-    
+}

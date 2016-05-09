@@ -26,7 +26,7 @@ class Offer extends InstitutionController {
 		$this->load->model('schedule/schedule_model', 'newSch');
 		
 		//cria um novo horario
-		$insertedID = this->newSch->create($horario);
+		$insertedID = $this->newSch->create($horario);
 		
 		//prepara oportunidade
 		$user_id = $this->session->user_id;
