@@ -19,10 +19,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>voluntarios@FCUL</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../PSI/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('/css/bootstrap.min.css');?>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../PSI/css/estilos.css" rel="stylesheet">
+    <link href="<?php echo base_url("/css/estilos.css");?>" rel="stylesheet">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-md-6">
 						<h2 class="form-signin-heading">Registar-se</h2>
 						<div class= "opcoesRegisto">
-							<button class="btn btn-lg btn-primary btn-block" type="submit">Instituição</button>
+							<a href="index.php/signup/institution" class="btn btn-lg btn-primary btn-block">Instituição</a>
 							<a href="index.php/signup/volunteer" class="btn btn-lg btn-primary btn-block">Voluntário</a>
 						</div>
 					</div>

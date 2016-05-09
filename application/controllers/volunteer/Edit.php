@@ -71,22 +71,31 @@ class Edit extends VoluntarioController {
         
         $this->load->model('schedule/Schedule_model', 'sm');
 
-        //se actualizado
-        if ($this->sm->update()) {
-            setFlash('success', 'Horario actualizado!');
-            print_r("----------UPDATE-----------");
-//           redirect('volunteer/my');
-        }else if($this->sm->create($horario)){
-            setFlash('success', 'Horario criado!');
-            print_r("----------CREATE-----------");
-            //redirect('volunteer/my');
-        }
-        //se nao actualizado
-        else {
-            setFlash('danger', 'Ups.. algo correu mal. Tente novamente.');
-          redirect('volunteer/edit/schedule');
-        }
-    }
+		//se ja tem horario: actualiza-o
+		$horario_ID = $this->sm->hasHorario();
+		if( $horario_ID > -1 ) {
+				
+			if ($this->sm->update($horario_ID, $horario)) {
+				setFlash('success', 'Horario actualizado!');
+				redirect('volunteer/my');
+			}else {
+				setFlash('danger', 'Ups.. algo correu mal. Tente novamente.');
+				redirect('volunteer/edit/schedule');
+			}
+		}
+		//se não tem horario: cria um novo
+		else {
+			
+			if($this->sm->create_and_update($horario)){
+				setFlash('success', 'Horario criado!');
+				redirect('volunteer/my');
+			}
+			else {
+				setFlash('danger', 'Ups.. algo correu mal. Tente novamente.');
+			  redirect('volunteer/edit/schedule');
+			}
+		}
+	}
 
     /**
      * Adiciona uma area de interesse ao um voluntario
