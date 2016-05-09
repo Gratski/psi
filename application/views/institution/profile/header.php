@@ -10,17 +10,20 @@
         		</h1>
         		<h5>Actual representante: <?php echo $representante; ?></h5> 
               <!-- morada -->
-              <i class="glyphicon glyphicon-home"></i>&nbsp;
+              <i class="glyphicon glyphicon-home"></i> <?php echo $morada; ?><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;
               <?php echo $freguesia; ?>,
               <?php echo $concelho; ?>, 
               <?php echo $distrito; ?>, 
               <?php echo $pais; ?><br>
+              <i class="glyphicon glyphicon-globe"></i>&nbsp;&nbsp;<?php echo $website; ?><br>
 
               <!-- contacto -->
               <i class="glyphicon glyphicon-phone"></i>&nbsp;
               <?php echo $telefone; ?><br>&nbsp;<br>
 
               <!-- descricao -->
+              <h4>Sobre nós</h4>
               <span><?php echo $descricao; ?></span>
 			
 
