@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/models/users/User_model.php</file>
-            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/models/schedule/Schedule_model.php</file>
-            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/config/routes.php</file>
-            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/controllers/Signup.php</file>
-            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/controllers/volunteer/Edit.php</file>
+            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/views/opportunities/Instituicion.php</file>
+            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/views/opportunities/addOportunidade.php</file>
+            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/views/volunteer/edit/basic.php</file>
+            <file>file:/home/antonio/Dropbox/Projects/PSIProject/psi/application/views/common/menu.php</file>
         </group>
     </open-files>
 </project-private>
