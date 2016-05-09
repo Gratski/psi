@@ -105,6 +105,28 @@ class User_model extends CI_Model {
 
         return (count($array) != 0) ? $array : NULL;
     }
+    
+    public function readUserI($id) {
+        $email = $this->db->select('email')->from('Utilizador u ')->where('u.id', $id)->get();
+
+        $e = $email->result()[0];
+
+        $user = $this->getUserByEmail($e->email);
+
+        $institution = $this->db->select('*')->from('Instituicao')->where('utilizador', $id)->get();
+
+        $array = array();
+        $info = $institution->result()[0];
+
+        foreach ($user as $key => $value) {
+            $array[$key] = $value;
+        }
+        foreach ($info as $key => $value) {
+            $array[$key] = $value;
+        }
+
+        return (count($array) != 0) ? $array : NULL;
+    }
 
     /**
      * connection to the db and update the info for the user
@@ -142,4 +164,35 @@ class User_model extends CI_Model {
         return $fullaraay;
     }
 
+    public function updateUserI($id, $infoUpdated) {
+        $userInfo = array();
+        $institutionInfo = array();
+
+
+        foreach ($infoUpdated as $key => $value) {
+            if ($key == 'nome' 
+                    || $key == 'email' 
+                    || $key == 'passord' 
+                    ) {
+                $userInfo[$key] = $value;
+            }if($key == 'descricao' 
+                    || $key == 'descricao'
+                    || $key == 'website'
+                    || $key == 'representante'
+                    || $key == 'representante_email'
+                    || $key == 'morada') {
+                $institutionInfo[$key] = $value;
+            }
+        }
+
+        $this->db->where('id', $id);
+        $this->db->update('Utilizador', $userInfo);
+        
+        $this->db->where('utilizador', $id);
+        $this->db->update('Instituicao', $institutionInfo);
+        
+       $fullaraay= array_merge($userInfo, $institutionInfo);
+       
+        return $fullaraay;
+    }
 }
