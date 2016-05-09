@@ -23,7 +23,7 @@
                 <a class="navbar-brand page-scroll" href="">Volunteer@FCUL</a>
                 <ul class="nav navbar-nav navbar-right">
                 	<li>
-                		<a style="color:#FFF;" href="offers/new"><i class="glyphicon glyphicon-edit"></i>Adicionar oportunidade</a>
+                		<a style="color:#FFF;" href="offer/createOffer"><i class="glyphicon glyphicon-edit"></i>Adicionar oportunidade</a>
                 	</li>
                     <li class="dropdown pull-right">
                         <a style="color:#FFF;" class="dropdown-toggle" data-toggle="dropdown" href="#" align="right">

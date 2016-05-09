@@ -13,6 +13,38 @@ class Offer extends InstitutionController {
         parent::__construct();
     }
 	
+	//funcão que controla o adicionar oportunidade, enviando para a view um array com as ares_grupo existentes para o
+	//utilizador(instituiçao) selecionar.
+	public function createOffer() {
+		
+		$this->load->model('volunteers/Areas_model', 'areas_model');
+		
+		$grupo_area = $this->areas_model->devolveTodosGruposAreas();
+		
+		$this->load->model('institution/Main_model', 'vm');
+    	$email = $this->session->user_details->email;
+    	
+    	$dadosProfile = $this->vm->getInstitutionByEmail($email);
+        //echo "========================<br>";
+        //echo var_dump($dadosProfile);
+    	$dadosMenu = array(
+    			'titulo' => 'Meu perfil',
+    			'nome' => $dadosProfile->nome,
+                'id' => $dadosProfile->id
+    		);
+		
+		//gerar views
+        $this->load->view('institution/menu', $dadosMenu);
+        $this->load->view('institution/profile/header', $dadosProfile);
+        //$this->load->view('opportunities/addOportunidade', $grupo_area);
+        $this->load->view('common/footer');
+		
+		
+		print_r($grupo_area);
+		
+		
+	}
+	
 	 public function add_Offer() {
 		
 		//prepara horario para criar

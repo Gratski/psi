@@ -14,8 +14,27 @@ class Areas_model extends CI_Model {
         $queryResult = $this->db->select('Interesses_Voluntario')
                 ->where('voluntario', $id)
                 ->get();
+				
+		
         return $queryResult;
     }
+	
+	/**
+	* Obtem todos os grupo_area existentes na base de dados
+	* 
+	*
+	*/
+	public function devolveTodosGruposAreas() {
+		$this->load->database();
+		$queryResult =  $this->db->select('area.id as areaID , area.nome, grupo.id as grupoID, grupo.tipo,')
+								->from('grupo_area')
+								->join('area', 'grupo_area.area = area.id')
+								->join('grupo', 'grupo_area.grupo = grupo.id')
+								->get();
+		$result = $queryResult->result();					
+		
+		return $result;
+	}
 
     /**
     * Obter todas os Grupo_Area do utilizador
