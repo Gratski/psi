@@ -23,9 +23,9 @@ class My extends InstitutionController
                 'id' => $dadosProfile->id
     		);
 
-    	$this->load->view('common/menu', $dadosMenu);
-        $this->load->view('instituton/profile/header', $dadosProfile);
-        $this->load->view('instituton/myprofile', $dadosProfile);
+    	$this->load->view('institution/menu', $dadosMenu);
+        $this->load->view('institution/profile/header', $dadosProfile);
+        $this->load->view('institution/myprofile', $dadosProfile);
         $this->load->view('common/footer');
     }
 
