@@ -19,16 +19,14 @@
             <div class= "SectionTitle">
 
                 <h1> Nova Oportunidade:</h1>
-                <form action="addOportunidade" method="post" role="form" onsubmit="return validateHorario();">
-                    <input type="text" name="funcao" value="funcao">
+                <form action="addOportunidade" id="addOportunidade" method="post" role="form" onsubmit="return validateHorario();">
+                    <input type="text" name="funcao" value="funcao"></br>
 
                     <?php
-                    foreach ($array as $row) {
-                        foreach ($row as $key => $value) {
-                   
-                           echo '<p>'.$key.'</p>';
-                           echo '<p>'.$value.'</p>';
-                           
+                    foreach ($arr as $row) {
+                        foreach($row->getGrupos() as $grupo){
+                            echo 'AREA: '.$row->getNome();
+                            echo ' , GRUPO: '.$grupo->getNome().'<br>';
                         }
                     }
                     ?>
@@ -132,7 +130,7 @@
                             <a href="<?php echo base_url('index.php/institution/my'); ?>"><button type="reset">Cancel</button></a>
                             </form>
 
-            </div>
-        </div>
-     </div>
-</div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>

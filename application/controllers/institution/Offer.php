@@ -85,10 +85,10 @@ class Offer extends InstitutionController {
 				}
 		}
 		
-		echo '<p>Area aceder: $arr[0]->getId();</p>';
-		echo '<p>Area nome: $arr[0]->getNome()</p>';
-		echo '<p>Grupo de area aceder: $arr[0]->getGrupos()[0]->getNome()</p>';
-		print_r($arr);
+		//echo '<p>Area aceder: $arr[0]->getId();</p>';
+		//echo '<p>Area nome: $arr[0]->getNome()</p>';
+		//echo '<p>Grupo de area aceder: $arr[0]->getGrupos()[0]->getNome()</p>';
+	//	print_r($arr);
 		$areas_to_view = Array('arr'=>$arr);
 		$grupo_area2 = array( 'a' => $grupo_area);
 
@@ -106,7 +106,7 @@ class Offer extends InstitutionController {
 
         //gerar views
         $this->load->view('institution/menu', $dadosMenu);
-		$this->load->view('institution/profile/header', $dadosProfile); 
+        $this->load->view('institution/profile/header', $dadosProfile); 
         $this->load->view('opportunities/addOportunidade', $areas_to_view);
         $this->load->view('common/footer');
        // print_r($grupo_area2);
@@ -117,13 +117,14 @@ class Offer extends InstitutionController {
      * @return boolean
      */
     public function add_Offer() {
-
+        
         $horario = array(
             'hora_inicio' => $_POST['hora_inicio'],
             'hora_fim' => $_POST['hora_fim'],
             'data_inicio' => $_POST['data_inicio'],
             'data_fim' => $_POST['data_fim']
         );
+        print_r($horario);
 
         $this->load->model('schedule/schedule_model', 'newSch');
 
@@ -132,7 +133,7 @@ class Offer extends InstitutionController {
 
         //prepara oportunidade
         $user_id = $this->session->user_id;
-
+        print_r($user_id);
         $offer = array(
             'instituicao' => $user_id,
             'areas_grupo' => $_POST['areas_grupo'],
@@ -143,6 +144,8 @@ class Offer extends InstitutionController {
             'regular' => $_POST['regular'],
             'horario' => insertedID
         );
+        
+        print_r($offer);
 
         $this->load->model('offer/add_offer_model', 'offerModel');
 
