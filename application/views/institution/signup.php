@@ -8,8 +8,8 @@
     <div class="row">
         <div class="col-sm-8">
             <div class= "SectionTitle">
-                <h1> Resgito de Instituição </h1>
-                <p> Resgiste-se para  publicar oportunidades de voluntariado! </p>
+                <h1> Registo de Instituição </h1>
+                <p> Registe-se para  publicar oportunidades de voluntariado! </p>
                 <div class="erro">
                     <p><?php if (hasFlash()) printFlash(); ?><p>
                 </div>
@@ -137,67 +137,67 @@
 
         <script type="text/javascript">
 
-                                    /////////////////////////////////////////////////////////
-                                    // VALIDATOR
-                                    var website = $('#institutionWebsite');
-                                    function formValidator() {
+            /////////////////////////////////////////////////////////
+            // VALIDATOR
+            var website = $('#institutionWebsite');
+            function formValidator() {
 
-                                        alert(website.value);
+                alert(website.value);
 
-                                    }
-
-
-                                    /////////////////////////////////////////////////////////
-                                    // LOCATION SERVICE
-                                    // set all location variables
-                                    var countryField = '#country';
-
-                                    var districtFieldContainer = '#districtContainer';
-                                    var districtField = '#district';
-
-                                    var cityFieldContainer = '#cityContainer';
-                                    var cityField = '#city';
-
-                                    var townFieldContainer = '#townContainer';
-                                    var townField = '#town';
-
-                                    // set all event triggers for location fields changes
-                                    $(countryField).change(function () {
-                                        getDistricts(this.value);
-                                    })
-
-                                    $(districtField).change(function () {
-                                        getCities(this.value);
-                                    })
-
-                                    $(cityField).change(function () {
-                                        getTowns(this.value);
-                                    })
-
-                                    // gets all countries
-                                    function getDistricts(countryId) {
+            }
 
 
+            /////////////////////////////////////////////////////////
+            // LOCATION SERVICE
+            // set all location variables
+            var countryField = '#country';
 
-                                        // show loading
+            var districtFieldContainer = '#districtContainer';
+            var districtField = '#district';
 
-                                        // get all countries
+            var cityFieldContainer = '#cityContainer';
+            var cityField = '#city';
 
-                                        // hide city and town
-                                        hideByIds([townFieldContainer, cityFieldContainer, districtFieldContainer]);
+            var townFieldContainer = '#townContainer';
+            var townField = '#town';
 
-                                        // hide loading
+            // set all event triggers for location fields changes
+            $(countryField).change(function () {
+                getDistricts(this.value);
+            })
 
-                                        // show districts	
-                                        showByIds([districtFieldContainer]);
-                                    }
+            $(districtField).change(function () {
+                getCities(this.value);
+            })
 
-                                    function getCities(districtId) {
-                                        hideByIds([cityFieldContainer, townFieldContainer]);
-                                        showByIds([cityFieldContainer]);
-                                    }
+            $(cityField).change(function () {
+                getTowns(this.value);
+            })
 
-                                    function getTowns(cityId) {
-                                        hideByIds([townFieldContainer]);
-                                        showByIds([townFieldContainer]);
-                                    }
+            // gets all countries
+            function getDistricts(countryId) {
+
+                // show loading
+
+                // get all countries
+
+                // hide city and town
+                hideByIds([townFieldContainer, cityFieldContainer, districtFieldContainer]);
+
+                // hide loading
+
+                // show districts	
+                showByIds([districtFieldContainer]);
+            }
+
+            function getCities(districtId) {
+                hideByIds([cityFieldContainer, townFieldContainer]);
+                showByIds([cityFieldContainer]);
+            }
+
+            function getTowns(cityId) {
+                hideByIds([townFieldContainer]);
+                showByIds([townFieldContainer]);
+            }
+
+        </script>

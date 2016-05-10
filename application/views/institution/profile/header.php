@@ -21,10 +21,6 @@
               <!-- contacto -->
               <i class="glyphicon glyphicon-phone"></i>&nbsp;
               <?php echo $telefone; ?><br>&nbsp;<br>
-
-              <!-- descricao -->
-              <h4>Sobre nós</h4>
-              <span><?php echo $descricao; ?></span>
 			
 
       		</div>

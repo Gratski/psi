@@ -4,6 +4,14 @@
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-7">
+
+
+			<!-- descricao -->
+			<h4>Sobre nós</h4>
+			<span><?php echo $descricao; ?></span>
+
+
+			<!-- Oportunidades -->
 			<h4>Lista de oportunidades</h4>
 
 			
