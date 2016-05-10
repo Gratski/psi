@@ -9,7 +9,7 @@ class View extends MY_Controller{
 
 	public function single($id){
 
-		// loads user model
+		// loads user and offer model
 		$this->load->model('users/User_model', 'user_model');
 
 		// prepare menu adta
@@ -24,6 +24,16 @@ class View extends MY_Controller{
 			$this->load->view('institution/menu', $dadosMenu);
 		else
 			$this->load->view('common/menu',$dadosMenu);
+
+		// get offer information
+		$this->load->model('offer/Get_offer_model', 'offer_model');
+		$offer = $this->offer_model->getOfferByID($id);
+		$dados = Array(
+				'offer' => $offer
+			);
+		var_dump($dados);
+		// load offer view
+		$this->load->view('opportunities/single', $dados);
 
 	}
 

@@ -20,4 +20,16 @@ class Get_offer_model extends CI_Model
 		return $res;
 	}
 
+
+	public function getOfferByID($id){
+		$query = $this->db->select('*')
+                ->from('Oportunidade O')
+                ->where("O.id", $id)
+                ->get();
+		
+		$res = $query->result();
+		
+		return $res;
+	}
+
 }

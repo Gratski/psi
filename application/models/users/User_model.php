@@ -40,7 +40,7 @@ class User_model extends CI_Model {
                 ->get();
         $res = $query->result();
 
-        echo "INST: " . count($res);
+        //echo "INST: " . count($res);
         if (count($res) > 0)
             $is = true;
 
@@ -56,7 +56,7 @@ class User_model extends CI_Model {
                 ->where('utilizador', $id)
                 ->get();
         $res = $query->result();
-        echo "VOLS: " . count($res);
+        //echo "VOLS: " . count($res);
         if (count($res) > 0)
             $is = true;
 
