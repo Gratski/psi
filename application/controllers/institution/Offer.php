@@ -22,7 +22,7 @@ class Offer extends InstitutionController {
         $this->load->model('volunteers/Areas_model', 'areas_model');
 
         $grupo_area = $this->areas_model->devolveTodosGruposAreas();
-
+        $offers = Array('array' => $grupo_area);
         $this->load->model('institution/Main_model', 'vm');
         $email = $this->session->user_details->email;
 
@@ -38,7 +38,7 @@ class Offer extends InstitutionController {
         //gerar views
         $this->load->view('institution/menu', $dadosMenu);
        $this->load->view('institution/profile/header', $dadosProfile); 
-        $this->load->view('opportunities/addOportunidade', $grupo_area);
+        $this->load->view('opportunities/addOportunidade', $offers);
         $this->load->view('common/footer');
         print_r($grupo_area);
     }
@@ -48,7 +48,7 @@ class Offer extends InstitutionController {
      * @return boolean
      */
     public function add_Offer() {
-
+        print_r();
         $horario = array(
             'hora_inicio' => $_POST['hora_inicio'],
             'hora_fim' => $_POST['hora_fim'],

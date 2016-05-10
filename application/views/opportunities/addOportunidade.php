@@ -20,11 +20,19 @@
 
                 <h1> Nova Oportunidade:</h1>
                 <form action="addOportunidade" method="post" role="form" onsubmit="return validateHorario();">
-                    <input type="text" name="funcao" value="função">
+                    <input type="text" name="funcao" value="funcao">
 
-                    <?php echo '$grupo_area';?>
-                    
-                    
+                    <?php
+                    foreach ($array as $row) {
+                        foreach ($row as $key => $value) {
+                   
+                           echo '<p>'.$key.'</p>';
+                           echo '<p>'.$value.'</p><br>';
+                           
+                        }
+                    }
+                    ?>
+
                     <!-- LOCAL -->
                     <div class="form-group">
 

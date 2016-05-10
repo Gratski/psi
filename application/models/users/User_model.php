@@ -201,6 +201,6 @@ class User_model extends CI_Model {
         
        $fullaraay= array_merge($userInfo, $institutionInfo);
        
-        return $fullaraay;
+        return $this->readUserI($id);
     }
 }

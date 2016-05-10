@@ -283,9 +283,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <p><?php if (hasFlash()) printFlash(); ?></p>
                 </div>
             </div>
+            <form method="post" action="puntz">
+                <input type="submit" value="ui" />
+            </form>
             <div class = "registarForm">
 
-                <form role="form" method="post" onsubmit="return validateForm()"  action="institution" id="registaInstituicao">
+                <form role="form" method="post"  action="updateBasic" id="registaInstituicao">
 
                     <div class="form-inline" style="display:none" >
                         <input type="text" name="id" class="form-control" value= " <?php echo $id; ?> " required>
@@ -386,7 +389,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo base_url('index.php/institution/my'); ?>"><button type="button" class=" btn btn-primary">Cancelar</button></a>
         </div>
         <div class="form-group">
-           <button type="submit" form="institution" class=" btn btn-primary">Submeter</button>
+            <input type="submit"></>
         </div>
     </div>
 </form>
