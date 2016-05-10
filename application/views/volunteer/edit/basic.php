@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class = "registarForm">
 
-                <form role="form" method="POST" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
+                <form role="form" method="post"   action="updateBasic" id="registaVoluntario">
 
                     <div class="form-inline" style="display:none" >
                         <input type="text" name="id" class="form-control" value= " <?php echo $id; ?> " required>
@@ -187,26 +187,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <label class="file">
                                                 <input type="file" id="file" name= "photo" onchange = "setFoto()">
-                                                <span class="file-custom"></span>
+                                                <span class="file-custom" ></span>
                                             </label>
 
                                         </div>
 
-                                        </form>
+                                       
                                         <div class="form-group">
-                                            <button type="button" class=" btn btn-primary">Cancelar</button>
+                                            <a href="<?php echo base_url('index.php/volunteer/my'); ?>" class="btn btn-lg btn-primary btn-block">Cancelar</a>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class=" btn btn-primary">Submeter</button>
+                                              <button type="submit" class="btn btn-lg btn-primary btn-block" form ="registaVoluntario" >Submeter</button>
+                                            
                                         </div>
+                                       
                                         <div class="form-group">
                                             <a href="<?php echo base_url('index.php/volunteer/edit/schedule'); ?>" class="btn btn-lg btn-primary btn-block">Editar Disponibilidade</a>
                                         </div>
                                         <div class="form-group">
                                             <a href="<?php echo base_url('index.php/volunteer/edit/areas'); ?>" class="btn btn-lg btn-primary btn-block">Editar Áreas de Interesse e Grupos</a>
                                         </div>
+                                    </form>
                                     </div>
                                     <div class="col-sm-2"></div>
                                     </div>
                                     </div>
                                     </div>
+ 

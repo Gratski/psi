@@ -27,7 +27,7 @@
                         foreach ($row as $key => $value) {
                    
                            echo '<p>'.$key.'</p>';
-                           echo '<p>'.$value.'</p><br>';
+                           echo '<p>'.$value.'</p>';
                            
                         }
                     }
@@ -132,7 +132,7 @@
                             <a href="<?php echo base_url('index.php/institution/my'); ?>"><button type="reset">Cancel</button></a>
                             </form>
 
-                            </div>
-                            </div>
-                            </div>
-                            </div>
+            </div>
+        </div>
+     </div>
+</div>

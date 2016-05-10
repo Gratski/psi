@@ -37,12 +37,12 @@ class Offer extends InstitutionController {
 
         //gerar views
         $this->load->view('institution/menu', $dadosMenu);
-       $this->load->view('institution/profile/header', $dadosProfile); 
+        $this->load->view('institution/profile/header', $dadosProfile);
         $this->load->view('opportunities/addOportunidade', $offers);
         $this->load->view('common/footer');
         print_r($grupo_area);
     }
-    
+
     /**
      * 
      * @return boolean

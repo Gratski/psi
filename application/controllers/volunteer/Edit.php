@@ -192,8 +192,9 @@ class Edit extends VoluntarioController {
         }
 
         $userInfo = $this->um->updateUser($this->session->user_id, $info);
+        
         $this->load->view('common/menu', $userInfo);
-        $this->load->view('volunteer/myprofile', $userInfo);
+        $this->load->view('volunteer/profile/header', $userInfo);
         $this->load->view('common/footer');
     }
 
