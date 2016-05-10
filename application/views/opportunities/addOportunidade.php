@@ -22,6 +22,9 @@
                 <form action="addOportunidade" method="post" role="form" onsubmit="return validateHorario();">
                     <input type="text" name="funcao" value="função">
 
+                    <?php echo '$grupo_area';?>
+                    
+                    
                     <!-- LOCAL -->
                     <div class="form-group">
 

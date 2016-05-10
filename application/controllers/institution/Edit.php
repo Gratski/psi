@@ -43,7 +43,6 @@ class Edit extends InstitutionController {
      * grabs the post made in the form update it to an associative array
      */
     public function updateBasic() {
-
         $this->load->model('users/User_model', 'um');
 
         $user = $this->session->user_details;
@@ -56,7 +55,7 @@ class Edit extends InstitutionController {
 
         $userInfo = $this->um->updateUserI($this->session->user_id, $info);
         $this->load->view('institution/menu', $userInfo);
-        $this->load->view('instituition/myprofile', $userInfo);
+        $this->load->view('institution/myprofile', $userInfo);
         $this->load->view('common/footer');
     }
 }

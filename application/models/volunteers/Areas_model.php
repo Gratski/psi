@@ -26,10 +26,10 @@ class Areas_model extends CI_Model {
 	*/
 	public function devolveTodosGruposAreas() {
 		$this->load->database();
-		$queryResult =  $this->db->select('area.id as areaID , area.nome, grupo.id as grupoID, grupo.tipo,')
-								->from('grupo_area')
-								->join('area', 'grupo_area.area = area.id')
-								->join('grupo', 'grupo_area.grupo = grupo.id')
+		$queryResult =  $this->db->select('Area.id as AreaID , Area.nome, Grupo.id as GrupoID, Grupo.tipo,')
+								->from('Grupo_Area')
+								->join('Area', 'Grupo_Area.area = Area.id')
+								->join('Grupo', 'Grupo_Area.grupo = Grupo.id')
 								->get();
 		$result = $queryResult->result();					
 		

@@ -11,8 +11,12 @@ class Offer extends InstitutionController {
         parent::__construct();
     }
 
-    //funcão que controla o adicionar oportunidade, enviando para a view um array com as ares_grupo existentes para o
-    //utilizador(instituiçao) selecionar.
+    /**
+     * funcão que controla o adicionar oportunidade, enviando para a view 
+     * um array com as ares_grupo existentes para o utilizador(instituiçao) 
+     * selecionar.
+     */
+    //
     public function createOffer() {
 
         $this->load->model('volunteers/Areas_model', 'areas_model');
@@ -33,14 +37,16 @@ class Offer extends InstitutionController {
 
         //gerar views
         $this->load->view('institution/menu', $dadosMenu);
-        $this->load->view('institution/profile/header', $dadosProfile);
-        //$this->load->view('opportunities/addOportunidade', $grupo_area);
+       $this->load->view('institution/profile/header', $dadosProfile); 
+        $this->load->view('opportunities/addOportunidade', $grupo_area);
         $this->load->view('common/footer');
-
-
         print_r($grupo_area);
     }
-
+    
+    /**
+     * 
+     * @return boolean
+     */
     public function add_Offer() {
 
         $horario = array(

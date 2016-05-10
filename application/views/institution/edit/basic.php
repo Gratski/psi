@@ -383,10 +383,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="col-sm-4">
         <div class="form-group">
-            <button type="button" class=" btn btn-primary">Cancelar</button>
+            <a href="<?php echo base_url('index.php/institution/my'); ?>"><button type="button" class=" btn btn-primary">Cancelar</button></a>
         </div>
         <div class="form-group">
-            <button type="submit" form="institution" class=" btn btn-primary">Submeter</button>
+           <button type="submit" form="institution" class=" btn btn-primary">Submeter</button>
         </div>
     </div>
 </form>

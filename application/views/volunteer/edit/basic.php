@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class = "registarForm">
 
-                <form role="form" method="post" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
+                <form role="form" method="POST" onsubmit="return validateForm()"  action="volunteer" id="registaVoluntario">
 
                     <div class="form-inline" style="display:none" >
                         <input type="text" name="id" class="form-control" value= " <?php echo $id; ?> " required>
@@ -199,7 +199,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="form-group">
                                             <button type="submit" class=" btn btn-primary">Submeter</button>
                                         </div>
-                                        </form>
                                         <div class="form-group">
                                             <a href="<?php echo base_url('index.php/volunteer/edit/schedule'); ?>" class="btn btn-lg btn-primary btn-block">Editar Disponibilidade</a>
                                         </div>
