@@ -28,8 +28,8 @@ class Edit extends InstitutionController {
         //query is not empty respond to the correct view
         if ($user_info != NULL) {
             //gerar views
-            $this->load->view('common/menu', $user_info);
-            $this->load->view('instituition/edit/basic', $user_info);
+            $this->load->view('institution/menu', $user_info);
+            $this->load->view('institution/edit/basic', $user_info);
             $this->load->view('common/footer');
         }
         // something went wrong display the 404 view
@@ -55,7 +55,7 @@ class Edit extends InstitutionController {
         }
 
         $userInfo = $this->um->updateUserI($this->session->user_id, $info);
-        $this->load->view('common/menu', $userInfo);
+        $this->load->view('institution/menu', $userInfo);
         $this->load->view('instituition/myprofile', $userInfo);
         $this->load->view('common/footer');
     }

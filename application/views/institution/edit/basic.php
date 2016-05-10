@@ -267,7 +267,7 @@
 
 
 -->
-=======
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 // ===========================================================================
@@ -290,8 +290,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="form-inline" style="display:none" >
                         <input type="text" name="id" class="form-control" value= " <?php echo $id; ?> " required>
                     </div>
-
-
+                    
                     <div class="form-group">
                         <input type="text" name="nome" class="form-control" id="exampleInputName2" 
                                placeholder="Nome instituição" value= " <?php echo $nome; ?> " required>
@@ -309,7 +308,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <div class="form-group">
                         <input type="text" name="nome_representante" class="form-control" id="exampleInputName2" 
-                               placeholder="nome_representante" value= " <?php echo $nome_representante; ?> " required>
+                               placeholder="nome_representante" value= " <?php echo $representante; ?> " required>
                     </div>
 
                     <div class="form-group">

@@ -83,7 +83,11 @@ class User_model extends CI_Model {
         else
             return $res[0];
     }
-
+    /**
+     * function to get the info of a volunteer
+     * @param type $id 
+     * @return type associative array with info or null
+     */
     public function readUser($id) {
         $email = $this->db->select('email')->from('Utilizador u ')->where('u.id', $id)->get();
 
@@ -106,6 +110,11 @@ class User_model extends CI_Model {
         return (count($array) != 0) ? $array : NULL;
     }
     
+    /**
+     * function to get the info of a institution
+     * @param type $id
+     * @return type associative array with info or null
+     */
     public function readUserI($id) {
         $email = $this->db->select('email')->from('Utilizador u ')->where('u.id', $id)->get();
 
@@ -124,7 +133,6 @@ class User_model extends CI_Model {
         foreach ($info as $key => $value) {
             $array[$key] = $value;
         }
-
         return (count($array) != 0) ? $array : NULL;
     }
 
