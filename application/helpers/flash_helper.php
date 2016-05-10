@@ -12,9 +12,14 @@ if( !function_exists('hasFlash'))
 if( !function_exists('printFlash'))
 {
     function printFlash(){
-        echo '<div class="'.$_SESSION['flash_type'].'">';
-        echo '<p>'.$_SESSION['flash'].'</p>';
+        
+          
+        
+        echo '<div class="alert alert-'.$_SESSION['flash_type'].' alert-dismissible" role="alert">';
+        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+        echo $_SESSION['flash'];
         echo '</div>';
+        
         resetFlash();
     }
 }

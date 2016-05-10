@@ -5,6 +5,9 @@
 		</div>
 		<div class="col-md-7">
 
+			
+			<? if(hasFlash())
+				printFlash(); ?>
 
 			<!-- descricao -->
 			<h4>Sobre nós</h4>

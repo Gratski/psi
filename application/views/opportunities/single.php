@@ -6,38 +6,35 @@
             <div class= "SectionTitle">
 
                 <!-- OFFER TITLE -->
-                <h2> <?php echo "OFFER TITLE HERE"; ?> </h2>
-                <span class="badge">area 1</span>
-                <span class="badge">area 2</span>
-                <span class="badge">area 3</span>
+                <h2> <?php echo $offer->titulo; ?> </h2>
 
             </div>
 
             <!-- DESCRIPTION -->
             <div class="well col-md-12">
                 <!-- POSITION -->
-                <p><?php echo "FUNCAO"; ?><p>
+                <p><?php echo $offer->funcao; ?><p>
 
                 <!-- DECRIPTION ITSELF -->
-                <p><?php echo "OFFER DESCRIPTION GOES HERE"; ?></p>
+                <p><?php echo $offer->descricao; ?></p>
                 
                 <!-- Offer details -->
                 <table class="table" style="font-size:13px;">
                     <tr>
                         <td><b>Nº de vagas</b></td>
-                        <td><?php echo "12"; ?></td>
+                        <td><?php echo $offer->vagas; ?></td>
                     </tr>
                     <tr>
                         <td><b>Local</b></td>
-                        <td><?php echo "COUNTRY, DISTRITO, CIDADE, FREGUESIA"; ?></td>
+                        <td><?php echo $offer->pais .", ". $offer->distrito. ", ". $offer->concelho . ", ". $offer->freguesia; ?></td>
                     </tr>
                     <tr>
                         <td><b>Horário:</b></td>
-                        <td><?php echo "DAS 8h00 às 12h00"; ?></td>
+                        <td><?php echo "DAS ".$offer->hora_inicio."h00 às ".$offer->hora_fim."h00"; ?></td>
                     </tr>
                     <tr>
                         <td><b>Periodo:</b></td>
-                        <td><?php echo "A partir de dia 1 de Maio de 2016"; ?></td>
+                        <td><?php echo "De: " . $offer->data_inicio . ", Até: " . $offer->data_fim; ?></td>
                     </tr>
                 </table>
 
@@ -50,8 +47,7 @@
 
             <!-- PUBLISHED BY -->
             <div class="col-md-12">
-                Publicado por:&nbsp;<?php echo "INSTITUTION NAME HERE"; ?><br>
-                Data:&nbsp;<?php echo "2 de Maio de 2016"; ?><br>
+                Publicado por:&nbsp;<?php echo $offer->instituicao; ?>
             </div>
 
             <!-- END -->

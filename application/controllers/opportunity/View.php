@@ -29,9 +29,9 @@ class View extends MY_Controller{
 		$this->load->model('offer/Get_offer_model', 'offer_model');
 		$offer = $this->offer_model->getOfferByID($id);
 		$dados = Array(
-				'offer' => $offer
+				'offer' => $offer[0]
 			);
-		var_dump($dados);
+		
 		// load offer view
 		$this->load->view('opportunities/single', $dados);
 

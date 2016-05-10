@@ -69,19 +69,25 @@ class Offer extends InstitutionController {
         $grupo_area = $this->areas_model->devolveTodosGruposAreas();
 		
 		//print_r($grupo_area);
-		$tempId = 1;
-		$cur_id = 0;
+        $cur_id = 0;
 		$cur_area = NULL;
+
 		$arr = Array();
+
+        $areas = Array();
+        $grupos = Array();
+
 		foreach($grupo_area as $row) {
-				if($row->AreaID |= $cur_id && $row->AreaID |= "".$cur_id){
+				if($row->AreaID != $cur_id && $row->AreaID != "".$cur_id){
 					$cur_id = $row->AreaID;
 					$area = new Area($row->AreaID, $row->nome);
 					$cur_area = $area;
 					$area->add(new Group($row->GrupoID, $row->tipo));
 					array_push($arr, $area);
+                    
 				}else{
 					$cur_area->add(new Group($row->GrupoID, $row->tipo));
+                   
 				}
 		}
 		
@@ -89,7 +95,7 @@ class Offer extends InstitutionController {
 		//echo '<p>Area nome: $arr[0]->getNome()</p>';
 		//echo '<p>Grupo de area aceder: $arr[0]->getGrupos()[0]->getNome()</p>';
 	//	print_r($arr);
-		$areas_to_view = Array('arr'=>$arr);
+		$areas_to_view = Array('arr'=>$arr, 'areas');
 		$grupo_area2 = array( 'a' => $grupo_area);
 
         $this->load->model('institution/Main_model', 'vm');
@@ -136,26 +142,29 @@ class Offer extends InstitutionController {
         print_r($user_id);
         $offer = array(
             'instituicao' => $user_id,
-            'areas_grupo' => $_POST['areas_grupo'],
-            'freguesia' => $_POST['freguesia'],
+            'area' => $_POST['area'],
+            'grupo' => $_POST['grupo'],
+            'freguesia' => $_POST['town'],
             'vagas' => $_POST['vagas'],
+            'titulo' => $_POST['titulo'],
             'descricao' => $_POST['descricao'],
             'funcao' => $_POST['funcao'],
-            'regular' => $_POST['regular'],
-            'horario' => insertedID
+            'horario' => $insertedID
         );
-        
-        print_r($offer);
 
         $this->load->model('offer/add_offer_model', 'offerModel');
 
         //cria nova oportunidade
-        $offerID = $this->load->offerModel->add($offer);
+        $offerID = $this->offerModel->add($offer);
 
-        if ($offerID == -1)
-            return false;
-        else
-            return true;
+        if ($offerID == -1){
+            setFlash("danger", "Erro ao inserir oportunidade");
+            redirect('institution/offer/createOffer');
+        }
+        else{
+            setFlash("success", "Oportunidade inserida!");
+            redirect('institution/my');
+        }
     }
 
 }

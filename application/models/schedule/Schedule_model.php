@@ -47,10 +47,7 @@ class Schedule_model extends CI_Model {
     }
 	
 	 public function create($horario){
-		// get volunteer by email
-        $user = $this->vm->getVolunteerByEmail($this->session->user_details->email);
-   
-        // cria um novo horario
+	 	// cria um novo horario
         $this->db->insert('Horario', $horario);
         $horario_id = $this->db->insert_id();
         
