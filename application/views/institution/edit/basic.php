@@ -1,11 +1,10 @@
-
+<!--
 <div class="container">
 	
 	<div class="row">
 		
 		<div class="col-md-8">
 			
-			<!-- NAME -->
 			<div class="col-md-12">
 				<label  class ="control-label col-sm-4" for="username">Nome</label>
 				<div class="form-group">
@@ -15,7 +14,6 @@
 			</div>
 			
 
-			<!-- REPRESENTANT NAME -->
 			<div class="col-md-12">
 				<label  class ="control-label col-sm-4" for="representantName">Nome de representante</label>
 				<div class="form-group">
@@ -24,7 +22,6 @@
 
 			</div>
 
-			<!-- ADDRESS -->
 			<div class="col-md-12">
 				<label  class ="control-label col-sm-4" for="institutionAddress">Morada</label>
 				<div class="form-group">
@@ -33,7 +30,6 @@
 
 			</div>
 
-			<!-- CONTACTO TELEFONICO -->
 			<div class="col-md-12">
 				<label  class ="control-label col-sm-4" for="institutionPhone">Contacto telefónico</label>
 				<div class="form-group">
@@ -42,7 +38,6 @@
 
 			</div>
 
-			<!-- DESCRIÇÃO -->
 			<div class="col-md-12">
 				<label  class ="control-label col-sm-4" for="institutionDescription">Descrição</label>
 				<div class="form-group">
@@ -51,7 +46,6 @@
 
 			</div>
 
-			<!-- WEBSITE -->
 			<div class="col-md-12">
 				<label  class ="control-label col-sm-4" for="institutionWebsite">Website</label>
 				<div class="form-group">
@@ -60,7 +54,6 @@
 
 			</div>
 
-			<!-- SEND BUTTTON -->
 			<div class="form-group" style="width:100%;">
 				<div class="submitButton" style="width:100%;">
 					<button type="submit" class="btn btn-success pull-right" form ="institutionEdit" >Guardar alterações</button>
@@ -69,7 +62,6 @@
 
 		</div>
 
-		<!-- MORE EDIT OPTION -> LOCATION -> PASSWORD -->
 		<div class="col-md-4">
 			
 			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#editLocationModal">Alterar Localização</button>
@@ -82,12 +74,9 @@
 </div>
 
 
-<!-- MODALS -->
-<!-- EDIT LOCATION MODAL -->
 <div id="editLocationModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -95,7 +84,6 @@
       </div>
       <div class="modal-body">
         
-		<!-- LOCAL -->
 		<div class="form-group">
 
 			<label  class ="control-label col-sm-12" for="Location">Localização</label>
@@ -147,11 +135,9 @@
   </div>
 </div>
 
-<!-- EDIT LOCATION MODAL -->
 <div id="editPasswordModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -161,7 +147,6 @@
         
         <form action="edit/pass" method="POST">
 			
-			<!-- PASSWORD AND PASSWORD CONFIRMATION -->
 			<label  class ="control-label col-sm-12" for="institutionPasswordActual">Password actual</label>
 			<div class="form-group">
 				<input type="password" name="institutionPasswordActual" class="form-control" id="institutionPasswordActual" required>
@@ -281,7 +266,7 @@
 
 
 
-
+-->
 =======
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
