@@ -180,7 +180,7 @@ class User_model extends CI_Model {
         foreach ($infoUpdated as $key => $value) {
             if ($key == 'nome' 
                     || $key == 'email' 
-                    || $key == 'passord' 
+                    || $key == 'password' 
                     ) {
                 $userInfo[$key] = $value;
             }if($key == 'descricao' 

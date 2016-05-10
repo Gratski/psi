@@ -49,7 +49,7 @@
                                     <select id="district" name="district">
 
                                         <option value="0"></option>
-                                        <option value="1">Estremadura</option>
+                                        <option value="1">Lisboa</option>
 
                                     </select>
                                 </div>
@@ -66,7 +66,8 @@
                                     <label>Freguesia</label>
                                     <select id="town" name="town">
                                         <option value="0"></option>
-                                        <option value="1">Odivelas</option>
+                                        <option value="1">Olivais</option>
+										<option value="2">Ajuda</option>
                                     </select>
                                 </div>
                             </div>

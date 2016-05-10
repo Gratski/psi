@@ -42,7 +42,7 @@
                         foreach ($arr as $area) {
                         ?>
                             <option value="<?php echo $area->getId(); ?>"><?php echo $area->getNome(); ?></option>
-                        <?
+                        <?php
                         }
                         ?>
                     </select>
@@ -51,12 +51,12 @@
                     <?php
                         foreach ($arr as $area) {
                             ?>
-                            <select class="grupoPicker form-control" id="grupoSelector<? echo $area->getId(); ?>" name="grupo" style="display:none;">
-                                <?
+                            <select class="grupoPicker form-control" id="grupoSelector<?php echo $area->getId(); ?>" name="grupo" style="display:none;">
+                                <?php
                                 foreach($area->getGrupos() as $grupo){
                                 ?>
                                 
-                                    <option value="<? echo $grupo->getId(); ?>">
+                                    <option value="<?php echo $grupo->getId(); ?>">
                                         <?php echo $grupo->getNome(); ?>
                                     </option>
 
@@ -64,7 +64,7 @@
                                     }
                                 ?>
                             </select>
-                    <?
+                    <?php
                     }
                     ?>
                     
@@ -91,7 +91,7 @@
                                     <select id="district" name="district">
 
                                         <option value="0"></option>
-                                        <option value="1">Estremadura</option>
+                                        <option value="1">Lisboa</option>
 
                                     </select>
                                 </div>
@@ -108,7 +108,8 @@
                                     <label>Freguesia</label>
                                     <select id="town" name="town">
                                         <option value="0"></option>
-                                        <option value="1">Odivelas</option>
+                                        <option value="1">Olivais</option>
+										<option value="2">Ajuda</option>
                                     </select>
                                 </div>
                             </div>

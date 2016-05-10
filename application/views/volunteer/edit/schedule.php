@@ -1,5 +1,4 @@
-
-    <head>
+<head>
         <meta charset='utf-8' />
         <link href='<?php echo base_url('css/fullcalendar.css'); ?>' rel='stylesheet' />
         <link href='<?php echo base_url('css/fullcalendar.print.css'); ?>' rel='stylesheet' media='print' />
@@ -8,11 +7,9 @@
         <script src='<?php echo base_url('css/lib/jquery-ui.custom.min.js'); ?>'></script>
         <script src='<?php echo base_url('js/fullcalendar.min.js'); ?>'></script>
         <script src= '<?php echo base_url('js/myCalendar.js'); ?>'></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
         <style>
 
             body {
-                margin-top: 40px;
                 text-align: center;
                 font-size: 14px;
                 font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
