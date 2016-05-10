@@ -19,12 +19,18 @@
             <div class= "SectionTitle">
 
                 <h1> Nova Oportunidade:</h1>
-                <form action="addOportunidade" method="post" role="form" onsubmit="return validateHorario();">
-                    <input type="text" name="funcao" value="função">
+                <form action="addOportunidade" id="addOportunidade" method="post" role="form" onsubmit="return validateHorario();">
+                    <input type="text" name="funcao" value="funcao"></br>
 
-                    <?php echo '$grupo_area';?>
-                    
-                    
+                    <?php
+                    foreach ($arr as $row) {
+                        foreach($row->getGrupos() as $grupo){
+                            echo 'AREA: '.$row->getNome();
+                            echo ' , GRUPO: '.$grupo->getNome().'<br>';
+                        }
+                    }
+                    ?>
+
                     <!-- LOCAL -->
                     <div class="form-group">
 

@@ -1,4 +1,49 @@
 <?php
+class Group {
+	private $id;
+	private $nome;
+
+	public function __construct($id, $nome) {
+		$this->id = $id;
+		$this->nome = $nome;
+	}
+
+	public function getId(){
+		return $this->id;
+	}
+	
+	public function getNome(){
+		return $this->nome;
+	}
+}
+
+class Area {
+	private $id;
+	private $nome;
+	private $grupos;
+
+	public function __construct($id, $nome) {
+		$this->id = $id;
+		$this->nome = $nome;
+		$this->grupos = Array();
+	}
+
+	public function getId(){
+		return $this->id;
+	}
+	
+	public function getNome(){
+		return $this->nome;
+	}
+	
+	public function getGrupos(){
+		return $this->grupos;
+	}
+	
+	public function add($grupo){
+		array_push($this->grupos, $grupo);
+	}
+}
 
 require_once('InstitutionController.php');
 
@@ -22,6 +67,30 @@ class Offer extends InstitutionController {
         $this->load->model('volunteers/Areas_model', 'areas_model');
 
         $grupo_area = $this->areas_model->devolveTodosGruposAreas();
+		
+		//print_r($grupo_area);
+		$tempId = 1;
+		$cur_id = 0;
+		$cur_area = NULL;
+		$arr = Array();
+		foreach($grupo_area as $row) {
+				if($row->AreaID |= $cur_id && $row->AreaID |= "".$cur_id){
+					$cur_id = $row->AreaID;
+					$area = new Area($row->AreaID, $row->nome);
+					$cur_area = $area;
+					$area->add(new Group($row->GrupoID, $row->tipo));
+					array_push($arr, $area);
+				}else{
+					$cur_area->add(new Group($row->GrupoID, $row->tipo));
+				}
+		}
+		
+		//echo '<p>Area aceder: $arr[0]->getId();</p>';
+		//echo '<p>Area nome: $arr[0]->getNome()</p>';
+		//echo '<p>Grupo de area aceder: $arr[0]->getGrupos()[0]->getNome()</p>';
+	//	print_r($arr);
+		$areas_to_view = Array('arr'=>$arr);
+		$grupo_area2 = array( 'a' => $grupo_area);
 
         $this->load->model('institution/Main_model', 'vm');
         $email = $this->session->user_details->email;
@@ -37,10 +106,10 @@ class Offer extends InstitutionController {
 
         //gerar views
         $this->load->view('institution/menu', $dadosMenu);
-       $this->load->view('institution/profile/header', $dadosProfile); 
-        $this->load->view('opportunities/addOportunidade', $grupo_area);
+        $this->load->view('institution/profile/header', $dadosProfile); 
+        $this->load->view('opportunities/addOportunidade', $areas_to_view);
         $this->load->view('common/footer');
-        print_r($grupo_area);
+       // print_r($grupo_area2);
     }
     
     /**
@@ -48,13 +117,14 @@ class Offer extends InstitutionController {
      * @return boolean
      */
     public function add_Offer() {
-
+        
         $horario = array(
             'hora_inicio' => $_POST['hora_inicio'],
             'hora_fim' => $_POST['hora_fim'],
             'data_inicio' => $_POST['data_inicio'],
             'data_fim' => $_POST['data_fim']
         );
+        print_r($horario);
 
         $this->load->model('schedule/schedule_model', 'newSch');
 
@@ -63,7 +133,7 @@ class Offer extends InstitutionController {
 
         //prepara oportunidade
         $user_id = $this->session->user_id;
-
+        print_r($user_id);
         $offer = array(
             'instituicao' => $user_id,
             'areas_grupo' => $_POST['areas_grupo'],
@@ -74,6 +144,8 @@ class Offer extends InstitutionController {
             'regular' => $_POST['regular'],
             'horario' => insertedID
         );
+        
+        print_r($offer);
 
         $this->load->model('offer/add_offer_model', 'offerModel');
 

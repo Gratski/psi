@@ -54,8 +54,10 @@ class Edit extends InstitutionController {
         }
 
         $userInfo = $this->um->updateUserI($this->session->user_id, $info);
-        $this->load->view('institution/menu', $userInfo);
-        $this->load->view('institution/myprofile', $userInfo);
+        
+        $this->load->view('institution/menu', $user);
+        $this->load->view('institution/profile/header', $userInfo);
+        $this->load->view('institution/myprofile');
         $this->load->view('common/footer');
     }
 }
