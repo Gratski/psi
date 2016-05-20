@@ -14,6 +14,7 @@ class Signup extends CI_Controller
      * do tipo de utilizador
      */
     public function index(){
+        $this->load->view('common/simple_menu');
         $this->load->view('common/signup');
     }
 

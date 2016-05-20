@@ -143,7 +143,7 @@
             var website = $('#institutionWebsite');
             function formValidator() {
 
-                alert(website.value);
+                
 
             }
 

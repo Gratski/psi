@@ -28,6 +28,14 @@ class My extends VoluntarioController {
             'foto' => $dadosProfile->foto
         );
 
+        //obter oportunidades com base nas preferencias do utilizador
+        $this->load->model('offer/Get_Matched_Offers', 'match_model');
+        $array_oportunidades = $this->match_model->matchToVolunteer($dadosProfile->id);
+        $dadosProfile = array(
+                'base' => $dadosProfile,
+                'opportunities' => $array_oportunidades
+            );
+
         $this->load->view('common/menu', $dadosMenu);
         $this->load->view('volunteer/profile/header', $dadosProfile);
         $this->load->view('volunteer/myprofile', $dadosProfile);
