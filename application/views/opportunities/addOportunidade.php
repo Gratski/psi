@@ -51,7 +51,7 @@
                     <?php
                         foreach ($arr as $area) {
                             ?>
-                            <select class="grupoPicker form-control" id="grupoSelector<?php echo $area->getId(); ?>" name="grupo" style="display:none;">
+                            <select class="grupoPicker form-control" id="grupoSelector<?php echo $area->getId(); ?>" name="grupo<?php echo $area->getId(); ?>" style="display:none;">
                                 <?php
                                 foreach($area->getGrupos() as $grupo){
                                 ?>

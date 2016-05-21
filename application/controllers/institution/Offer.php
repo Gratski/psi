@@ -68,7 +68,6 @@ class Offer extends InstitutionController {
 
         $grupo_area = $this->areas_model->devolveTodosGruposAreas();
 		
-		//print_r($grupo_area);
         $cur_id = 0;
 		$cur_area = NULL;
 
@@ -96,7 +95,7 @@ class Offer extends InstitutionController {
 		//echo '<p>Grupo de area aceder: $arr[0]->getGrupos()[0]->getNome()</p>';
 	//	print_r($arr);
 		$areas_to_view = Array('arr'=>$arr, 'areas');
-		$grupo_area2 = array( 'a' => $grupo_area);
+		
 
         $this->load->model('institution/Main_model', 'vm');
         $email = $this->session->user_details->email;
@@ -109,13 +108,12 @@ class Offer extends InstitutionController {
             'nome' => $dadosProfile->nome,
             'id' => $dadosProfile->id
         );
-
         //gerar views
         $this->load->view('institution/menu', $dadosMenu);
         $this->load->view('institution/profile/header', $dadosProfile); 
         $this->load->view('opportunities/addOportunidade', $areas_to_view);
         $this->load->view('common/footer');
-       // print_r($grupo_area2);
+        
     }
     
     /**
@@ -130,7 +128,6 @@ class Offer extends InstitutionController {
             'data_inicio' => $_POST['data_inicio'],
             'data_fim' => $_POST['data_fim']
         );
-        print_r($horario);
 
         $this->load->model('schedule/schedule_model', 'newSch');
 
@@ -139,11 +136,11 @@ class Offer extends InstitutionController {
 
         //prepara oportunidade
         $user_id = $this->session->user_id;
-        print_r($user_id);
+       
         $offer = array(
             'instituicao' => $user_id,
             'area' => $_POST['area'],
-            'grupo' => $_POST['grupo'],
+            'grupo' => $_POST['grupo'.$_POST['area']],
             'freguesia' => $_POST['town'],
             'vagas' => $_POST['vagas'],
             'titulo' => $_POST['titulo'],
@@ -151,7 +148,7 @@ class Offer extends InstitutionController {
             'funcao' => $_POST['funcao'],
             'horario' => $insertedID
         );
-
+		
         $this->load->model('offer/add_offer_model', 'offerModel');
 
         //cria nova oportunidade
