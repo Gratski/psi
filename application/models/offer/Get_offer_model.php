@@ -12,7 +12,20 @@ class Get_offer_model extends CI_Model
 	public function getOffersByInstitutionID($id){
 		$query = $this->db->select('*')
                 ->from('Oportunidade O')
-                ->where("O.institution", $id)
+                ->where("O.instituicao", $id)
+                ->get();
+		
+		$res = $query->result();
+		
+		return $res;
+	}
+	
+	public function getOffersByInstitutionIDAndDate($id,$date){
+		$query = $this->db->select('*')
+                ->from('Oportunidade O')
+				->join("Horario h", "O.horario = h.id")
+                ->where("O.instituicao", $id)
+				->where("h.data_fim >=", $date)
                 ->get();
 		
 		$res = $query->result();
