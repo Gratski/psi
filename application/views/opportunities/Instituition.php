@@ -9,7 +9,7 @@
 
                 <h1> Lista de Oportunidades </h1>
                 
-                <p>lista de oportunidade</p>
+                <p>lista de oportunidade-----------------</p>
                 
             </div>
         </div>
