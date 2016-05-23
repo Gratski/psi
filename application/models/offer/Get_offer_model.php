@@ -35,16 +35,16 @@ class Get_offer_model extends CI_Model
 
 
 	public function getOfferByID($id){
-		$select = "o.*, p.nome as pais, d.nome as distrito, c.nome as concelho, f.nome as freguesia, h.data_inicio as data_inicio, h.data_fim as data_fim, h.hora_inicio as hora_inicio, h.hora_fim as hora_fim, u.nome as instituicao";
+		$select = "O.*, p.nome as pais, d.nome as distrito, c.nome as concelho, f.nome as freguesia, h.data_inicio as data_inicio, h.data_fim as data_fim, h.hora_inicio as hora_inicio, h.hora_fim as hora_fim, u.nome as instituicao";
 		$query = $this->db->select($select)
                 ->from('Oportunidade O')
                 ->where("O.id", $id)
-                ->join("Freguesia f", "f.id = o.freguesia")
+                ->join("Freguesia f", "f.id = O.freguesia")
                 ->join("Concelho c", "c.id = f.concelho")
                 ->join("Distrito d", "d.id = c.distrito")
                 ->join("Pais p", "p.id = d.pais")
-                ->join("Horario h", "h.id = o.horario")
-                ->join("Utilizador u", "u.id = o.instituicao")
+                ->join("Horario h", "h.id = O.horario")
+                ->join("Utilizador u", "u.id = O.instituicao")
                 ->get();
 		
 		$res = $query->result();
