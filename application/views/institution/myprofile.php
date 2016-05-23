@@ -15,7 +15,7 @@
 
 
 			<!-- Oportunidades -->
-			<h4>Lista de oportunidades</h4>
+			<h2>Lista de oportunidades</h2>
 
 			
 			<!-- Oportunidade  ciclo foreach aqui -->
@@ -23,7 +23,8 @@
 			<?php foreach($oportunidades as $offer) { ?>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<a href="#"><b><?php echo $offer->funcao ?> </b></a>
+                                            <h2><a href=" <?php echo base_url('index.php/opportunity/view/single/'); ?>/<?php echo $offer->id;?>"><?php echo $offer->titulo; ?></a></h2>
+                                            <p style="font-size: 12px;"><?php echo $offer->descricao?></p>
 					</div>
 					<div class="panel-body">
 						<table class="table" style="font-size:13px;">
@@ -32,7 +33,12 @@
 							<tr>
 								<td><i class="glyphicon glyphicon-user"></i></td>
 								<td><a href="#"><?php echo $matchesPorOportunidade[$i][$k]['nome'] ?> </a></td>
+								<td><a href="#">Antonio </a></td>
 							<?php } ?>
+                                                                <td><i class="glyphicon glyphicon-user"></i></td>
+                                                                <td>Antonio</td>
+                                                                <td><i class="glyphicon glyphicon-user"></i></td>
+                                                                <td>Joao</td>
 							</tr>
 							
 						</table>
