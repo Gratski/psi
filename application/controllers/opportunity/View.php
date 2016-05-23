@@ -8,7 +8,6 @@ class View extends MY_Controller{
 
 
 	public function single($id){
-
 		// loads user and offer model
 		$this->load->model('users/User_model', 'user_model');
 
