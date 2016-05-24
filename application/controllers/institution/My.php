@@ -73,7 +73,6 @@ class My extends InstitutionController
 
 		
 		$dadosMatches = array("oportunidades"=> $oportunities, "matchesPorOportunidade" => $matchesPorOffer);
-		print_r($dadosMatches);
 		/*
 		$this->load->model('offer/get_Matched_Offers', "matchModel");
 		$match = $this->matchModel->matchToInstitution($oportunities[0]->area, $oportunities[0]->grupo,

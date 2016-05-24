@@ -176,7 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                    <td><b>Descrição</b></td>
                                    <td><?php echo $value->area; ?></td>
                                    <form action="removeHabilitacoes" method="post">
-                                        <input type="text" value="<? echo $value->id; ?>" name="id" style="display:none;"/>
+                                        <input type="text" value="<?php echo $value->id; ?>" name="id" style="display:none;"/>
 
                                        <td><input type="submit" value="remover" class="btn btn-sm btn-danger"></td>
                                    </form>

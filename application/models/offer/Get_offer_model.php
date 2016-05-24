@@ -21,7 +21,7 @@ class Get_offer_model extends CI_Model
 	}
 	
 	public function getOffersByInstitutionIDAndDate($id,$date){
-		$query = $this->db->select('*')
+		$query = $this->db->select('O.*,h.id as hid, h.data_inicio, h.data_fim, h.hora_inicio, h.hora_fim')
                 ->from('Oportunidade O')
 				->join("Horario h", "O.horario = h.id")
                 ->where("O.instituicao", $id)

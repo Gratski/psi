@@ -113,7 +113,7 @@ class Get_Matched_Offers extends CI_Model{
 									->where("Freguesia.id = $freguesiaID")
 								->group_end()	
 						->group_end()
-					
+						->group_by('Utilizador.nome')
 						->get();
 		
 		

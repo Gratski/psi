@@ -169,6 +169,7 @@ class Edit extends VoluntarioController {
             'habilitacoes' => $habilitacoes,
             'user' => $user_info
             );
+			
 
         //print_r($user_info);
         //query is not empty respond to the correct view
