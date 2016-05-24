@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="data">telefone:</label>
-                        <input type="number" class="form-control" id="telefone" 
+                        <input type='tel' pattern='\d{9}' title='Phone Number (Format: 964811996)' class="form-control" id="telefone" 
                                placeholder="<?php echo $telefone; ?>" name="telefone" value= "<?php echo $telefone; ?> ">
                         <label class="control-label col-sm-2" for="data">email instituição:</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" value="<?php echo $email; ?> " required>

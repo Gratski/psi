@@ -126,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <form action="column" method="post">
                                 <td>
                                     <input type="text" class="form-control" name="field" value="telefone" style="display:none;" />
-                                    <input type="text" class="form-control" name="value" value="<?php echo $telefone;?>" />
+                                    <input type='tel' pattern='\d{9}' title='número (formato: 964811996)' class="form-control" name="value" value="<?php echo $telefone;?>" />
                                 </td>
                                 <td>
                                     <td> 
