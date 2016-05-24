@@ -14,7 +14,7 @@ class Main_model extends CI_Model
 	*/
 	public function getVolunteerByEmail($email){
 
-        $select = 'u.*, v.foto as foto, v.horario as horario, v.data_nascimento as data_nascimento, f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
+        $select = 'u.*, v.genero as genero, v.foto as foto, v.horario as horario, v.data_nascimento as data_nascimento, f.nome as freguesia, c.nome as concelho, d.nome as distrito, p.nome as pais';
         $query = $this->db->select($select)
                 ->from('Utilizador u')
                 ->where('u.email', $email)

@@ -61,6 +61,11 @@ $route['user/logout']['get'] = 'user/destroySession';
 $route['signup/volunteer']['post'] = 'signup/volunteerCreate';
 $route['signup/institution']['post'] = 'signup/institutionCreate';
 $route['volunteer/edit/basic']['post'] = 'volunteer/edit/updateBasic';
+$route['volunteer/edit/column']['post'] = 'volunteer/edit/updateColumn';
+$route['volunteer/edit/columnVolunteer']['post'] = 'volunteer/edit/updateVolunteerColumn';
+$route['volunteer/edit/password']['post'] = 'volunteer/edit/updatePassword';
+$route['volunteer/edit/removeHabilitacoes']['post'] = 'volunteer/edit/removeHabilitacoes';
+$route['volunteer/edit/addHabilitacoes']['post'] = 'volunteer/edit/addHabilitacoes';
 
 //Routes para edit de voluntario
 //actualizar horario
@@ -76,3 +81,4 @@ $route['institution/offer/addOportunidade']['post'] = 'institution/offer/add_off
 
 //update da institution
 $route['institution/edit/basic']['post'] = 'institution/edit/updateBasic';
+

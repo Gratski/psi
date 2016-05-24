@@ -159,20 +159,39 @@ class Edit extends VoluntarioController {
      * function to get the basic info from the user
      */
     public function basic() {
-        $this->load->model('users/User_model', 'user_model');
-        $user_info = $this->user_model->readUser($this->session->user_id);
+        $this->load->model('volunteers/Main_model', 'user_model');
+        $user_info = $this->user_model->getVolunteerByEmail($this->session->user_details->email);
+
+        $this->load->model('volunteers/Habilitacoes_model', 'hm');
+        $habilitacoes = $this->hm->getUserAreas();
+
+        $viewInfo = Array(
+            'habilitacoes' => $habilitacoes,
+            'user' => $user_info
+            );
+
         //print_r($user_info);
         //query is not empty respond to the correct view
         if ($user_info != NULL) {
             //gerar views
             $this->load->view('common/menu', $user_info);
-            $this->load->view('volunteer/edit/basic', $user_info);
+            $this->load->view('volunteer/edit/basic', $viewInfo);
             $this->load->view('common/footer');
         }
         // something went wrong display the 404 view
         else {
             $this->load->view('views/errors/cli/404.php');
         }
+    }
+
+    public function removeHabilitacoes(){
+
+        $habilitacao = $_POST['id'];
+        $this->load->model('volunteers/Habilitacoes_model', 'hm');
+        $this->hm->remove($habilitacao);
+
+        redirect('/volunteer/edit/basic');
+
     }
 
     /**
@@ -205,6 +224,42 @@ class Edit extends VoluntarioController {
 
         setFlash("success", "Perfil editado com sucesso!");
         redirect('/volunteer/my');
+    }
+
+    public function updateColumn() {
+
+        $field = $_POST['field'];
+        $value = $_POST['value'];
+
+        $this->load->model('volunteers/Edit_model', 'em');
+        $this->em->updateColumn($field, $value);
+
+        redirect('/volunteer/edit/basic');
+
+    }
+
+    public function updateVolunteerColumn(){
+        $field = $_POST['field'];
+        $value = $_POST['value'];
+
+        $this->load->model('volunteers/Edit_model', 'em');
+        $this->em->updateVolunteerColumn($field, $value);
+
+        redirect('/volunteer/edit/basic');
+
+    }
+
+    public function updatePassword(){
+
+        $actual = $_POST['actual'];
+        $nova = $_POST['nova'];
+        $novaConfirmacao = $_POST['novaConfirmacao'];
+
+        $this->load->model('volunteers/Edit_model', 'em');
+        $this->em->updatePassword('password', $nova);
+
+        redirect('/volunteer/edit/basic');
+
     }
 
     /**
