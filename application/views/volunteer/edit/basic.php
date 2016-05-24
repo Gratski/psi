@@ -26,14 +26,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- NOME -->
                         <tr>
                             <td><b>Nome:</b></td>
-                            <td><? echo $nome?></td>
+                            <td><?php echo $nome?></td>
                             <td><i onclick="showHide('nomeEdit');" class="glyphicon glyphicon-edit"></i></td>
                         </tr>
                         <tr id="nomeEdit" style="display:none;">
                             <form action="column" method="post">
                                 <td>
                                     <input type="text" class="form-control" name="field" value="nome" style="display:none;" />
-                                    <input type="text" class="form-control" name="value" value="<? echo $nome?>" />
+                                    <input type="text" class="form-control" name="value" value="<?php echo $nome?>" />
                                 </td>
                                 <td>
                                     <td> 
@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <form action="columnVolunteer" method="post">
                                 <td>
                                     <input type="text" class="form-control" name="field" value="data_nascimento" style="display:none;" />
-                                    <input type="text" class="form-control" name="value" value="<? echo $data_nascimento;?>" />
+                                    <input type="text" class="form-control" name="value" value="<?php echo $data_nascimento;?>" />
                                 </td>
                                 <td>
                                     <td> 
@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- GENERO -->
                         <tr>
                             <td><b>Género:</b></td>
-                            <td><? if($genero == 'M'){echo "Masculino";}else{echo "Feminino";} ?></td>
+                            <td><?php if($genero == 'M'){echo "Masculino";}else{echo "Feminino";} ?></td>
                             <td><i onclick="showHide('generoEdit');" class="glyphicon glyphicon-edit"></i></td>
                         </tr>
                          <tr id="generoEdit" style="display:none;">
@@ -104,12 +104,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- LOCALIDADE -->
                         <tr>
                             <td><b>Localidade:</b></td>
-                            <td><? echo $pais.', '.$distrito.','.$concelho.', '.$freguesia; ?></td>
+                            <td><?php echo $pais.', '.$distrito.','.$concelho.', '.$freguesia; ?></td>
                             <td><i onclick="showHide('localidadeEdit')" class="glyphicon glyphicon-edit"></i></td>
                         </tr>
                         <tr id="localidadeEdit" style="display:none;">
                             <td><b>Localidade:</b></td>
-                            <td><? echo $pais.', '.$distrito.','.$concelho.', '.$freguesia; ?></td>
+                            <td><?php echo $pais.', '.$distrito.','.$concelho.', '.$freguesia; ?></td>
                             <td><i class="glyphicon glyphicon-edit"></i></td>
                         </tr>
                         
@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- CONTACTO TELEFONICO -->
                         <tr>
                             <td><b>Contacto Telefónico:</b></td>
-                            <td><? echo $telefone; ?></td>
+                            <td><?php echo $telefone; ?></td>
                             <td><i onclick="showHide('contactoEdit')" class="glyphicon glyphicon-edit"></i></td>
                         </tr>
                         <tr id="contactoEdit" style="display:none;">
@@ -126,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <form action="column" method="post">
                                 <td>
                                     <input type="text" class="form-control" name="field" value="telefone" style="display:none;" />
-                                    <input type="text" class="form-control" name="value" value="<? echo $telefone;?>" />
+                                    <input type="text" class="form-control" name="value" value="<?php echo $telefone;?>" />
                                 </td>
                                 <td>
                                     <td> 
@@ -169,12 +169,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
                     <!-- LISTA DE HABILITACOES -->
                     <table class="table" style="font-size:14px;">
-                            <? foreach ($habilitacoes as $value) { ?>
+                            <?php foreach ($habilitacoes as $value) { ?>
                                <tr>
                                    <td><b>Grau:</b></td>
-                                   <td><? echo $value->grau; ?></td>
+                                   <td><?php echo $value->grau; ?></td>
                                    <td><b>Descrição</b></td>
-                                   <td><? echo $value->area; ?></td>
+                                   <td><?php echo $value->area; ?></td>
                                    <form action="removeHabilitacoes" method="post">
                                         <input type="text" value="<? echo $value->id; ?>" name="id" style="display:none;"/>
 
@@ -182,7 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                    </form>
                                    
                                </tr> 
-                            <? } ?>
+                            <?php } ?>
                     </table>
 
 
