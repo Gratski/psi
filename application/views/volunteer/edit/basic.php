@@ -151,8 +151,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <form action="addHabilitacao" method="post">
                         <table id="addHabilitacoes" class="table" style="font-size:14px; display:none;">
                             <tr>
-                                <td><input class="form-control" type="text" name="grau" placeholder="Grau" /></td>
-                                <td><input class="form-control" type="text" name="descricao" placeholder="Descricao" /></td>
+                                <td>
+                                    <select  name="grau" class="form-control">
+                                        <option value="Sem grau">Sem grau</option>
+                                        <option value="Ensino Básico">Ensino Básico</option>
+                                        <option value="12ºano">12ºano </option>
+                                        <option value="Licenciatura">Licenciatura</option>
+                                        <option value="Mestrado">Mestrado</option>
+                                        <option value="Doutoramento">Doutoramento</option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" name="area" placeholder="Descricao" /></td>
                             </tr>
                             <tr>
                                 <td>

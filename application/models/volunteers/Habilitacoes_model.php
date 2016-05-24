@@ -15,6 +15,9 @@ class Habilitacoes_model extends CI_Model
 					->where('habilitacoes', $id)
 					->delete('Voluntario_Habilitacoes');
 
+		$this->db->where('id', $id)
+					->delete('Habilitacoes');
+
 	}
 
 	public function add($data){
@@ -22,6 +25,20 @@ class Habilitacoes_model extends CI_Model
 		if($inserted)
 			return $this->db->insert_id();
 		return -1;
+	}
+
+	public function createHabilitacoes($grau, $area){
+
+		$array = Array(
+				'grau' => $grau,
+				'area' => $area
+ 			);
+
+		$inserted = $this->db->insert('Habilitacoes', $array);
+		if($inserted)
+			return $this->db->insert_id();
+		return -1;
+
 	}
 
 	public function getUserAreas(){

@@ -169,7 +169,6 @@ class Edit extends VoluntarioController {
             'habilitacoes' => $habilitacoes,
             'user' => $user_info
             );
-			
 
         //print_r($user_info);
         //query is not empty respond to the correct view
@@ -193,6 +192,25 @@ class Edit extends VoluntarioController {
 
         redirect('/volunteer/edit/basic');
 
+    }
+
+    public function addHabilitacao(){
+
+        $area = $_POST['area'];
+        $grau = $_POST['grau'];
+
+        // criar habilitacao
+        $this->load->model('volunteers/Habilitacoes_model', 'hm');
+        $hab = $this->hm->createHabilitacoes($grau, $area);
+
+        // add habilitacao a volunteer
+        $arr = Array(
+                'habilitacoes' => $hab,
+                'voluntario' => $this->session->user_details->id
+            );
+        $this->hm->add($arr);
+
+        redirect('/volunteer/edit/basic');
     }
 
     /**
