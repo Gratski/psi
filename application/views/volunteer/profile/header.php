@@ -3,9 +3,6 @@
             <div id="picture" class="col-md-2 text-center" style="padding-top:20px; position:relative;">
               <?php echo getMediumPicture($user->id, $user->foto); ?>
 
-              <span id="editPicture" data-toggle="modal" data-target="#editPictureModal" class="badge" style="position:absolute; margin-left:-34%; margin-top:20%;">
-                editar
-              </span>
 
             </div>
 		  <div class="col-md-7">

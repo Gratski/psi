@@ -17,7 +17,6 @@
             <!-- Oportunidades -->
             <h2>Lista de oportunidades</h2>
 
-
             <!-- Oportunidade  ciclo foreach aqui -->
             <?php $i = -1; ?>
             <?php foreach ($oportunidades as $offer) { ?>
@@ -32,7 +31,11 @@
                             <?php for ($k = 0; $k < count($matchesPorOportunidade[$i]); $k++) { ?>
                                 <tr>
                                     <td><i class="glyphicon glyphicon-user"></i></td>
-                                    <td><a href="#"><?php echo $matchesPorOportunidade[$i][$k]['nome'] ?> </a></td>
+                                    <td>
+                                        <div rel='tooltip' data-original-title='<div><?php echo getSmallPicture($matchesPorOportunidade[$i][$k]['id'], $matchesPorOportunidade[$i][$k]['foto']);?>&nbsp;User name<br>Portugal, Lisboa, Lisboa, Saldanha</div>'>
+                                            <?php echo $matchesPorOportunidade[$i][$k]['nome'] ?> 
+                                        </div>
+                                    </td>
                                 <?php } ?>
                             </tr>
 
@@ -48,3 +51,8 @@
     </div>
 
 </div>
+
+
+<script type="text/javascript">
+    $("[rel=tooltip]").tooltip({html:true});
+</script>
