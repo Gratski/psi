@@ -1,0 +1,15 @@
+Voluntario
+	- Criar novo - check
+	- Editar: nome, email, disponibilidade, adicionar/remover areas
+		- Erros: 	area tem que ser preenchida obrigatoriamente e nao devia
+					(só no registo é que a area é inserida)
+
+	- Visualizar oportunidades -> Check!
+	- Alterar areas e verificar diferenca em matches -> Fazer novo teste
+
+Instituição
+	- Criar nova instituição - check
+	- Editar perfil - check
+	- Criar nova oportunidade - check
+	- Matches - NOT WORKING
+	- visualizar perfil de voluntario que faz match - NOT TESTED

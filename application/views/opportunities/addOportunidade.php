@@ -19,7 +19,7 @@
             <div class= "SectionTitle">
 
                 <h2> Nova Oportunidade:</h2>
-                <form action="addOportunidade" id="escolheHorario" method="post" role="form" onsubmit="return validateHorario();">
+                <form action="addOportunidade" id="escolheHorario" method="post" role="form">
                     
                     
                     <!-- Titulo -->
@@ -157,7 +157,7 @@
                             <button class="btn btn-warning">Cancelar</button>
                         </a>
                         <!-- Submit button -->   
-                        <button class="btn btn-success">Submit</button>
+                        <input type="submit" value="Submit" class="btn btn-success">
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>

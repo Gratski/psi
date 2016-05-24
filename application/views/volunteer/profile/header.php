@@ -1,7 +1,7 @@
 <div class="container">
 		<div class="row">
             <div id="picture" class="col-md-2 text-center" style="padding-top:20px; position:relative;">
-              <?php echo getMediumPicture($base->id, $base->foto); ?>
+              <?php echo getMediumPicture($user->id, $user->foto); ?>
 
               <span id="editPicture" data-toggle="modal" data-target="#editPictureModal" class="badge" style="position:absolute; margin-left:-34%; margin-top:20%;">
                 editar
@@ -10,18 +10,18 @@
             </div>
 		  <div class="col-md-7">
 			  <h1>
-            <?php echo $base->nome; ?>, <?php echo getAge($base->data_nascimento); ?>
+            <?php echo $user->nome; ?>, <?php echo getAge($user->data_nascimento); ?>
         </h1> 
               <!-- morada -->
               <i class="glyphicon glyphicon-home"></i>&nbsp;
-              <?php echo $base->freguesia; ?>,
-              <?php echo $base->concelho; ?>, 
-              <?php echo $base->distrito; ?>, 
-              <?php echo $base->pais; ?><br>
+              <?php echo $user->freguesia; ?>,
+              <?php echo $user->concelho; ?>, 
+              <?php echo $user->distrito; ?>, 
+              <?php echo $user->pais; ?><br>
 
               <!-- contacto -->
               <i class="glyphicon glyphicon-phone"></i>&nbsp;
-              <?php echo $base->telefone; ?>
+              <?php echo $user->telefone; ?>
 
       </div>
       <div class='col-sm-3'>

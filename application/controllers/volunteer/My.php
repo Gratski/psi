@@ -32,7 +32,7 @@ class My extends VoluntarioController {
         $this->load->model('offer/Get_Matched_Offers', 'match_model');
         $array_oportunidades = $this->match_model->matchToVolunteer($dadosProfile->id);
         $dadosProfile = array(
-                'base' => $dadosProfile,
+                'user' => $dadosProfile,
                 'opportunities' => $array_oportunidades
             );
 

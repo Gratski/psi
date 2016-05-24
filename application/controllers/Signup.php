@@ -156,8 +156,8 @@ class Signup extends CI_Controller
             'email' => $_POST['email'],
             'password' => $_POST['pass'],
             'telefone' => $_POST['phone'],
-            'freguesia' => $_POST['town']
-            //'foto' => $_FILES['photo']
+            'freguesia' => $_POST['town'],
+            'foto' => $_FILES['photo']
 
         );
         return $user;

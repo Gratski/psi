@@ -14,7 +14,187 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class = "registarForm">
+                
+                <div class="col-md-12">
 
+                    <h4>Informação geral</h4><br>
+
+                    <table class="table" style="font-size:14px;">
+                        
+
+
+                        <!-- NOME -->
+                        <tr>
+                            <td><b>Nome:</b></td>
+                            <td><? echo $nome?></td>
+                            <td><i onclick="showHide('nomeEdit');" class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+                        <tr id="nomeEdit" style="display:none;">
+                            <form action="updateBasic" method="post">
+                                <td>
+                                    <input type="text" class="form-control" name="nome" hidden="hidden" />
+                                    <input type="text" class="form-control" name="value" value="<? echo $nome?>" />
+                                </td>
+                                <td>
+                                    <td> 
+                                        <button onclick="showHide('nomeEdit')" class="btn btn-sm btn-warning">
+                                            cancelar
+                                        </button>
+                                        <button class="btn btn-sm btn-success">guardar</button> 
+                                    </td>
+                                </td>    
+                            </form>
+                        </tr>
+
+
+
+                        <!-- DATA NASCIMENTO -->
+                        <tr>
+                            <td><b>Data de Nascimento:</b></td>
+                            <td><?php echo $data_nascimento; ?></td>
+                            <td><i onclick="showHide('data_nascimentoEdit');" class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+                        <tr id="data_nascimentoEdit" style="display:none;">
+                            <td><b>Data de Nascimento:</b></td>
+                            <td><?php echo $data_nascimento; ?></td>
+                            <td><i class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+
+
+
+                        <!-- GENERO -->
+                        <tr>
+                            <td><b>Género:</b></td>
+                            <td><? if($genero == 'M'){echo "Masculino";}else{echo "Feminino";} ?></td>
+                            <td><i onclick="showHide('generoEdit');" class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+                         <tr id="generoEdit" style="display:none;">
+                            <td><b>Género:</b></td>
+                            <td><? if($genero == 'M'){echo "Masculino";}else{echo "Feminino";} ?></td>
+                            <td><i class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+
+
+
+                        <!-- LOCALIDADE -->
+                        <tr>
+                            <td><b>Localidade:</b></td>
+                            <td><? echo $pais.', '.$distrito.','.$concelho.', '.$freguesia; ?></td>
+                            <td><i onclick="showHide('localidadeEdit')" class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+                        <tr id="localidadeEdit" style="display:none;">
+                            <td><b>Localidade:</b></td>
+                            <td><? echo $pais.', '.$distrito.','.$concelho.', '.$freguesia; ?></td>
+                            <td><i class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+                        
+
+
+                        <!-- CONTACTO TELEFONICO -->
+                        <tr>
+                            <td><b>Contacto Telefónico:</b></td>
+                            <td><? echo $telefone; ?></td>
+                            <td><i onclick="showHide('contactoEdit')" class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+                        <tr id="contactoEdit" style="display:none;">
+                            <td><b>Contacto Telefónico:</b></td>
+                            <td><? echo $telefone; ?></td>
+                            <td><i class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+                    </table>
+                    
+
+
+
+                    <!-- HABILITACOES -->
+                    <h4>Habilitações&nbsp;&nbsp;&nbsp;<small><button onclick="showHide('addHabilitacoes')" class="btn btn-sm btn-success">+</button></small></h4><br>
+                    
+                    <!-- ADICIONAR HABILITACAO -->
+                    <form action="addHabilitacao" method="post">
+                        <table id="addHabilitacoes" class="table" style="font-size:14px; display:none;">
+                            <tr>
+                                <td><input class="form-control" type="text" name="grau" placeholder="Grau" /></td>
+                                <td><input class="form-control" type="text" name="descricao" placeholder="Descricao" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td> 
+                                    <button onclick="showHide('addHabilitacoes')" class="btn btn-sm btn-warning">
+                                        cancelar
+                                    </button>
+                                    <button class="btn btn-sm btn-success">adicionar</button> 
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                    
+                    <!-- LISTA DE HABILITACOES -->
+                    <table class="table" style="font-size:14px;">
+                            <tr>
+                                <td><b>Grau:</b></td>
+                                <td>X</td>
+                                <td><b>Descrição</b></td>
+                                <td>Y</td>
+                                <td><i class="glyphicon glyphicon-edit"></i></td>
+                                <td><i class="glyphicon glyphicon-remove"></i></td>
+                            </tr>
+                    </table>
+
+
+
+
+                    <!-- PALAVRA-PASSE -->
+                    <h4>Palavra-Passe</h4><br>
+                    <table class="table" style="font-size:14px;">
+                        <tr>
+                            <td><b>Actual</b></td>
+                            <td> <i class="glyphicon glyphicon-lock"></i>  <td>
+                            <td><i onclick="showHide('passwordEdit');" class="glyphicon glyphicon-edit"></i></td>
+                        </tr>
+                    </table>
+
+                    <table id="passwordEdit" class="table" style="font-size:14px; display:none;">
+                        <tr>
+                            <td><b>Actual:</b></td>
+                            <td><input type="password" name="curPass" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Nova:</b></td>
+                            <td><input type="password" name="novaPass" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Confirmação de Nova:</b></td>
+                            <td><input type="password" name="novaPassContfirmacao" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td class="text-right"> 
+                                <button onclick="showHide('passwordEdit')" class="btn btn-sm btn-warning">
+                                    cancelar
+                                </button>
+                                <button class="btn btn-sm btn-success">adicionar</button> 
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- ANTIGA -->
                 <form role="form" method="post"   action="updateBasic" id="registaVoluntario">
 
                     <div class="form-inline" style="display:none" >
@@ -213,4 +393,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                     </div>
                                     </div>
+
+
+
+<script type="text/javascript">
+    
+    function showHide(id){
+
+        var edits = ['nomeEdit', 'data_nascimentoEdit' ,'generoEdit', 'localidadeEdit', 'contactoEdit', 'addHabilitacoes', 'passwordEdit'];
+        edits.forEach( function(element, index) {
+            if(element != id)
+                $('#'+element).hide();
+        });
+
+
+        $('#'+id).is(':hidden') ? $('#'+id).show() : $('#'+id).hide();
+    }
+
+</script>
  

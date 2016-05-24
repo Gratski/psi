@@ -11,18 +11,26 @@ class View extends MY_Controller{
 		// loads user and offer model
 		$this->load->model('users/User_model', 'user_model');
 
+		$this->load->model('volunteers/Main_model', 'vm');
+        $email = $this->session->user_details->email;
+
+        $userFromBd = $this->vm->getVolunteerByEmail($email);
+
 		// prepare menu adta
 		$dadosMenu = array(
     			'titulo' => 'Oportunidade',
-    			'nome' => $this->session->user_details->nome,
-                'id' => $this->session->user_details->id
+    			'nome' => $userFromBd->nome,
+                'id' => $userFromBd->id,
+                'foto' => $userFromBd->foto
     		);
 
 		// load user type menu
-		if($this->isInstitution())
+		if($this->isInstitution()){
 			$this->load->view('institution/menu', $dadosMenu);
-		else
+		}
+		else{
 			$this->load->view('common/menu',$dadosMenu);
+		}
 
 		// get offer information
 		$this->load->model('offer/Get_offer_model', 'offer_model');

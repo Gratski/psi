@@ -183,6 +183,11 @@ class Edit extends VoluntarioController {
 
         $this->load->model('users/User_model', 'um');
 
+        $this->load->model('volunteers/Main_model', 'vm');
+        $email = $this->session->user_details->email;
+
+        $dadosProfile = $this->vm->getVolunteerByEmail($email);
+
         $user = $this->session->user_details;
 
         $info = array();
@@ -192,10 +197,14 @@ class Edit extends VoluntarioController {
         }
 
         $userInfo = $this->um->updateUser($this->session->user_id, $info);
-        
-        $this->load->view('common/menu', $userInfo);
-        $this->load->view('volunteer/profile/header', $userInfo);
-        $this->load->view('common/footer');
+
+
+        $user = Array(
+                'user' => $dadosProfile
+            );
+
+        setFlash("success", "Perfil editado com sucesso!");
+        redirect('/volunteer/my');
     }
 
     /**
