@@ -87,7 +87,7 @@ class Areas_model extends CI_Model {
                         ->join('Area a', 'ga.area = a.id')
                         ->group_start()
                             ->where_not_in('a.id', $areas)
-                            ->where_not_in('g.id', $groups)     
+                            ->or_where_not_in('g.id', $groups)     
                         ->group_end()
                         ->get();
             return $query->result();    

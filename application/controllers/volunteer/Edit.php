@@ -46,7 +46,7 @@ class Edit extends VoluntarioController {
              'user' => $user, 
              'user_areas' => $user_areas, 
              'user_areas_complement' => $complement);
-        
+			  
         //gerar views
         $this->load->view('common/menu', $user);
         $this->load->view('volunteer/profile/header', $response);
