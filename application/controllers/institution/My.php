@@ -41,8 +41,10 @@ class My extends InstitutionController
 				$matchInformation = array (
 							"id" => $value->id,
 							"nome"=> $value->nome,
-							"nascimento => $value->data_nascimento",
+							"nascimento" => $value->data_nascimento,
 							"numeroDeMatchs" => 0,
+							"foto" => $value->foto,
+							"utilizador" => $value->utilizador,
 							"area" => "none",
 							"grupo" => "none",
 							"freguesia" => "none"

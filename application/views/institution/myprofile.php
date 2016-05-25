@@ -30,10 +30,10 @@
                             <?php $i += 1; ?>
                             <?php for ($k = 0; $k < count($matchesPorOportunidade[$i]); $k++) { ?>
                                 <tr>
-                                    <td><i class="glyphicon glyphicon-user"></i></td>
+                                    <td><?php echo getSmallPicture($matchesPorOportunidade[$i][$k]['utilizador'], $matchesPorOportunidade[$i][$k]['foto']);?></td>
                                     <td>
-                                        <div rel='tooltip' data-original-title='<div><?php echo getSmallPicture($matchesPorOportunidade[$i][$k]['id'], $matchesPorOportunidade[$i][$k]['foto']);?>&nbsp;User name<br>Portugal, Lisboa, Lisboa, Saldanha</div>'>
-                                            <?php echo $matchesPorOportunidade[$i][$k]['nome'] ?> 
+                                        <div rel='tooltip' data-original-title='<div><?php echo getSmallPicture($matchesPorOportunidade[$i][$k]['utilizador'], $matchesPorOportunidade[$i][$k]['foto']);?>&nbsp;<?php echo $matchesPorOportunidade[$i][$k]['nome']; ?> <br>Portugal, Lisboa, Lisboa, Saldanha</div>'>
+                                            <?php echo $matchesPorOportunidade[$i][$k]['nome']; ?> 
                                         </div>
                                     </td>
                                 <?php } ?>

@@ -74,7 +74,7 @@ class Get_Matched_Offers extends CI_Model{
 		
 		$query = $this->db->select( 'Freguesia.id, Freguesia.concelho, Utilizador.nome, 
 						Voluntario.utilizador, Voluntario.data_nascimento,Horario.*,
-						Interesses_Voluntario.area, Interesses_Voluntario.grupo')
+						Interesses_Voluntario.area, Interesses_Voluntario.grupo, Voluntario.foto as foto')
 						->from('Utilizador')
 						->join('Voluntario','Voluntario.utilizador = Utilizador.id')
 						->join('Freguesia','Utilizador.freguesia = Freguesia.id')
