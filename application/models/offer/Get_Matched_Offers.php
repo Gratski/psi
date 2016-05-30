@@ -71,7 +71,6 @@ class Get_Matched_Offers extends CI_Model{
 						";
 		
 		*/
-		
 		$query = $this->db->select( 'Freguesia.id, Freguesia.concelho, Utilizador.nome, 
 						Voluntario.utilizador, Voluntario.data_nascimento,Horario.*,
 						Interesses_Voluntario.area, Interesses_Voluntario.grupo, Voluntario.foto as foto')
@@ -83,12 +82,12 @@ class Get_Matched_Offers extends CI_Model{
 						
 						->group_start()
 							//hora dentro de um intervalo possivel
-							->where("Horario.hora_fim BETWEEN $horaInicio And $horaFim")
+							->where("Horario.hora_fim BETWEEN '".$horaInicio."' And '".$horaFim."'")
 								->or_group_start()
-									->where("Horario.hora_inicio BETWEEN $horaInicio And $horaFim")
+									->where("Horario.hora_inicio BETWEEN '".$horaInicio."' And $horaFim")
 								->group_end()
 								->or_group_start()
-									->where("$horaInicio BETWEEN Horario.hora_inicio and Horario.hora_fim")
+									->where('"'.$horaInicio.'" BETWEEN Horario.hora_inicio and Horario.hora_fim')
 								->group_end()
 						->group_end()
 						
@@ -96,7 +95,7 @@ class Get_Matched_Offers extends CI_Model{
 							//data dentro de um intervalo possivel
 							->where('Horario.data_fim BETWEEN "'. $dataInicio. '" and "'. $dataFim.'"')
 								->or_group_start()
-									->where('Horario.data_inicio BETWEEN "'. $dataInicio. '" and "'. $dataFim.'"')
+									->where('Horario.data_inicio BETWEEN  "'. $dataInicio. '" and "'. $dataFim.'"')
 								->group_end()
 								->or_group_start()
 									->where('"'.$dataInicio.'" BETWEEN Horario.data_inicio and Horario.data_fim')
