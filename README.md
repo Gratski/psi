@@ -1,4 +1,4 @@
-## This is a project that consists in developing of a web platform to manage and search volunteer opportunities.
+## This is a project that consists in developing a web platform to manage and search volunteer opportunities.
 
 ### It is developed in:
 
